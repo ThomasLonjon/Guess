@@ -1,3 +1,36 @@
+/* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
+
+/* body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  pointer-events: none;
+  background-repeat: repeat;
+  animation-name: noise;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(3);
+}
+
+@keyframes noise {
+  from {
+    background-image: url("../src/assets/img/Noise1.jpg");
+  }
+  33% {
+    background-image: url("../src/assets/img/Noise2.jpg");
+  }
+  66% {
+    background-image: url("../src/assets/img/Noise3.jpg");
+  }
+  to {
+    background-image: url("../src/assets/img/Noise1.jpg");
+  }
+} */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -53,6 +86,8 @@ body {
   justify-content: center;
 }
 
+/* ----------------------------------------------GitHub Button-------------------------------------------------- */
+
 .buttonGithub {
   align-items: center;
   display: grid;
@@ -66,6 +101,7 @@ body {
   padding-bottom: 0.5%;
   box-shadow: var(--shadow);
   margin-bottom: 3%;
+  color: var(--colorText);
 }
 
 .pictoGithub {
@@ -84,4 +120,33 @@ a {
   padding: 0;
   margin: 0;
   align-items: center;
+}
+
+/* ----------------------------------------------Slider-------------------------------------------------- */
+
+.slider {
+  -webkit-appearance: none;
+  width: 28%;
+  height: 2px;
+  border-radius: 1px;
+  background: #ffffff;
+  outline: none;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--colorButtons);
+  cursor: pointer;
+}
+
+.textSlider {
+  color: var(--colorText);
+  font-size: 20px;
+  padding-bottom: 1%;
 }
