@@ -1,36 +1,21 @@
-import Counter from "../components/Counter";
-import logo from "../assets/logo.svg";
+import Slider from "../components/Slider";
+import ButtonGithub from "../components/ButtonGithub";
 
 export default function Home() {
   return (
     <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>Hello Vite + React !</p>
+      <ButtonGithub devName="Adèle" devLink="" />
+      <ButtonGithub
+        devName="Alexandre"
+        devLink="https://github.com/Alexandre78R"
+      />
+      <ButtonGithub devName="Jean-Maxime" />
+      <ButtonGithub
+        devName="Thomas"
+        devLink="https://github.com/ThomasLonjon"
+      />
 
-      <Counter />
-
-      <p>
-        Edit <code>App.jsx</code> and save to test HMR updates.
-      </p>
-      <p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {" | "}
-        <a
-          className="App-link"
-          href="https://vitejs.dev/guide/features.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Vite Docs
-        </a>
-      </p>
+      <Slider maxRange={30} defaultRange={8} unit="s" />
     </header>
   );
 }
