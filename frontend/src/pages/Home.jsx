@@ -1,9 +1,11 @@
 import Slider from "../components/Slider";
 import ButtonGithub from "../components/ButtonGithub";
+import Logo from "../components/Logo";
 
 export default function Home() {
   return (
     <header className="App-header">
+      <Logo />
       <ButtonGithub devName="Adèle" devLink="" />
       <ButtonGithub
         devName="Alexandre"

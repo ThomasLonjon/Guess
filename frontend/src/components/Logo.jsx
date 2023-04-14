@@ -1,7 +1,11 @@
-import PropTypes from "prop-types";
+import logoGuessWhat from "../assets/img/LogoGuessWhat.png";
 
 function Logo() {
-  return <img src="" alt="logoGuessWhat" />;
+  return (
+    <div className="logoBackground">
+      <img className="logo" src={logoGuessWhat} alt="logoGuessWhat" />;
+    </div>
+  );
 }
 
 export default Logo;
