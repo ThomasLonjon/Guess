@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import pictoGitHub from "../assets/img/Picto_Github.png";
 
 function ButtonGithub({ devName, devLink }) {
@@ -12,5 +13,10 @@ function ButtonGithub({ devName, devLink }) {
     </div>
   );
 }
+
+ButtonGithub.propTypes = {
+  devName: PropTypes.string.isRequired,
+  devLink: PropTypes.string.isRequired,
+};
 
 export default ButtonGithub;
