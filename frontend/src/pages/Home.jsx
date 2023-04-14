@@ -1,7 +1,5 @@
-import Counter from "../components/Counter";
-import logo from "../assets/logo.svg";
+import Slider from "../components/Slider";
 import ButtonGithub from "../components/ButtonGithub";
-import Slider from "@components/Slider";
 
 export default function Home() {
   return (
@@ -17,8 +15,7 @@ export default function Home() {
         devLink="https://github.com/ThomasLonjon"
       />
 
-      <Slider maxRange={30} defaultRange={8} unit={"s"} />
+      <Slider maxRange={30} defaultRange={8} unit="s" />
     </header>
   );
-  s;
 }

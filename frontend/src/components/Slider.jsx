@@ -1,7 +1,7 @@
-import React from "react";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
-export default function Slider({ maxRange, defaultRange, unit }) {
+function Slider({ maxRange, defaultRange, unit }) {
   const [rangeValue, setRangeValue] = useState(defaultRange);
   return (
     <>
@@ -19,3 +19,11 @@ export default function Slider({ maxRange, defaultRange, unit }) {
     </>
   );
 }
+
+Slider.propTypes = {
+  maxRange: PropTypes.number.isRequired,
+  defaultRange: PropTypes.number.isRequired,
+  unit: PropTypes.string.isRequired,
+};
+
+export default Slider;
