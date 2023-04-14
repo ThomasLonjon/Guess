@@ -1,13 +1,13 @@
-import Home from "./pages/Home";
 
-import "./App.css";
+import { useState } from 'react';
+import Timer from "./components/Timer";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <p>coucou</p>
+      <Timer time={30}/>
     </div>
+     
   );
 }
 
