@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import pictoGitHub from "../assets/img/Picto_Github.png";
 
