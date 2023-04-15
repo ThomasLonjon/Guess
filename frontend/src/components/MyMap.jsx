@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoidGhvbWFzbG9uam9uIiwiYSI6ImNsZndqYzN6dDA3NmkzbnRhZTBtMDN4Y2QifQ.Jv1RaxmPtEmRY9sLVwlC4g";
@@ -9,7 +9,7 @@ function MyMap() {
   const map = useRef(null);
   const [lng, setLng] = useState(2.346402507560419);
   const [lat, setLat] = useState(48.85486527430587);
-  const [zoom, setZoom] = useState(11);
+  const [zoomMap, setZoomMap] = useState(11);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -17,8 +17,7 @@ function MyMap() {
       container: mapContainer.current,
       style: "mapbox://styles/thomaslonjon/clgi63o6g005h01o1g8qm7h8t",
       center: [lng, lat],
-      zoom: zoom,
-      antialias: true,
+      zoom: zoomMap,
     });
   });
 
@@ -27,7 +26,7 @@ function MyMap() {
     map.current.on("move", () => {
       setLng(map.current.getCenter().lng.toFixed(4));
       setLat(map.current.getCenter().lat.toFixed(4));
-      setZoom(map.current.getZoom().toFixed(2));
+      setZoomMap(map.current.getZoom().toFixed(2));
     });
   });
 
