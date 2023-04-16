@@ -1,6 +1,7 @@
 import Slider from "../components/Slider";
 import ButtonGithub from "../components/ButtonGithub";
 import Button from "@components/Button";
+import Avatar from "@components/Avatar"
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
 
       <Button buttonType= "small" text="Sign in!"/>
       <Button buttonType= "big" text="Number of questions"/>
-
+      <Avatar AvatarType="small"/>
       <Slider maxRange={30} defaultRange={8} unit="s" />
     </header>
   );

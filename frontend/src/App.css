@@ -150,7 +150,7 @@ a {
   font-size: 20px;
   padding-bottom: 1%;
 }
-
+/* ----------------------------------------------Buttons-------------------------------------------------- */
 .petitB{
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
@@ -179,4 +179,15 @@ a {
   border-radius: 20px;
   width: 335px;
   height: 50px;
+}
+/* ----------------------------------------------Avatars-------------------------------------------------- */
+
+.petitAvatar{
+  height:125px;
+  width:125px;
+}
+
+.grandAvatar{
+  height: 450px;
+  width: 450px;
 }
