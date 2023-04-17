@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect } from "react";
-import mapboxgl from "mapbox-gl";
+import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 
 mapboxgl.accessToken =
-  "pk.eyJ1IjoidGhvbWFzbG9uam9uIiwiYSI6ImNsZndqYzN6dDA3NmkzbnRhZTBtMDN4Y2QifQ.Jv1RaxmPtEmRY9sLVwlC4g";
+  "pk.eyJ1IjoidGhvbWFzbG9uam9uIiwiYSI6ImNsZ2pmNHpqZjE0dGszcG15eGY1ZTlmajYifQ.D7NRzDUKM4NOLR3Gnc2PVA";
 
 function MyMap() {
   const mapContainer = useRef(null);
@@ -15,11 +15,12 @@ function MyMap() {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/thomaslonjon/clgi63o6g005h01o1g8qm7h8t",
+      style: "mapbox://styles/thomaslonjon/clgi954hh005d01qqabchcqkk",
       center: [lng, lat],
       zoom: zoomMap,
+      antialias: true,
     });
-  });
+  }, []);
 
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
@@ -28,7 +29,7 @@ function MyMap() {
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoomMap(map.current.getZoom().toFixed(2));
     });
-  });
+  }, []);
 
   useEffect(() => {
     map.current.on("load", () => {
@@ -47,10 +48,29 @@ function MyMap() {
         "land-structure-polygon"
       );
     });
-  });
+  }, []);
+  // Ajout du périmètre des villes
+  // Définir les paramètres de la ville et du pays
+  const ville = "Paris";
+  const pays = "France";
+
+  // Construire la chaîne de requête Overpass API
+  const overpassQuery = `[out:json];area[name="${pays}"][admin_level=2]->.a;relation[name="${ville}"][admin_level=8](area.a);out body;`;
+
+  // Appeler Overpass API à partir de votre code JavaScript
+  fetch(
+    `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(
+      overpassQuery
+    )}`
+  );
+
   return (
-    <div>
-      <div ref={mapContainer} className="map-container" />
+    <div className="map-container">
+      <div className="map-container-wrapper">
+        <div className="map-container-overlay">
+          <div ref={mapContainer} className="map" />
+        </div>
+      </div>
     </div>
   );
 }

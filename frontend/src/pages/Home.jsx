@@ -1,6 +1,7 @@
 import Slider from "../components/Slider";
 import ButtonGithub from "../components/ButtonGithub";
 import Logo from "../components/Logo";
+import MyMap from "../components/MyMap";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       />
 
       <Slider maxRange={30} defaultRange={8} unit="s" />
+      <MyMap />
     </header>
   );
 }

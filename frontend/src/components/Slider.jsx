@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Slider({ maxRange, defaultRange, unit }) {
   const [rangeValue, setRangeValue] = useState(defaultRange);
   return (
-    <>
+    <div className="sliderBox">
       <p className="textSlider">
         {rangeValue} {unit}
       </p>
@@ -16,7 +16,7 @@ function Slider({ maxRange, defaultRange, unit }) {
         defaultValue={rangeValue}
         onChange={(e) => setRangeValue(e.target.value)}
       />
-    </>
+    </div>
   );
 }
 
