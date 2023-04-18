@@ -3,7 +3,7 @@ import NavButton from "../components/NavButton";
 
 export default function CreateAccount() {
   return (
-    <div>
+    <div className="pageStyle">
       <div>CreateAccount</div>
       <NavButton pageName="/Hey" />
     </div>

@@ -1,5 +1,11 @@
 import React from "react";
+import NavButton from "../components/NavButton";
 
 export default function ChooseRules() {
-  return <div>ChooseRules</div>;
+  return (
+    <div className="pageStyle">
+      <div>ChooseRules</div>
+      <NavButton pageName="/ChooseThemes" />
+    </div>
+  );
 }

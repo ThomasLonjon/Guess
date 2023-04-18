@@ -6,7 +6,7 @@ import NavButton from "../components/NavButton";
 
 export default function Home() {
   return (
-    <header className="App-header">
+    <div className="pageStyle">
       <Logo />
       <ButtonGithub devName="Adèle" devLink="" />
       <ButtonGithub
@@ -21,6 +21,6 @@ export default function Home() {
       <Slider maxRange={30} defaultRange={8} unit="s" />
       <MyMap />
       <NavButton />
-    </header>
+    </div>
   );
 }

@@ -3,7 +3,7 @@ import NavButton from "../components/NavButton";
 
 export default function Home() {
   return (
-    <header className="App-header">
+    <header className="pageStyle">
       <Logo />
       <NavButton pageName="/CreateAccount" />
     </header>
