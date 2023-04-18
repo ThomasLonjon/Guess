@@ -1,4 +1,7 @@
+
+
 body {
+  
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -14,6 +17,7 @@ code {
 
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -54,3 +58,31 @@ code {
 button {
   font-size: calc(10px + 2vmin);
 }
+
+.App{
+  background-color: #46178F;
+  color: #FFFFFF;
+  
+}
+
+h2{
+  font-family: "Racing Sans One";
+  font-size: x-large;
+  color: #FFFFFF;
+}
+
+h1{
+  font-family: "Faster One";
+  font-size:xx-large;
+  color: #FFFFFF;
+}
+
+
+h3{
+  font-family:  "Racing Sans One";
+}
+
+div.student{
+  font-family:  "Racing Sans One";
+}
+
