@@ -1,10 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function Text2(props) {
+function Text(props) {
   const { content } = props;
   return <div>{content}</div>;
 }
-Text2.propTypes = {
+
+Text.propTypes = {
   content: PropTypes.string.isRequired,
 };
+
+export default Text2;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 body {
@@ -9,11 +10,81 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color:#46178F ;
+=======
+/* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
+
+/* body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  pointer-events: none;
+  background-repeat: repeat;
+  animation-name: noise;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(3);
+>>>>>>> 351a812301341bcc1a42dc1a4018191d2ca656ba
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+@keyframes noise {
+  from {
+    background-image: url("../src/assets/img/Noise1.jpg");
+  }
+  33% {
+    background-image: url("../src/assets/img/Noise2.jpg");
+  }
+  66% {
+    background-image: url("../src/assets/img/Noise3.jpg");
+  }
+  to {
+    background-image: url("../src/assets/img/Noise1.jpg");
+  }
+} */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------------------------------------------------variables-------------------------------------------------- */
+
+/* importation fonts */
+
+@font-face {
+  font-family: "Faster One";
+  src: url("../src/assets/fonts/FasterOne-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "RacingS Sans One";
+  src: url("../src/assets/fonts/RacingSansOne-Regular.ttf") format("truetype");
+}
+
+/* definitions variables d'ensemble */
+
+:root {
+  --colorBackGround: #46178f;
+  --colorButtons: #7841b5;
+  --colorButtonsDark: #2c0a72;
+  --colorText: #ffffff;
+  --fontTitle: "Faster One";
+  --fontSubtitle: "Racing Sans One";
+  --shadow: 0px 4px 4px #000000;
+}
+
+/* ---------------------------------------------------Original code-------------------------------------------------- */
+
+body {
+  margin: 0;
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .App {
@@ -21,43 +92,132 @@ code {
   
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.pageStyle {
+  background-color: var(--colorBackGround);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* ----------------------------------------------Logo-------------------------------------------------- */
+
+.logo {
+  width: 100%;
+}
+.logoBackground {
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  box-shadow: var(--shadow);
+}
+/* ----------------------------------------------GitHub Button-------------------------------------------------- */
+
+.buttonGithub {
+  height: 15%;
+  width: 28%;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr;
+
+  background-color: var(--colorButtons);
+  border-radius: 35px;
+  font-size: 100%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  box-shadow: var(--shadow);
+  margin-bottom: 3%;
+  color: var(--colorText);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pictoGithub {
+  width: 100%;
+  grid-area: 1 / 1 / 2 / 2;
+  margin-left: 15%;
 }
 
-button {
-  font-size: calc(10px + 2vmin);
+.devName {
+  grid-area: 1 / 2 / 2 / 3;
+  padding-right: 10%;
+}
+
+a {
+  width: 5vw;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+/* ----------------------------------------------Slider-------------------------------------------------- */
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+  background: #ffffff;
+  outline: none;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--colorButtons);
+  cursor: pointer;
+}
+
+.textSlider {
+  color: var(--colorText);
+  font-size: 20px;
+  padding-bottom: 1%;
+}
+
+.sliderBox {
+  width: 28%;
+  padding-bottom: 20px;
+}
+
+/* ----------------------------------------------Map-------------------------------------------------- */
+
+.map-container-overlay {
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.map-container {
+  position: relative;
+  width: 50%;
+  height: 200px;
+}
+
+div.map.mapboxgl-map {
+  height: 300px;
+}
+
+/* ----------------------------------------------NavButton-------------------------------------------------- */
+
+.navButton {
+  height: 15%;
+  width: 28%;
+  align-items: center;
+  background-color: var(--colorButtons);
+  border-radius: 35px;
+  font-size: 100%;
+  margin-top: 10%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  box-shadow: var(--shadow);
+  margin-bottom: 3%;
+  color: var(--colorText);
 }
 
 .App{
