@@ -225,5 +225,10 @@ div.map.mapboxgl-map {
   font-family:"Racing Sans One" ;
 }
 
+.subtitle{
+  border-top: solid;
+  border-bottom: solid;
+}
+
 
 

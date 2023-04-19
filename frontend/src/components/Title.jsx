@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 function Title(props) {
   const { content } = props;
 
-  return <div>{content}</div>;
+  return <div className="title1">{content}</div>;
 }
 
-Title.PropTypes = {
+Title.propTypes = {
   content: PropTypes.string.isRequired,
 };
 
