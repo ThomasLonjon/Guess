@@ -10,4 +10,4 @@ Text.propTypes = {
   content: PropTypes.string.isRequired,
 };
 
-export default Text2;
+export default Text;
