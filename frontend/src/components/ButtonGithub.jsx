@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import pictoGitHub from "../assets/img/Picto_Github.png";
+import pictoGitHub from "../../public/assets/img/Picto_Github.png";
 
 function ButtonGithub({ devName, devLink }) {
   return (

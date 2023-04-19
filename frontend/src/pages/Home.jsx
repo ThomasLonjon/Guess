@@ -1,7 +1,7 @@
 import Slider from "../components/Slider";
 import ButtonGithub from "../components/ButtonGithub";
-import Button from "@components/Button";
-import Avatar from "@components/Avatar"
+import Button from "../components/Button";
+import Avatar from "../components/Avatar";
 
 export default function Home() {
   return (
@@ -17,9 +17,9 @@ export default function Home() {
         devLink="https://github.com/ThomasLonjon"
       />
 
-      <Button buttonType= "small" text="Sign in!"/>
-      <Button buttonType= "big" text="Number of questions"/>
-      <Avatar AvatarType="small"/>
+      <Button buttonType="small" text="Sign in!" />
+      <Button buttonType="big" text="Number of questions" />
+      <Avatar avatarType="small" />
       <Slider maxRange={30} defaultRange={8} unit="s" />
     </header>
   );
