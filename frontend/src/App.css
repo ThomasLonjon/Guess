@@ -8,6 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:#46178F ;
 }
 
 code {
@@ -65,24 +66,18 @@ button {
   
 }
 
-h2{
-  font-family: "Racing Sans One";
-  font-size: x-large;
-  color: #FFFFFF;
-}
 
-h1{
+.title1{
+  color: #FFFFFF ;
   font-family: "Faster One";
-  font-size:xx-large;
-  color: #FFFFFF;
+  font-size: xx-large;
+
+  
+}
+
+.App{
+  font-family:"Racing Sans One" ;
 }
 
 
-h3{
-  font-family:  "Racing Sans One";
-}
-
-div.student{
-  font-family:  "Racing Sans One";
-}
 

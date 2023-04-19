@@ -1,28 +1,34 @@
-
-import { useState } from 'react';
-import Timer from "./components/Timer";
-import Text from "./components/Text";
-import './App.css';
+import Text2 from "./components/Text2";
+import "./App.css";
+import Title from "./components/Title";
 
 function App() {
-  
   return (
+    <>
+      <div className="title1">
+        <Title content="GUESSWHAT?" />
+        <Title content="CREATE ACCOUNT" />
+        <Title content="HEY!" />
+        <Title content="CHOOSE YOUR RULES!" />
+        <Title content="CHOOSE YOUR THEME!" />
+        <Title content="QUESTION" />
+        <Title content="RESULTS" />
+        <Title content="ABOUT US" />
+      </div>
 
-    <div className="App">
-      {/* <Timer time={30}/> */}
       <br />
-      <Text student="We are group of students from the Wild Code School" guess="GUESS WHAT?" quizz="THE GREAT QUIZZ" account="CREATE ACCOUNT"  username ="Enter Pseudo: " 
-       avatar="choose avatar"  rules="CHOOSE YOUR RULES!" questions="Number of questions" time="Time per question" theme="CHOOSE YOUR THEME!"  />
-      <br />
 
-
-      
-    </div>
-     )
-
-     
-    
-    }
-
-
+      <div className="App">
+        <Text2 content="The Great Quizz"> </Text2>
+        <Text2 content="Enter Pseudo"> </Text2>
+        <Text2 content="Choose Avatar" />
+        <Text2 content="Welcome PrincessAmidala" />
+        <Text2 content="Number of questions" />
+        <Text2 content="Time per question" />
+        <Text2 content="You Rule" />
+        <Text2 content="We are group of student fron the Wild Code School" />
+      </div>
+    </>
+  );
+}
 export default App;
