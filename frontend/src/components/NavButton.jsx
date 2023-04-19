@@ -11,8 +11,9 @@ function NavButton({ pageName }) {
     </div>
   );
 }
-export default NavButton;
 
 NavButton.propTypes = {
   pageName: PropTypes.string.isRequired,
 };
+
+export default NavButton;

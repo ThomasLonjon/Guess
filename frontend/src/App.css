@@ -75,6 +75,7 @@ body {
 
 .App {
   text-align: center;
+  
 }
 
 .pageStyle {
@@ -204,3 +205,25 @@ div.map.mapboxgl-map {
   margin-bottom: 3%;
   color: var(--colorText);
 }
+
+.App{
+  background-color: #46178F;
+  color: #FFFFFF;
+  
+}
+
+
+.title1{
+  color: #FFFFFF ;
+  font-family: "Faster One";
+  font-size: xx-large;
+
+  
+}
+
+.App{
+  font-family:"Racing Sans One" ;
+}
+
+
+
