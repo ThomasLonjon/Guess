@@ -2,6 +2,7 @@ import Slider from "../components/Slider";
 import ButtonGithub from "../components/ButtonGithub";
 import Button from "../components/Button";
 import Avatar from "../components/Avatar";
+import avatar1 from "../../public/assets/img/avatar/avatar1.png";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
 
       <Button buttonType="small" text="Sign in!" />
       <Button buttonType="big" text="Number of questions" />
-      <Avatar avatarType="small" />
+      <Avatar avatarType="small" imageSrc={avatar1} />
       <Slider maxRange={30} defaultRange={8} unit="s" />
     </header>
   );
