@@ -1,11 +1,10 @@
-
 import { useEffect, useState } from "react";
 
-
 function Timer(props) {
-  console.log(">",props)
-    const [counter, setCounter] = useState(props.time);
-    console.log(props.time)
+  const { time } = props;
+  console.warn(">", props);
+  const [counter, setCounter] = useState(time);
+  console.warn(time);
 
   useEffect(() => {
     const timer =
@@ -21,4 +20,3 @@ function Timer(props) {
 }
 
 export default Timer;
-
