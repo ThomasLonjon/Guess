@@ -3,7 +3,7 @@ import NavButton from "../components/NavButton";
 import citiesPopulation100k from "../assets/data/citiesPopulation100k.json";
 import MyMap from "../components/MyMap";
 
-export default function ChooseRules() {
+function ChooseRules() {
   const [cityOnMap, setCityOnMap] = useState(false);
 
   useEffect(() => {
@@ -30,3 +30,5 @@ export default function ChooseRules() {
     </div>
   );
 }
+
+export default ChooseRules;
