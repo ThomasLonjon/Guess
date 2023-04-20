@@ -1,13 +1,14 @@
+import PropTypes from "prop-types";
 import { useRef, useState, useEffect } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-function MyMap() {
+function MyMap({ longitude, latitude }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(2.346402507560419);
-  const [lat, setLat] = useState(48.85486527430587);
+  const [lng, setLng] = useState(longitude);
+  const [lat, setLat] = useState(latitude);
   const [zoomMap, setZoomMap] = useState(11);
 
   useEffect(() => {
@@ -42,3 +43,8 @@ function MyMap() {
 }
 
 export default MyMap;
+
+MyMap.propTypes = {
+  longitude: PropTypes.string.isRequired,
+  latitude: PropTypes.string.isRequired,
+};
