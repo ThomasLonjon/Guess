@@ -1,28 +1,45 @@
 import React, { useEffect, useState } from "react";
 import NavButton from "../components/NavButton";
-import citiesPopulation100k from "../assets/data/citiesPopulation100k.json";
 import MyMap from "../components/MyMap";
 
 function ChooseRules() {
-  const [cityOnMap, setCityOnMap] = useState(false);
+  const [randomCountry, setRandomCountry] = useState(false);
+
+  //  ---------------------------------- QUESTION CAPITALS ----------------------------------
 
   useEffect(() => {
-    const cities = Object.values(citiesPopulation100k);
-    const frenchCities = cities.filter((city) => city.label_en === "France");
-    const randomIndex = Math.floor(Math.random() * frenchCities.length);
-    const randomCity = frenchCities[randomIndex];
-    console.info(randomCity);
-    setCityOnMap(randomCity);
+    fetch("https://restcountries.com/v3.1/all")
+      .then((res) => res.json())
+      .then((data) => {
+        const randomFilteredCountry = data.filter(
+          (country) =>
+            country.population > 400000 && country.capitalInfo !== null
+        );
+        const randomIndex = Math.floor(Math.random() * data.length);
+        setRandomCountry(randomFilteredCountry[randomIndex]);
+      })
+      .catch((err) => console.error("err -->", err));
   }, []);
 
+  //  ---------------------------------- QUESTION CITIES ----------------------------------
+  if (randomCountry.capital) {
+    console.info(
+      randomCountry.capital,
+      randomCountry.name.common,
+      randomCountry.population
+    );
+  }
+
+  //  ---------------------------------- RETURN ----------------------------------
   return (
     <div className="pageStyle">
       <div>ChooseRules</div>
       <NavButton pageName="/ChooseThemes" />
-      {cityOnMap ? (
+      {randomCountry ? (
         <MyMap
-          longitude={cityOnMap.coordinates.lon}
-          latitude={cityOnMap.coordinates.lat}
+          longitude={randomCountry?.capitalInfo.latlng[1]}
+          latitude={randomCountry?.capitalInfo.latlng[0]}
+          countryCode={randomCountry?.cca3}
         />
       ) : (
         ""
