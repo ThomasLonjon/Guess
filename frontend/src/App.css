@@ -75,7 +75,6 @@ body {
 
 .App {
   text-align: center;
-  
 }
 
 .pageStyle {
@@ -177,6 +176,7 @@ a {
   border-radius: 30px;
   overflow: hidden;
   box-shadow: var(--shadow);
+  margin-bottom: 10%;
 }
 
 .map-container {
@@ -206,24 +206,17 @@ div.map.mapboxgl-map {
   color: var(--colorText);
 }
 
-.App{
-  background-color: #46178F;
-  color: #FFFFFF;
-  
+.App {
+  background-color: #46178f;
+  color: #ffffff;
 }
 
-
-.title1{
-  color: #FFFFFF ;
+.title1 {
+  color: #ffffff;
   font-family: "Faster One";
   font-size: xx-large;
-
-  
 }
 
-.App{
-  font-family:"Racing Sans One" ;
+.App {
+  font-family: "Racing Sans One";
 }
-
-
-

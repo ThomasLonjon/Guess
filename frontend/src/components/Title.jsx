@@ -7,7 +7,7 @@ function Title(props) {
   return <div>{content}</div>;
 }
 
-Title.PropTypes = {
+Title.propTypes = {
   content: PropTypes.string.isRequired,
 };
 
