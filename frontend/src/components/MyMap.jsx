@@ -68,17 +68,6 @@ function MyMap({ longitude, latitude, countryCode }) {
         essential: true, // This animation is considered essential with respect to prefers-reduced-motion
       });
     }, 3000);
-
-    // setTimeout(() => {
-    //   map.current.flyTo({
-    //     ...target, // Fly to the selected target
-    //     duration: 30000, // Animate over 30 seconds
-    //     essential: true, // This animation is considered essential with respect to prefers-reduced-motion
-    //     easing: (t) => {
-    //       return t * 2;
-    //     },
-    //   });
-    // }, 3000);
   }, []);
 
   return (
