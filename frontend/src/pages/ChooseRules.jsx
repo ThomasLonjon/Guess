@@ -21,15 +21,6 @@ function ChooseRules() {
       .catch((err) => console.error("err -->", err));
   }, []);
 
-  //  ---------------------------------- QUESTION CITIES ----------------------------------
-  if (randomCountry.capital) {
-    console.info(
-      randomCountry.capital,
-      randomCountry.name.common,
-      randomCountry.population
-    );
-  }
-
   //  ---------------------------------- RETURN ----------------------------------
   return (
     <div className="pageStyle">
