@@ -67,7 +67,7 @@ function MyMap({ longitude, latitude, countryCode }) {
         duration: 30000, // Animate over 30 seconds
         essential: true, // This animation is considered essential with respect to prefers-reduced-motion
       });
-    }, 3000);
+    }, 6000);
   }, []);
 
   return (

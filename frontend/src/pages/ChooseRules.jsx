@@ -15,7 +15,9 @@ function ChooseRules() {
           (country) =>
             country.population > 400000 && country.capitalInfo !== null
         );
-        const randomIndex = Math.floor(Math.random() * data.length);
+        const randomIndex = Math.floor(
+          Math.random() * randomFilteredCountry.length
+        );
         setRandomCountry(randomFilteredCountry[randomIndex]);
       })
       .catch((err) => console.error("err -->", err));
