@@ -229,3 +229,22 @@ div.map.mapboxgl-map {
 .App {
   font-family: "Racing Sans One";
 }
+
+/* ----------------------------------------------Questions-------------------------------------------------- */
+.rightButton {
+  all: unset;
+  background-color: green;
+  margin-bottom: 1%;
+}
+
+.wrongButton {
+  all: unset;
+  background-color: var(--colorButtonsDark);
+  margin-bottom: 1%;
+}
+
+.normalButton {
+  all: unset;
+  background-color: var(--colorButtons);
+  margin-bottom: 1%;
+}
