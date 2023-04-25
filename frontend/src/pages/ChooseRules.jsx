@@ -19,7 +19,7 @@ function ChooseRules() {
             country.capitalInfo !== null &&
             country.capital !== null
         );
-        console.info("filteredCountry ->", FilteredCountry);
+
         // generate an array of random country out of FilteredCountry
         const randomCountryIndex = () =>
           Math.floor(Math.random() * FilteredCountry.length);
@@ -29,7 +29,6 @@ function ChooseRules() {
           countrySet.add(FilteredCountry[randomCountryIndex()]);
         }
         const countryArray = Array.from(countrySet);
-        console.info("countryArray ->", countryArray);
         setRandomCountries(countryArray);
 
         // generate a random index to determinate right and wrong answers
@@ -39,11 +38,6 @@ function ChooseRules() {
 
       .catch((err) => console.error("err -->", err));
   }, []);
-
-  if (randomCountries) {
-    console.info("randomCountries2 ->", randomCountries);
-    console.info("randomAnswerIndex2 ->", randomAnswerIndex);
-  }
 
   //  ---------------------------------- RETURN ----------------------------------
   return (
