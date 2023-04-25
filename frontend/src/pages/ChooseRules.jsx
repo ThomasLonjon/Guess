@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import NavButton from "../components/NavButton";
 import MyMap from "../components/MyMap";
+import ButtonQuestion from "../components/ButtonQuestion";
 
 function ChooseRules() {
-  const [randomCountry, setRandomCountry] = useState(false);
+  const [randomCountries, setRandomCountries] = useState(null);
+  const [randomAnswerIndex, SetRandomAnswerIndex] = useState(null);
 
   //  ---------------------------------- QUESTION CAPITALS ----------------------------------
 
@@ -11,13 +13,29 @@ function ChooseRules() {
     fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
       .then((data) => {
-        const randomFilteredCountry = data.filter(
+        const FilteredCountry = data.filter(
           (country) =>
-            country.population > 400000 && country.capitalInfo !== null
+            country.population > 400000 &&
+            country.capitalInfo !== null &&
+            country.capital !== null
         );
-        const randomIndex = Math.floor(Math.random() * data.length);
-        setRandomCountry(randomFilteredCountry[randomIndex]);
+
+        // generate an array of random country out of FilteredCountry
+        const randomCountryIndex = () =>
+          Math.floor(Math.random() * FilteredCountry.length);
+
+        const countrySet = new Set();
+        while (countrySet.size < 4) {
+          countrySet.add(FilteredCountry[randomCountryIndex()]);
+        }
+        const countryArray = Array.from(countrySet);
+        setRandomCountries(countryArray);
+
+        // generate a random index to determinate right and wrong answers
+        const randomIndex = Math.floor(Math.random() * 3);
+        SetRandomAnswerIndex(randomIndex);
       })
+
       .catch((err) => console.error("err -->", err));
   }, []);
 
@@ -26,12 +44,22 @@ function ChooseRules() {
     <div className="pageStyle">
       <div>ChooseRules</div>
       <NavButton pageName="/ChooseThemes" />
-      {randomCountry ? (
-        <MyMap
-          longitude={randomCountry?.capitalInfo.latlng[1]}
-          latitude={randomCountry?.capitalInfo.latlng[0]}
-          countryCode={randomCountry?.cca3}
-        />
+      {randomCountries ? (
+        <>
+          <ButtonQuestion cityName={randomCountries[0]?.capital[0]} />
+          <ButtonQuestion cityName={randomCountries[1]?.capital[0]} />
+          <ButtonQuestion cityName={randomCountries[2]?.capital[0]} />
+          <ButtonQuestion cityName={randomCountries[3]?.capital[0]} />
+          <MyMap
+            longitude={
+              randomCountries[randomAnswerIndex]?.capitalInfo?.latlng[1]
+            }
+            latitude={
+              randomCountries[randomAnswerIndex]?.capitalInfo?.latlng[0]
+            }
+            countryCode={randomCountries[randomAnswerIndex]?.cca3}
+          />
+        </>
       ) : (
         ""
       )}
