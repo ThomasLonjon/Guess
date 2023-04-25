@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import NavButton from "../components/NavButton";
 import MyMap from "../components/MyMap";
+import ButtonQuestion from "../components/ButtonQuestion";
 
 function ChooseRules() {
   const [randomCountries, setRandomCountries] = useState(null);
-  const [rightAnswer, setRightAnswer] = useState(null);
-  const [wrongAnswers, setWrongAnswers] = useState(null);
+  const [randomAnswerIndex, SetRandomAnswerIndex] = useState(null);
 
   //  ---------------------------------- QUESTION CAPITALS ----------------------------------
 
@@ -15,9 +15,11 @@ function ChooseRules() {
       .then((data) => {
         const FilteredCountry = data.filter(
           (country) =>
-            country.population > 400000 && country.capitalInfo !== null
+            country.population > 400000 &&
+            country.capitalInfo !== null &&
+            country.capital !== null
         );
-
+        console.info("filteredCountry ->", FilteredCountry);
         // generate an array of random country out of FilteredCountry
         const randomCountryIndex = () =>
           Math.floor(Math.random() * FilteredCountry.length);
@@ -27,24 +29,20 @@ function ChooseRules() {
           countrySet.add(FilteredCountry[randomCountryIndex()]);
         }
         const countryArray = Array.from(countrySet);
+        console.info("countryArray ->", countryArray);
         setRandomCountries(countryArray);
 
         // generate a random index to determinate right and wrong answers
-        const randomAnswerIndex = () => Math.floor(Math.random() * 4) - 1;
-        const rightAnswerArray = [countryArray.splice(randomAnswerIndex, 1)];
-        const wrongAnswersArray = [...countryArray];
-        setRightAnswer(rightAnswerArray[0]);
-        setWrongAnswers(wrongAnswersArray);
+        const randomIndex = Math.floor(Math.random() * 3);
+        SetRandomAnswerIndex(randomIndex);
       })
 
       .catch((err) => console.error("err -->", err));
   }, []);
 
   if (randomCountries) {
-    console.info(rightAnswer[0].capital);
-    console.info(wrongAnswers[0].capital);
-    console.info(wrongAnswers[1].capital);
-    console.info(wrongAnswers[2].capital);
+    console.info("randomCountries2 ->", randomCountries);
+    console.info("randomAnswerIndex2 ->", randomAnswerIndex);
   }
 
   //  ---------------------------------- RETURN ----------------------------------
@@ -53,11 +51,21 @@ function ChooseRules() {
       <div>ChooseRules</div>
       <NavButton pageName="/ChooseThemes" />
       {randomCountries ? (
-        <MyMap
-          longitude={rightAnswer[0]?.capitalInfo.latlng[1]}
-          latitude={rightAnswer[0]?.capitalInfo.latlng[0]}
-          countryCode={rightAnswer[0]?.cca3}
-        />
+        <>
+          <ButtonQuestion cityName={randomCountries[0]?.capital[0]} />
+          <ButtonQuestion cityName={randomCountries[1]?.capital[0]} />
+          <ButtonQuestion cityName={randomCountries[2]?.capital[0]} />
+          <ButtonQuestion cityName={randomCountries[3]?.capital[0]} />
+          <MyMap
+            longitude={
+              randomCountries[randomAnswerIndex]?.capitalInfo?.latlng[1]
+            }
+            latitude={
+              randomCountries[randomAnswerIndex]?.capitalInfo?.latlng[0]
+            }
+            countryCode={randomCountries[randomAnswerIndex]?.cca3}
+          />
+        </>
       ) : (
         ""
       )}
