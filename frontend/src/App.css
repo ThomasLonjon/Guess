@@ -165,7 +165,7 @@ a {
   padding-bottom: 1%;
 }
 
-.petitB{
+.petitB {
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -173,14 +173,14 @@ a {
   font-size: 30px;
   line-height: 38px;
   text-align: center;
-  color:white;
+  color: white;
   box-shadow: 0px 4px 4px #000000;
   border-radius: 20px;
   width: 200px;
   height: 50px;
 }
 
-.grandB{
+.grandB {
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -188,7 +188,7 @@ a {
   font-size: 30px;
   line-height: 38px;
   text-align: center;
-  color:white;
+  color: white;
   box-shadow: 0px 4px 4px #000000;
   border-radius: 20px;
   width: 335px;
@@ -196,12 +196,12 @@ a {
 }
 /* ----------------------------------------------Avatars-------------------------------------------------- */
 
-.petitAvatar{
-  height:125px;
-  width:125px;
+.petitAvatar {
+  height: 125px;
+  width: 125px;
 }
 
-.grandAvatar{
+.grandAvatar {
   height: 450px;
   width: 450px;
 }
@@ -244,4 +244,11 @@ div.map.mapboxgl-map {
   box-shadow: var(--shadow);
   margin-bottom: 3%;
   color: var(--colorText);
+}
+
+.gameName {
+  font-size: 50px;
+  color: white;
+  font-weight: bold;
+  margin: 20px;
 }
