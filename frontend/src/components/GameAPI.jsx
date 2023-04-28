@@ -16,12 +16,23 @@ function GameAPI() {
         while (gameTitles.length < 4) {
           const randomIndex = Math.floor(Math.random() * games.length);
           const randomTitle = games[randomIndex].name;
-          if (gameTitles.indexOf(randomTitle) === -1) {
+          // if (gameTitles.indexOf(randomTitle) === -1) {
+          //   gameTitles.push(randomTitle);
+          // }
+          const isDuplicate = gameTitles.some(
+            (element) => element === randomTitle
+          );
+
+          if (!isDuplicate) {
             gameTitles.push(randomTitle);
           }
         }
+        // const randomIndexTitle = Math.floor(Math.random() * gameTitles.length);
         setImage(randomGame.background_image);
         setTitles(gameTitles);
+        gameTitles.sort(() => Math.random() - 0.5);
+        const rightIndex = gameTitles.indexOf(randomGame.name);
+        console.info("rightIndex", rightIndex);
       })
       .catch((error) => {
         console.warn(error);

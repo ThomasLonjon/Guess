@@ -15,6 +15,7 @@ function Avatar(props) {
     </div>
   );
 }
+
 Avatar.propTypes = {
   avatarType: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
