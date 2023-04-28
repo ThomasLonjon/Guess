@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import Drinks from "@components/Drinks";
 import Home from "./pages/Home";
 import CreateAccount from "./pages/CreateAccount";
 import Hey from "./pages/Hey";
@@ -19,10 +20,12 @@ function App() {
         <Route path="/ChooseRules" element={<ChooseRules />} />
         <Route path="/ChooseThemes" element={<ChooseThemes />} />
         <Route path="/Question" element={<Question />} />
+        <Route path="/Drinks" element={<Drinks />} />
         <Route path="/Results" element={<Results />} />
         <Route path="/AboutUs" element={<AboutUs />} />
       </Routes>
     </div>
   );
 }
+
 export default App;
