@@ -34,6 +34,7 @@ function MyMap({ longitude, latitude, countryCode }) {
       });
 
       // Adding boundary layer
+
       map.current.addLayer({
         id: "boundaries",
         type: "line",
@@ -42,7 +43,7 @@ function MyMap({ longitude, latitude, countryCode }) {
         layout: {},
         paint: {
           "line-color": "#ff0000",
-          "line-width": 2,
+          "line-width": 1.8,
           "line-opacity": 0.5,
         },
         maxzoom: 7,
@@ -54,6 +55,32 @@ function MyMap({ longitude, latitude, countryCode }) {
         "iso_3166_1_alpha_3",
         countryCode,
       ]);
+
+      // Adding a marker on the map
+      map.current.addSource("marker", {
+        type: "geojson",
+        data: {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [longitude, latitude],
+          },
+        },
+      });
+
+      map.current.addLayer({
+        id: "marker",
+        type: "circle",
+        source: "marker",
+        layout: {},
+        paint: {
+          "circle-radius": 4,
+          "circle-color": "#B42222",
+          "circle-stroke-color": "white",
+          "circle-stroke-width": 1,
+        },
+        maxzoom: 7,
+      });
     });
 
     // zoom out with delay

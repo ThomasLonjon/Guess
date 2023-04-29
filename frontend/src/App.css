@@ -172,6 +172,14 @@ a {
 
 /* ----------------------------------------------Map-------------------------------------------------- */
 
+.mapboxgl-ctrl-bottom-left {
+  display: none;
+}
+
+.mapboxgl-ctrl-bottom-right {
+  display: none;
+}
+
 .map-container-overlay {
   border-radius: 30px;
   overflow: hidden;
@@ -187,15 +195,6 @@ a {
 
 div.map.mapboxgl-map {
   height: 300px;
-}
-
-.marker {
-  background-image: url("mapbox-icon.png");
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
 }
 
 /* ----------------------------------------------NavButton-------------------------------------------------- */
