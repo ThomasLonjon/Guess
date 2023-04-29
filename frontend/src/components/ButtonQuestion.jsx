@@ -4,7 +4,7 @@ function ButtonQuestion({
   buttonTitle,
   rightAnswer,
   setGuessed,
-  setRightGuess,
+  // setRightGuess,
   buttonState,
   setSelectedIndex,
   index,
@@ -15,7 +15,7 @@ function ButtonQuestion({
     setGuessed(true);
     setSelectedIndex(index);
     if (buttonTitle === rightAnswer) {
-      setRightGuess(true);
+      // setRightGuess(true);
     }
   };
 
@@ -31,7 +31,7 @@ ButtonQuestion.propTypes = {
   buttonTitle: PropTypes.string.isRequired,
   buttonState: PropTypes.string.isRequired,
   setGuessed: PropTypes.func.isRequired,
-  setRightGuess: PropTypes.func.isRequired,
+  // setRightGuess: PropTypes.func.isRequired,
   setSelectedIndex: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
   guessed: PropTypes.bool.isRequired,
