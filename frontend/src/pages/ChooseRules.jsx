@@ -57,6 +57,7 @@ function ChooseRules() {
   return (
     <div className="pageStyle">
       <div>ChooseRules</div>
+
       <NavButton pageName="/ChooseThemes" />
       {randomCountries ? (
         <>
