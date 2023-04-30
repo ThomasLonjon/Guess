@@ -4,6 +4,8 @@ import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loade
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
+// ---------------------------------------- FUNCTION----------------------------------------
+
 function MyMap({ longitude, latitude, countryCode }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -83,7 +85,8 @@ function MyMap({ longitude, latitude, countryCode }) {
       });
     });
 
-    // zoom out with delay
+    // ---------------------------------------- zoom out with delay----------------------------------------
+
     let isAtStart = true;
     const target = isAtStart ? end : start;
     isAtStart = !isAtStart;
@@ -91,11 +94,13 @@ function MyMap({ longitude, latitude, countryCode }) {
     setTimeout(() => {
       map.current.flyTo({
         ...target, // Fly to the selected target
-        duration: 30000, // Animate over 30 seconds
+        duration: 40000, // Animate over 40 seconds
         essential: true, // This animation is considered essential with respect to prefers-reduced-motion
       });
     }, 5000);
   }, []);
+
+  // ---------------------------------------- RETURN----------------------------------------
 
   return (
     <div className="map-container">

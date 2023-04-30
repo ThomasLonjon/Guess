@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Title(props) {
   const { content } = props;
 
-  return <div>{content}</div>;
+  return <div className="title">{content}</div>;
 }
 
 Title.propTypes = {

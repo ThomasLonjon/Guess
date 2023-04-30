@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 // import Timer from "../components/Timer";
 import QuestionCapital from "../components/QuestionCapital";
 import QuestList from "../questList";
+import Title from "../components/Title";
 
 function Question() {
   //  ---------------------------------- Generate a random set of countries  ----------------------------------
@@ -134,7 +135,7 @@ function Question() {
 
   return (
     <div className="pageStyle">
-      <div>Question</div>
+      <Title content="Question 2/10" />
       <div>
         {
           // eslint-disable-next-line array-callback-return, consistent-return
