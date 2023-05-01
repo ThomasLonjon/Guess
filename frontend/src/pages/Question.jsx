@@ -7,6 +7,36 @@ import QuestList from "../questList";
 function Question() {
   //  ---------------------------------- Generate a random set of countries  ----------------------------------
   const [questionList, setQuestionList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Système Pagination
+  const getCurrentQuestion = () => {
+    const questionsPerPage = 1;
+    const indexOfLastQuestion = currentPage * questionsPerPage;
+    const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
+    console.info("questionList dans getCurrentQuestion", questionList);
+    console.info(
+      "indexOfLastQuestion dans getCurrentQuestion",
+      indexOfLastQuestion
+    );
+    console.info(
+      "indexOfFirstQuestion dans getCurrentQuestion",
+      indexOfFirstQuestion
+    );
+    // return questionList.slice(indexOfFirstQuestion, indexOfLastQuestion);
+    return questionList.slice(indexOfFirstQuestion, indexOfLastQuestion);
+  };
+
+  const nextPage = () => {
+    console.info("currentPage", currentPage);
+    setCurrentPage(currentPage + 1);
+    // const nextIndex =
+    //   questionList.findIndex((q) => q.id === currentPage.id) + 1;
+    // if (nextIndex < questionList.length) {
+    //   setCurrentPage(questionList[nextIndex]);
+    // }
+  };
+
   const searchDataCapital = async (numberQuest) => {
     const tabDataCapital = [];
     await fetch(
@@ -137,14 +167,21 @@ function Question() {
       <div>Question</div>
       <div>
         {
-          // eslint-disable-next-line array-callback-return, consistent-return
-          questionList.map((question, index) => {
+          // eslint-disable-next-line array-callback-return, consistent-return, no-unused-vars
+          getCurrentQuestion().map((question, index) => {
+            console.info("question0", question);
             if (question.apiName === "capital") {
               // eslint-disable-next-line react/no-array-index-key
-              return <QuestionCapital key={index} question={question} />;
+              return <QuestionCapital question={question} />;
+              // return question.answers[0].cca3;
+              // return index;
             }
           })
         }
+        {console.info("getCurrentQuestion()", getCurrentQuestion())}
+        <button type="button" onClick={nextPage}>
+          Next Page
+        </button>
       </div>
     </div>
   );

@@ -12,6 +12,11 @@ function ChooseRules() {
 
   //  ---------------------------------- QUESTION CAPITALS ----------------------------------
 
+  const handleClick = () => {
+    console.info("test");
+    // navigate("test");
+  };
+
   useEffect(() => {
     setGuessed(false);
     fetch(
@@ -58,7 +63,7 @@ function ChooseRules() {
     <div className="pageStyle">
       <div>ChooseRules</div>
 
-      <NavButton pageName="/ChooseThemes" />
+      <NavButton pageName="/ChooseThemes" onClick={() => handleClick()} />
       {randomCountries ? (
         <>
           {randomCountries.map((country, index) => {

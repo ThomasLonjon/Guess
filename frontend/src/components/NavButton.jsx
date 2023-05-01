@@ -1,14 +1,13 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import React from "react";
 
 function NavButton({ pageName, onClick }) {
-  // console.warn("onclick", onClick());
   return (
     <div className="navButton">
       <Link to={pageName}>
         <button type="button" onClick={onClick}>
-          Navbutton{" "}
+          Navbutton
         </button>
         {/* <div>Navbutton </div> */}
       </Link>
