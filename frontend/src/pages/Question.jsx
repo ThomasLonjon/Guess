@@ -1,88 +1,57 @@
 import React, { useEffect, useState } from "react";
 // import NavButton from "../components/NavButton";
-// import Timer from "../components/Timer";
+import Timer from "../components/Timer";
 import QuestionCapital from "../components/QuestionCapital";
-import QuestList from "../questList";
 import Title from "../components/Title";
+import Text from "../components/Text";
+import ButtonQuestion from "../components/ButtonQuestion";
+import apiList from "../data/api";
 
 function Question() {
   //  ---------------------------------- Generate a random set of countries  ----------------------------------
   const [questionList, setQuestionList] = useState([]);
+  const [counter, setCounter] = useState(30);
   const [currentPage, setCurrentPage] = useState(1);
+  const [guessed, setGuessed] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(false);
 
-  // Système Pagination
+  // Système Pagination (Affichage de 1 question par 1)
   const getCurrentQuestion = () => {
     const questionsPerPage = 1;
     const indexOfLastQuestion = currentPage * questionsPerPage;
     const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage;
-    console.info("questionList dans getCurrentQuestion", questionList);
-    console.info(
-      "indexOfLastQuestion dans getCurrentQuestion",
-      indexOfLastQuestion
-    );
-    console.info(
-      "indexOfFirstQuestion dans getCurrentQuestion",
-      indexOfFirstQuestion
-    );
-    // return questionList.slice(indexOfFirstQuestion, indexOfLastQuestion);
     return questionList.slice(indexOfFirstQuestion, indexOfLastQuestion);
   };
 
-  const nextPage = () => {
-    console.info("currentPage", currentPage);
-    setCurrentPage(currentPage + 1);
-    // const nextIndex =
-    //   questionList.findIndex((q) => q.id === currentPage.id) + 1;
-    // if (nextIndex < questionList.length) {
-    //   setCurrentPage(questionList[nextIndex]);
-    // }
+  const colorBottom = (position) => {
+    if (guessed) return;
+    setGuessed(true);
+    setSelectedIndex(position);
   };
 
-  const searchDataCapital = async (numberQuest) => {
-    const tabDataCapital = [];
-    await fetch(
-      "https://restcountries.com/v3.1/all?fields=capital,population,cca3,capitalInfo"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        let i = 0;
-        while (i < numberQuest) {
-          const FilteredCountry = data.filter(
-            (country) =>
-              country.population > 400000 &&
-              country.capitalInfo !== null &&
-              country.capital !== null
-          );
-          const randomCountryIndex = () =>
-            Math.floor(Math.random() * FilteredCountry.length);
-          const countrySet = new Set();
-          while (countrySet.size < 4) {
-            countrySet.add(FilteredCountry[randomCountryIndex()]);
-          }
-          const countryArray = Array.from(countrySet);
-
-          const rightIndex = Math.floor(Math.random() * 3);
-
-          const duplicate = tabDataCapital.some(
-            (element) => element.cca3 === countryArray[rightIndex]?.cca3
-          );
-
-          if (!duplicate) {
-            tabDataCapital.push({
-              apiName: "capital",
-              quest: QuestList.capital,
-              answers: countryArray,
-              righAnswer: rightIndex,
-            });
-            i += 1;
-          }
-        }
-      })
-      .catch((err) => console.error("err -->", err));
-    console.warn("tabDataCapital", tabDataCapital);
-    console.warn("tabDataCapital.length", tabDataCapital.length);
-    return tabDataCapital;
+  const nextQuestion = () => {
+    setTimeout(() => {
+      setGuessed(false);
+      setCurrentPage(currentPage + 1);
+      setCounter(30);
+    }, "1000");
   };
+
+  const handleClickResponse = async (position) => {
+    await colorBottom(position);
+    await nextQuestion();
+  };
+
+  // Function mélange tableau
+  function shuffleArray(array) {
+    const shuffledArray = [];
+    while (array.length) {
+      const randomIndex = Math.floor(Math.random() * array.length);
+      shuffledArray.push(array.splice(randomIndex, 1)[0]);
+    }
+    return shuffledArray;
+  }
+
   useEffect(() => {
     const data = localStorage.getItem("questionList");
     console.warn("Local storage ------------>data", JSON.parse(data));
@@ -91,98 +60,93 @@ function Question() {
     // eslint-disable-next-line array-callback-return, consistent-return
     const questionArray = selectedThemes.map((element) => {
       if (element.apiName === "capital") {
-        return searchDataCapital(element.numberQuest);
+        return apiList.searchDataCapital(element.numberQuest);
       }
     });
 
     console.info("questionArray", questionArray);
 
     Promise.all(questionArray).then((dataListQuest) =>
-      setQuestionList(dataListQuest[0])
+      setQuestionList(shuffleArray(dataListQuest[0]))
     );
-    // const promiseData = JSON.stringify(Promise.all(questionArray).then());
-    // // console.warn("promiseData", promiseData);4
-    // console.log("questionArray", promiseData);
-
-    // const data = localStorage.getItem("questionList");
-    // const pouet = selectedThemes.map((element) => {
-    //   if (element.apiName === "capital") {
-    //     return searchDataCapital(element.name);
-    //   }
-    // });
-    // console.info(Promise.all(pouet).then(console.log));
   }, []);
 
-  // const pouet = selectedThemes.map((element) => {
-  //   if (element.apiName === "capital") {
-  //     return searchDataCapital(element.name);
-  //   }
-  // });
+  useEffect(() => {
+    console.info("Switch Page");
+  }, [currentPage]);
 
-  // console.info(Promise.all(pouet).then(console.log));
-  // const data = localStorage.getItem("questionList");
-  // if (data) {
-  //   const myData = JSON.parse(data);
-  //   console.warn("myData", myData);
-  // }
-
-  // useEffect(() => {
-  //   let statusData = false;
-  //   // console.log("data");
-  //   //   // console.log("toto");
-  //   const data = async () => {
-  //     const result = [];
-  //     result.push(localStorage.getItem("questionList"));
-
-  //     // if (result !== null) {
-  //     // console.log(result);
-  //     return result;
-  //   };
-  //   const i = 0;
-  //   while (i < 2) {
-  //     data().then((resultat) => {
-  //       console.log("result", result);
-  //       // ici, vous pouvez accéder au tableau
-  //       console.warn(resultat[0]); // affiche le premier élément du tableau
-  //     });
-  //     i++;
-  //   }
-  //   // console.warn(data());
-  //   // if (data) {
-  //   //   data.then((resultat) => {
-  //   //     // ici, vous pouvez accéder au tableau
-  //   //     console.warn(resultat[0]); // affiche le premier élément du tableau
-  //   //   });
-  //   // }
-  //   // console.log;
-  //   // if (data !== null) {
-  //   //   const myData = JSON.parse(data);
-  //   //   console.warn("myData", myData);
-  //   //   // statusData = false;
-  //   // }
-  //   // }
-  // }, []);
+  useEffect(() => {
+    if (counter === 0) {
+      handleClickResponse(selectedIndex);
+    }
+  }, [counter]);
 
   return (
     <div className="pageStyle">
-      <Title content="Question 2/10" />
+      <Title
+        content="Question"
+        questionCurent={currentPage}
+        questionMax={questionList.length}
+      />
+      <Text content={getCurrentQuestion()[0]?.quest} />
+      <Timer time={counter} setCounter={setCounter} />
       <div>
+        {console.info("Test Mélange questionList", questionList)}
         {
           // eslint-disable-next-line array-callback-return, consistent-return, no-unused-vars
           getCurrentQuestion().map((question, index) => {
-            console.info("question0", question);
+            const position = index;
             if (question.apiName === "capital") {
-              // eslint-disable-next-line react/no-array-index-key
-              return <QuestionCapital question={question} />;
-              // return question.answers[0].cca3;
-              // return index;
+              return (
+                <div>
+                  <QuestionCapital key={position} question={question} />
+                </div>
+              );
             }
           })
         }
-        {console.info("getCurrentQuestion()", getCurrentQuestion())}
-        <button type="button" onClick={nextPage}>
-          Next Page
-        </button>
+        {
+          // eslint-disable-next-line array-callback-return, consistent-return, no-unused-vars
+          getCurrentQuestion()[0]?.answers.map((question, index) => {
+            let key;
+            let buttonTitle;
+            const position = index;
+            if (getCurrentQuestion()[0].apiName === "capital") {
+              key = question?.cca3;
+              buttonTitle = question?.capital[0];
+            }
+            if (guessed && position === getCurrentQuestion()[0].righAnswer) {
+              return (
+                <ButtonQuestion
+                  key={key}
+                  buttonTitle={buttonTitle}
+                  buttonColor="green"
+                  onClick={() => handleClickResponse(position)}
+                />
+              );
+            }
+            if (guessed) {
+              if (selectedIndex === index) {
+                return (
+                  <ButtonQuestion
+                    key={key}
+                    buttonTitle={buttonTitle}
+                    buttonColor="var(--colorButtonsDark)"
+                    onClick={() => handleClickResponse(position)}
+                  />
+                );
+              }
+            }
+            return (
+              <ButtonQuestion
+                key={key}
+                buttonTitle={buttonTitle}
+                buttonColor="var(--colorButtons)"
+                onClick={() => handleClickResponse(position)}
+              />
+            );
+          })
+        }
       </div>
     </div>
   );

@@ -1,24 +1,21 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-function Timer({ time }) {
-  const [counter, setCounter] = useState(time);
-  console.warn(time);
-
+function Timer({ time, setCounter }) {
   useEffect(() => {
-    const timer =
-      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    const timer = time > 0 && setInterval(() => setCounter(time - 1), 1000);
     return () => clearInterval(timer);
-  }, [counter]);
+  }, [time]);
 
   return (
     <div>
-      <div> {counter} s</div>
+      <div> {time} s</div>
     </div>
   );
 }
 Timer.propTypes = {
   time: PropTypes.string.isRequired,
+  setCounter: PropTypes.func.isRequired,
 };
 
 export default Timer;

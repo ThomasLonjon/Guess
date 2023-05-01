@@ -6,7 +6,6 @@ import Button from "../components/Button";
 function ChooseThemes() {
   const navigate = useNavigate();
   const [selectedThemes, setSelectedThemes] = useState([]);
-  // const [isSwitchPage, setIsSwitchPage] = useState(false);
 
   //  ---------------------------------- Click on Themes ----------------------------------
   const handleClickTheme = (name) => {
@@ -27,7 +26,7 @@ function ChooseThemes() {
   const handleClickStart = () => {
     if (selectedThemes.length !== 0) {
       console.info("toto");
-      const nbrQuestion = 3;
+      const nbrQuestion = 10;
 
       const countTheme = Math.floor(nbrQuestion / selectedThemes.length);
       let count = 0;

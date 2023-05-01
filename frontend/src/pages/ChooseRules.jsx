@@ -13,8 +13,8 @@ function ChooseRules() {
   //  ---------------------------------- QUESTION CAPITALS ----------------------------------
 
   const handleClick = () => {
-    console.info("test");
-    // navigate("test");
+    // eslint-disable-next-line spaced-comment
+    //En cours ...
   };
 
   useEffect(() => {
@@ -63,70 +63,6 @@ function ChooseRules() {
       <div>ChooseRules</div>
 
       <NavButton pageName="/ChooseThemes" onClick={() => handleClick()} />
-      {randomCountries ? (
-        <>
-          {randomCountries.map((country, index) => {
-            if (guessed && index === rightAnswerIndex) {
-              // l'allumer en vert;
-              return (
-                <ButtonQuestion
-                  key={country.cca3}
-                  buttonTitle={randomCountries[index]?.capital[0]}
-                  rightAnswer={randomCountries[rightAnswerIndex]?.capital[0]}
-                  setRightGuess={setRightGuess}
-                  setGuessed={setGuessed}
-                  setSelectedIndex={setSelectedIndex}
-                  index={index}
-                  buttonState="rightButton"
-                  guessed={guessed}
-                />
-              );
-            }
-            if (guessed) {
-              if (selectedIndex === index) {
-                // l'allumer en violet foncé;
-                return (
-                  <ButtonQuestion
-                    key={country.cca3}
-                    buttonTitle={randomCountries[index]?.capital[0]}
-                    rightAnswer={randomCountries[rightAnswerIndex]?.capital[0]}
-                    setRightGuess={setRightGuess}
-                    setGuessed={setGuessed}
-                    setSelectedIndex={setSelectedIndex}
-                    index={index}
-                    buttonState="wrongButton"
-                    guessed={guessed}
-                  />
-                );
-              }
-            }
-            return (
-              <ButtonQuestion
-                key={country.cca3}
-                buttonTitle={randomCountries[index]?.capital[0]}
-                rightAnswer={randomCountries[rightAnswerIndex]?.capital[0]}
-                // handleGuessValidation={handleGuessValidation}
-                setRightGuess={setRightGuess}
-                setGuessed={setGuessed}
-                setSelectedIndex={setSelectedIndex}
-                index={index}
-                buttonState="normalButton"
-                guessed={guessed}
-              />
-            );
-          })}
-
-          <MyMap
-            longitude={
-              randomCountries[rightAnswerIndex]?.capitalInfo?.latlng[1]
-            }
-            latitude={randomCountries[rightAnswerIndex]?.capitalInfo?.latlng[0]}
-            countryCode={randomCountries[rightAnswerIndex]?.cca3}
-          />
-        </>
-      ) : (
-        ""
-      )}
     </div>
   );
 }
