@@ -18,7 +18,6 @@ function ChooseRules() {
   };
 
   useEffect(() => {
-    setGuessed(false);
     fetch(
       "https://restcountries.com/v3.1/all?fields=capital,population,cca3,capitalInfo"
     )
@@ -58,7 +57,7 @@ function ChooseRules() {
     console.info("guessed >", guessed);
   }, [guessed]);
 
-  //  ---------------------------------- RETURN ----------------------------------
+  //  ---------------------------------------- RETURN ----------------------------------------
   return (
     <div className="pageStyle">
       <div>ChooseRules</div>

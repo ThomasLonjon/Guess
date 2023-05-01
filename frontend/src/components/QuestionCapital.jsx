@@ -32,26 +32,10 @@ function QuestionCapital({ question }) {
             latitude={randomCountries[rightAnswerIndex]?.capitalInfo?.latlng[0]}
             countryCode={randomCountries[rightAnswerIndex]?.cca3}
           />
-          {randomCountries.map((country, index) => {
-            if (guessed && index === rightAnswerIndex) {
-              // l'allumer en vert;
-              return (
-                <ButtonQuestion
-                  key={country.cca3}
-                  buttonTitle={randomCountries[index]?.capital[0]}
-                  rightAnswer={randomCountries[rightAnswerIndex]?.capital[0]}
-                  // setRightGuess={setRightGuess}
-                  setGuessed={setGuessed}
-                  setSelectedIndex={setSelectedIndex}
-                  index={index}
-                  buttonState="rightButton"
-                  guessed={guessed}
-                />
-              );
-            }
-            if (guessed) {
-              if (selectedIndex === index) {
-                // l'allumer en violet foncé;
+          <div className="answerButtonsContainer">
+            {randomCountries.map((country, index) => {
+              if (guessed && index === rightAnswerIndex) {
+                // l'allumer en vert;
                 return (
                   <ButtonQuestion
                     key={country.cca3}
@@ -61,27 +45,47 @@ function QuestionCapital({ question }) {
                     setGuessed={setGuessed}
                     setSelectedIndex={setSelectedIndex}
                     index={index}
-                    buttonState="wrongButton"
+                    buttonColor="green"
                     guessed={guessed}
                   />
                 );
               }
-            }
-            return (
-              <ButtonQuestion
-                key={country.cca3}
-                buttonTitle={randomCountries[index]?.capital[0]}
-                rightAnswer={randomCountries[rightAnswerIndex]?.capital[0]}
-                // handleGuessValidation={handleGuessValidation}
-                // setRightGuess={setRightGuess}
-                setGuessed={setGuessed}
-                setSelectedIndex={setSelectedIndex}
-                index={index}
-                buttonState="normalButton"
-                guessed={guessed}
-              />
-            );
-          })}
+              if (guessed) {
+                if (selectedIndex === index) {
+                  // l'allumer en violet foncé;
+                  return (
+                    <ButtonQuestion
+                      key={country.cca3}
+                      buttonTitle={randomCountries[index]?.capital[0]}
+                      rightAnswer={
+                        randomCountries[rightAnswerIndex]?.capital[0]
+                      }
+                      // setRightGuess={setRightGuess}
+                      setGuessed={setGuessed}
+                      setSelectedIndex={setSelectedIndex}
+                      index={index}
+                      buttonColor="var(--colorButtonsDark)"
+                      guessed={guessed}
+                    />
+                  );
+                }
+              }
+              return (
+                <ButtonQuestion
+                  key={country.cca3}
+                  buttonTitle={randomCountries[index]?.capital[0]}
+                  rightAnswer={randomCountries[rightAnswerIndex]?.capital[0]}
+                  // handleGuessValidation={handleGuessValidation}
+                  // setRightGuess={setRightGuess}
+                  setGuessed={setGuessed}
+                  setSelectedIndex={setSelectedIndex}
+                  index={index}
+                  buttonColor="var(--colorButtons)"
+                  guessed={guessed}
+                />
+              );
+            })}
+          </div>
         </>
       ) : (
         ""

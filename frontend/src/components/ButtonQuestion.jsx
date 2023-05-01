@@ -5,7 +5,7 @@ function ButtonQuestion({
   rightAnswer,
   setGuessed,
   // setRightGuess,
-  buttonState,
+  buttonColor,
   setSelectedIndex,
   index,
   guessed,
@@ -20,7 +20,12 @@ function ButtonQuestion({
   };
 
   return (
-    <button type="button" className={buttonState} onClick={handleClick}>
+    <button
+      type="button"
+      className="petitB"
+      style={{ backgroundColor: buttonColor }}
+      onClick={handleClick}
+    >
       {buttonTitle}
     </button>
   );
@@ -29,7 +34,7 @@ function ButtonQuestion({
 ButtonQuestion.propTypes = {
   rightAnswer: PropTypes.string.isRequired,
   buttonTitle: PropTypes.string.isRequired,
-  buttonState: PropTypes.string.isRequired,
+  buttonColor: PropTypes.string.isRequired,
   setGuessed: PropTypes.func.isRequired,
   // setRightGuess: PropTypes.func.isRequired,
   setSelectedIndex: PropTypes.func.isRequired,
