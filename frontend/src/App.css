@@ -1,6 +1,6 @@
 /* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
 
-/* body::after {
+body::after {
   content: "";
   position: fixed;
   top: 0;
@@ -29,7 +29,7 @@
   to {
     background-image: url("../src/assets/img/Noise1.jpg");
   }
-} */
+}
 
 * {
   box-sizing: border-box;
@@ -80,10 +80,6 @@ body {
 .pageStyle {
   background-color: var(--colorBackGround);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 /* ----------------------------------------------Logo-------------------------------------------------- */
@@ -97,6 +93,23 @@ body {
   border-radius: 150px;
   box-shadow: var(--shadow);
 }
+
+/* ----------------------------------------------Texts-------------------------------------------------- */
+
+.title {
+  color: #ffffff;
+  font-family: "Faster One";
+  font-size: 70px;
+  letter-spacing: -0.2em;
+  line-height: 70.8%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.App {
+  font-family: "Racing Sans One";
+}
+
 /* ----------------------------------------------GitHub Button-------------------------------------------------- */
 
 .buttonGithub {
@@ -172,6 +185,15 @@ a {
 
 /* ----------------------------------------------Map-------------------------------------------------- */
 
+.map-container {
+  position: relative;
+  width: 80%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+}
+
 .map-container-overlay {
   border-radius: 30px;
   overflow: hidden;
@@ -179,23 +201,16 @@ a {
   margin-bottom: 10%;
 }
 
-.map-container {
-  position: relative;
-  width: 50%;
-  height: 200px;
+.mapboxgl-ctrl-bottom-left {
+  display: none;
+}
+
+.mapboxgl-ctrl-bottom-right {
+  display: none;
 }
 
 div.map.mapboxgl-map {
-  height: 300px;
-}
-
-.marker {
-  background-image: url("mapbox-icon.png");
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
+  height: 400px;
 }
 
 /* ----------------------------------------------NavButton-------------------------------------------------- */
@@ -220,51 +235,30 @@ div.map.mapboxgl-map {
   color: #ffffff;
 }
 
-.title1 {
-  color: #ffffff;
-  font-family: "Faster One";
-  font-size: xx-large;
-}
-
-.App {
-  font-family: "Racing Sans One";
-}
-
 /* ----------------------------------------------Questions-------------------------------------------------- */
-.rightButton {
-  all: unset;
-  background-color: green;
-  margin-bottom: 1%;
+.answerButtonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.wrongButton {
+.petitB {
   all: unset;
-  background-color: var(--colorButtonsDark);
-  margin-bottom: 1%;
-}
-
-.normalButton {
-  all: unset;
-  background-color: var(--colorButtons);
-  margin-bottom: 1%;
-}
-
-.petitB{
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-weight: 400;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 38px;
   text-align: center;
-  color:white;
+  color: white;
   box-shadow: 0px 4px 4px #000000;
   border-radius: 20px;
-  width: 200px;
-  height: 50px;
+  width: 60%;
+  height: 100%;
+  margin-bottom: 3%;
 }
 
-.grandB{
+.grandB {
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -272,7 +266,7 @@ div.map.mapboxgl-map {
   font-size: 30px;
   line-height: 38px;
   text-align: center;
-  color:white;
+  color: white;
   box-shadow: 0px 4px 4px #000000;
   border-radius: 20px;
   width: 335px;

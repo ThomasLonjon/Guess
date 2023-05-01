@@ -4,6 +4,8 @@ import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loade
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
+// ---------------------------------------- FUNCTION----------------------------------------
+
 function MyMap({ longitude, latitude, countryCode }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -34,6 +36,7 @@ function MyMap({ longitude, latitude, countryCode }) {
       });
 
       // Adding boundary layer
+
       map.current.addLayer({
         id: "boundaries",
         type: "line",
@@ -42,7 +45,7 @@ function MyMap({ longitude, latitude, countryCode }) {
         layout: {},
         paint: {
           "line-color": "#ff0000",
-          "line-width": 2,
+          "line-width": 1.8,
           "line-opacity": 0.5,
         },
         maxzoom: 7,
@@ -54,9 +57,36 @@ function MyMap({ longitude, latitude, countryCode }) {
         "iso_3166_1_alpha_3",
         countryCode,
       ]);
+
+      // Adding a marker on the map
+      map.current.addSource("marker", {
+        type: "geojson",
+        data: {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [longitude, latitude],
+          },
+        },
+      });
+
+      map.current.addLayer({
+        id: "marker",
+        type: "circle",
+        source: "marker",
+        layout: {},
+        paint: {
+          "circle-radius": 4,
+          "circle-color": "#B42222",
+          "circle-stroke-color": "white",
+          "circle-stroke-width": 1,
+        },
+        maxzoom: 7,
+      });
     });
 
-    // zoom out with delay
+    // ---------------------------------------- zoom out with delay----------------------------------------
+
     let isAtStart = true;
     const target = isAtStart ? end : start;
     isAtStart = !isAtStart;
@@ -64,11 +94,13 @@ function MyMap({ longitude, latitude, countryCode }) {
     setTimeout(() => {
       map.current.flyTo({
         ...target, // Fly to the selected target
-        duration: 30000, // Animate over 30 seconds
+        duration: 40000, // Animate over 40 seconds
         essential: true, // This animation is considered essential with respect to prefers-reduced-motion
       });
     }, 5000);
   }, []);
+
+  // ---------------------------------------- RETURN----------------------------------------
 
   return (
     <div className="map-container">
