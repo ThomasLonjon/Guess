@@ -26,7 +26,7 @@ function ChooseThemes() {
   const handleClickStart = () => {
     if (selectedThemes.length !== 0) {
       console.info("toto");
-      const nbrQuestion = 10;
+      const nbrQuestion = 1;
 
       const countTheme = Math.floor(nbrQuestion / selectedThemes.length);
       let count = 0;
