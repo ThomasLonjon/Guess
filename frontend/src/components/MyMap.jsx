@@ -28,6 +28,8 @@ function MyMap({ longitude, latitude, countryCode }) {
       ...start,
     });
 
+    map.current.scrollZoom.disable();
+
     map.current.on("load", () => {
       // Adding the mapbox boundery source
       map.current.addSource("countries-borders", {
