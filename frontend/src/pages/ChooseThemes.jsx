@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NavButton from "../components/NavButton";
+// import NavButton from "../components/NavButton";
 import Button from "../components/Button";
 
 function ChooseThemes() {
+  const navigate = useNavigate();
   const [selectedThemes, setSelectedThemes] = useState([]);
 
-  const navigate = useNavigate();
   //  ---------------------------------- Click on Themes ----------------------------------
   const handleClickTheme = (name) => {
     const searchSelectThemes = selectedThemes.find((e) => e.apiName === name);
@@ -26,7 +26,7 @@ function ChooseThemes() {
   const handleClickStart = () => {
     if (selectedThemes.length !== 0) {
       console.info("toto");
-      const nbrQuestion = 1;
+      const nbrQuestion = 10;
 
       const countTheme = Math.floor(nbrQuestion / selectedThemes.length);
       let count = 0;
@@ -39,11 +39,9 @@ function ChooseThemes() {
           selectedThemes[i].numberQuest = countTheme;
         }
       }
-
       localStorage.setItem("questionList", JSON.stringify(selectedThemes));
-      // console.log("navigate(/Question);", navigate("/Question"));
-      navigate("/Question", { require: true });
-      // redirect("/Question");
+      console.info("avant navigate");
+      navigate("/Question");
     }
   };
   //  ----------------------------------------------- Delete local storage  -----------------------------------------------
@@ -55,11 +53,15 @@ function ChooseThemes() {
   return (
     <div className="pageStyle">
       <div>ChooseThemes</div>
-      <NavButton
+      {/* <NavButton
         pageName="/Question"
         onClick={() => handleClickStart()}
-        data={selectedThemes}
-      />
+        // data={selectedThemes}
+        isSwitchPage={isSwitchPage}
+      /> */}
+      <button type="button" onClick={() => handleClickStart()}>
+        Navbutton
+      </button>
       <Button
         text="Capital"
         buttonType="small"

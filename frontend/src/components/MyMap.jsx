@@ -22,6 +22,7 @@ function MyMap({ longitude, latitude, countryCode }) {
   };
 
   useEffect(() => {
+    console.info("Mymap");
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/thomaslonjon/clgi954hh005d01qqabchcqkk",
@@ -98,7 +99,7 @@ function MyMap({ longitude, latitude, countryCode }) {
         essential: true, // This animation is considered essential with respect to prefers-reduced-motion
       });
     }, 5000);
-  }, []);
+  }, [longitude, latitude, countryCode]);
 
   // ---------------------------------------- RETURN----------------------------------------
 

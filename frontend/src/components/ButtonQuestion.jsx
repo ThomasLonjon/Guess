@@ -1,30 +1,12 @@
 import PropTypes from "prop-types";
 
-function ButtonQuestion({
-  buttonTitle,
-  rightAnswer,
-  setGuessed,
-  // setRightGuess,
-  buttonColor,
-  setSelectedIndex,
-  index,
-  guessed,
-}) {
-  const handleClick = () => {
-    if (guessed) return;
-    setGuessed(true);
-    setSelectedIndex(index);
-    if (buttonTitle === rightAnswer) {
-      // setRightGuess(true);
-    }
-  };
-
+function ButtonQuestion({ buttonTitle, buttonColor, onClick }) {
   return (
     <button
       type="button"
       className="petitB"
       style={{ backgroundColor: buttonColor }}
-      onClick={handleClick}
+      onClick={onClick}
     >
       {buttonTitle}
     </button>
@@ -32,14 +14,9 @@ function ButtonQuestion({
 }
 
 ButtonQuestion.propTypes = {
-  rightAnswer: PropTypes.string.isRequired,
   buttonTitle: PropTypes.string.isRequired,
   buttonColor: PropTypes.string.isRequired,
-  setGuessed: PropTypes.func.isRequired,
-  // setRightGuess: PropTypes.func.isRequired,
-  setSelectedIndex: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired,
-  guessed: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ButtonQuestion;
