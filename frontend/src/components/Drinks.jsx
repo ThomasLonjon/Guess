@@ -33,7 +33,7 @@ function Drinks() {
       if (answers.length === 4) {
         const randomIndex1 = Math.floor(Math.random() * answers.length);
 
-        setRightAnwser(answers[randomIndex]);
+        setRightAnwser(answers[randomIndex1]);
       }
     }
   }, [answers.length, cocktails.length]);
@@ -59,7 +59,7 @@ function Drinks() {
       {answers.map((option) => (
         <button
           type="button"
-          key={option}
+          key={option.strDrink}
           onClick={() => handleOptionClick(option.strDrink)}
         >
           {option.strDrink}

@@ -1,21 +1,22 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-// function Timer(props) {
-//   console.info(">", props);
-//   const [counter, setCounter] = useState(props.time);
-//   console.info(props.time);
+function Timer(props) {
+  console.info(">", props);
+  const { time } = props;
+  const [counter, setCounter] = useState(time);
+  //   console.info(props.time);
 
-//   useEffect(() => {
-//     const timer =
-//       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-//     return () => clearInterval(timer);
-//   }, [counter]);
+  useEffect(() => {
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    return () => clearInterval(timer);
+  }, [counter]);
 
-//   return (
-//     <div>
-//       <div> {counter} s</div>
-//     </div>
-//   );
-// }
+  return (
+    <div>
+      <div> {counter} s</div>
+    </div>
+  );
+}
 
-// export default Timer;
+export default Timer;
