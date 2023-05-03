@@ -11,7 +11,7 @@ function ChooseRules() {
   };
   //  ---------------------------------------- RETURN ----------------------------------------
   return (
-    <div className="pageStyle">
+    <div>
       <div>ChooseRules</div>
 
       <NavButton pageName="/ChooseThemes" onClick={() => handleClick()} />

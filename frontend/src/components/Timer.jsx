@@ -9,7 +9,7 @@ function Timer({ time, setCounter }) {
 
   return (
     <div>
-      <div> {time} s</div>
+      <div className="textTimer"> {time} s</div>
     </div>
   );
 }

@@ -114,9 +114,10 @@ function Question() {
     }
   }, [counter]);
 
+  // ------------------------------------------- RETURN ---------------------------------------------------
+
   return (
-    <div className="pageStyle">
-      {console.info("questionList", questionList)}
+    <div>
       <Title
         content="Question"
         questionCurent={
@@ -124,8 +125,10 @@ function Question() {
         }
         questionMax={questionList.length}
       />
-      <Text content={currentPage} />
-      <Text content={getCurrentQuestion()[0]?.quest} />
+      <div className="questionText">
+        <Text content={getCurrentQuestion()[0]?.quest} />
+      </div>
+
       <Timer time={counter} setCounter={setCounter} />
       <div>
         {/* {console.info("Test Mélange questionList", questionList)} */}

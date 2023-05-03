@@ -3,7 +3,7 @@ import NavButton from "../components/NavButton";
 
 export default function AboutUs() {
   return (
-    <div className="pageStyle">
+    <div>
       <div>About us</div>
       <NavButton pageName="/" />
     </div>
