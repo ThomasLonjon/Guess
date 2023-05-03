@@ -8,6 +8,7 @@ import Text from "../components/Text";
 import ButtonQuestion from "../components/ButtonQuestion";
 import apiList from "../data/api";
 import Drinks from "../components/Drinks";
+import GameAPI from "../components/GameAPI";
 
 function Question() {
   //  ---------------------------------- Generate a random set of countries  ----------------------------------
@@ -83,17 +84,19 @@ function Question() {
 
     // eslint-disable-next-line array-callback-return, consistent-return
     const questionArray = selectedThemes.map((element) => {
-      console.info("questionArray.element.ApiName", element.numberQuest);
       if (element.apiName === "capital") {
         return apiList.searchDataCapital(element.numberQuest);
       }
       if (element.apiName === "cocktail") {
         return apiList.searchDataCocktail(element.numberQuest);
       }
+      if (element.apiName === "game") {
+        return apiList.searchDataGame(element.numberQuest);
+      }
     });
 
-    // console.info("questionArray", questionArray);
     Promise.all(questionArray).then((dataListQuest) => {
+      console.info("dataListQuest", dataListQuest);
       const listDataAPI = [];
       for (let i = 0; i < dataListQuest.length; i += 1) {
         for (let j = 0; j < dataListQuest[i].length; j += 1) {
@@ -131,7 +134,6 @@ function Question() {
 
       <Timer time={counter} setCounter={setCounter} />
       <div>
-        {/* {console.info("Test Mélange questionList", questionList)} */}
         {
           // eslint-disable-next-line array-callback-return, consistent-return, no-unused-vars
           getCurrentQuestion().map((question, index) => {
@@ -150,6 +152,13 @@ function Question() {
                 </div>
               );
             }
+            if (question.apiName === "game") {
+              return (
+                <div>
+                  <GameAPI question={getCurrentQuestion()[0].rightImage} />
+                </div>
+              );
+            }
           })
         }
         {
@@ -165,6 +174,10 @@ function Question() {
             if (getCurrentQuestion()[0].apiName === "cocktail") {
               key = question?.idDrink;
               buttonTitle = question?.strDrink;
+            }
+            if (getCurrentQuestion()[0].apiName === "game") {
+              key = `Game n°${index}`;
+              buttonTitle = question;
             }
             if (guessed && position === getCurrentQuestion()[0].righAnswer) {
               return (

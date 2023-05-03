@@ -1,3 +1,4 @@
+import axios from "axios";
 import QuestList from "./questList";
 
 export default {
@@ -48,6 +49,7 @@ export default {
     console.warn("tabDataCapital.length", tabDataCapital.length);
     return tabDataCapital;
   },
+  // Function Api Game
   searchDataCocktail: async (numberQuest) => {
     const tabDataCoktail = [];
     await fetch(
@@ -59,23 +61,17 @@ export default {
         while (i < numberQuest) {
           const randomIndex = () =>
             Math.floor(Math.random() * data.drinks.length);
-          // console.info("randomIndex", randomIndex);
           const cocktailSet = new Set();
           while (cocktailSet.size < 4) {
             cocktailSet.add(data.drinks[randomIndex()]);
           }
           const cocktailArray = Array.from(cocktailSet);
-
-          console.info("cocktailArray", cocktailArray);
           const rightIndex = Math.floor(Math.random() * 3);
 
           const duplicateCocktail = tabDataCoktail.some(
             (element) =>
-              // console.log("element", element)
               element.strDrink === cocktailArray[rightIndex]?.strDrink
           );
-          // element.strDrink === cocktailArray[rightIndex]?.strDrink
-          // console.warn("duplicate", duplicate);
           if (!duplicateCocktail) {
             tabDataCoktail.push({
               apiName: "cocktail",
@@ -86,11 +82,47 @@ export default {
             i += 1;
           }
         }
-        console.warn("tabDataCoktail", tabDataCoktail);
       })
       .catch((err) => console.error("err -->", err));
-    // console.warn("tabDataCoktail", tabDataCoktail);
-    // console.warn("tabDataCoktail.length", tabDataCoktail.length);
     return tabDataCoktail;
+  },
+  // Function Api Game
+  searchDataGame: async (numberQuest) => {
+    const tabDataGame = [];
+    await axios
+      .get("http://localhost:5000/api/data")
+      .then((response) => {
+        let i = 0;
+        while (i < numberQuest) {
+          const games = response.data.results;
+          const randomGameIndex = Math.floor(Math.random() * games.length);
+          const randomGame = games[randomGameIndex];
+          const gameTitles = [randomGame.name];
+          while (gameTitles.length < 4) {
+            const randomIndex = Math.floor(Math.random() * games.length);
+            const randomTitle = games[randomIndex].name;
+            const isDuplicate = gameTitles.some(
+              (element) => element === randomTitle
+            );
+
+            if (!isDuplicate) {
+              gameTitles.push(randomTitle);
+            }
+          }
+          gameTitles.sort(() => Math.random() - 0.5);
+          tabDataGame.push({
+            apiName: "game",
+            quest: QuestList.game,
+            answers: gameTitles,
+            righAnswer: gameTitles.indexOf(randomGame.name),
+            rightImage: randomGame.background_image,
+          });
+          i += 1;
+        }
+      })
+      .catch((error) => {
+        console.warn(error);
+      });
+    return tabDataGame;
   },
 };
