@@ -15,7 +15,7 @@ function Timer(props) {
 
   return (
     <div>
-      <div> {counter} s</div>
+      <div className="textTimer"> {counter} s</div>
     </div>
   );
 }

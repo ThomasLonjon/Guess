@@ -26,7 +26,7 @@ function ChooseThemes() {
   const handleClickStart = () => {
     if (selectedThemes.length !== 0) {
       console.info("toto");
-      const nbrQuestion = 30;
+      const nbrQuestion = 2;
 
       const countTheme = Math.floor(nbrQuestion / selectedThemes.length);
       let count = 0;
@@ -51,7 +51,7 @@ function ChooseThemes() {
 
   //  ----------------------------------------------- RETURN -----------------------------------------------
   return (
-    <div className="pageStyle">
+    <div>
       <div className="title">
         Choose <br /> Your <br /> Themes
       </div>
