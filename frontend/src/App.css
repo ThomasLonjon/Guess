@@ -258,12 +258,30 @@ div.map.mapboxgl-map {
   margin-bottom: 3%;
 }
 
-.grandB {
+.middleButton {
+  all: unset;
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-size: 30px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 50%;
+  height: 50px;
+  margin-bottom: 10%;
+}
+
+.grandB {
+  all: unset;
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
   line-height: 38px;
   text-align: center;
   color: white;
@@ -275,4 +293,11 @@ div.map.mapboxgl-map {
 
 .clickedButton {
   background-color: var(--colorButtonsDark);
+}
+
+.themeButtonsContainer {
+  margin-top: 10vh;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
 }

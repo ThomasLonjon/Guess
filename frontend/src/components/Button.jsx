@@ -11,7 +11,7 @@ function Button(props) {
     <div>
       <button
         type="button"
-        className={buttonState ? "petitB clickedButton" : "petitB"}
+        className={buttonState ? "middleButton clickedButton" : "middleButton"}
         onClick={onClick}
       >
         {text}

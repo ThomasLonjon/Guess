@@ -15,7 +15,8 @@ export default {
             (country) =>
               country.population > 400000 &&
               country.capitalInfo !== null &&
-              country.capital !== null
+              country.capital !== null &&
+              country.cca3 !== null
           );
           const randomCountryIndex = () =>
             Math.floor(Math.random() * FilteredCountry.length);

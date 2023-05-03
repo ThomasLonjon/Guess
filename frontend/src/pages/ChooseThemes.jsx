@@ -52,41 +52,46 @@ function ChooseThemes() {
   //  ----------------------------------------------- RETURN -----------------------------------------------
   return (
     <div className="pageStyle">
-      <div>ChooseThemes</div>
-      {/* <NavButton
-        pageName="/Question"
+      <div className="title">
+        Choose <br /> Your <br /> Themes
+      </div>
+      <div className="themeButtonsContainer">
+        <Button
+          text="Capital"
+          buttonType="small"
+          onClick={() => handleClickTheme("capital")}
+          buttonState={
+            selectedThemes.find((name) => name.apiName === "capital") !==
+            undefined
+          }
+        />
+        <Button
+          text="Movies"
+          buttonType="small"
+          onClick={() => handleClickTheme("movies")}
+          buttonState={
+            selectedThemes.find((name) => name.apiName === "movies") !==
+            undefined
+          }
+        />
+        <Button
+          text="Games"
+          buttonType="small"
+          onClick={() => handleClickTheme("games")}
+          buttonState={
+            selectedThemes.find((name) => name.apiName === "games") !==
+            undefined
+          }
+        />
+      </div>
+      <button
+        className="grandB"
+        type="button"
+        style={{ width: "50%" }}
         onClick={() => handleClickStart()}
-        // data={selectedThemes}
-        isSwitchPage={isSwitchPage}
-      /> */}
-      <button type="button" onClick={() => handleClickStart()}>
-        Navbutton
+      >
+        Start !
       </button>
-      <Button
-        text="Capital"
-        buttonType="small"
-        onClick={() => handleClickTheme("capital")}
-        buttonState={
-          selectedThemes.find((name) => name.apiName === "capital") !==
-          undefined
-        }
-      />
-      <Button
-        text="Movies"
-        buttonType="small"
-        onClick={() => handleClickTheme("movies")}
-        buttonState={
-          selectedThemes.find((name) => name.apiName === "movies") !== undefined
-        }
-      />
-      <Button
-        text="Games"
-        buttonType="small"
-        onClick={() => handleClickTheme("games")}
-        buttonState={
-          selectedThemes.find((name) => name.apiName === "games") !== undefined
-        }
-      />
     </div>
   );
 }
