@@ -31,7 +31,7 @@ function Drinks() {
         );
       }
       if (answers.length === 4) {
-        const randomIndex = Math.floor(Math.random() * answers.length);
+        const randomIndex1 = Math.floor(Math.random() * answers.length);
 
         setRightAnwser(answers[randomIndex]);
       }

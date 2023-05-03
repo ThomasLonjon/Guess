@@ -1,6 +1,6 @@
 /* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
 
-/* body::after {
+body::after {
   content: "";
   position: fixed;
   top: 0;
@@ -29,7 +29,7 @@
   to {
     background-image: url("../src/assets/img/Noise1.jpg");
   }
-} */
+}
 
 * {
   box-sizing: border-box;
@@ -75,16 +75,11 @@ body {
 
 .App {
   text-align: center;
-  
 }
 
 .pageStyle {
   background-color: var(--colorBackGround);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 /* ----------------------------------------------Logo-------------------------------------------------- */
@@ -98,6 +93,23 @@ body {
   border-radius: 150px;
   box-shadow: var(--shadow);
 }
+
+/* ----------------------------------------------Texts-------------------------------------------------- */
+
+.title {
+  color: #ffffff;
+  font-family: "Faster One";
+  font-size: 70px;
+  letter-spacing: -0.2em;
+  line-height: 70.8%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.App {
+  font-family: "Racing Sans One";
+}
+
 /* ----------------------------------------------GitHub Button-------------------------------------------------- */
 
 .buttonGithub {
@@ -173,20 +185,32 @@ a {
 
 /* ----------------------------------------------Map-------------------------------------------------- */
 
+.map-container {
+  position: relative;
+  width: 80%;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+}
+
 .map-container-overlay {
   border-radius: 30px;
   overflow: hidden;
   box-shadow: var(--shadow);
+  margin-bottom: 10%;
 }
 
-.map-container {
-  position: relative;
-  width: 50%;
-  height: 200px;
+.mapboxgl-ctrl-bottom-left {
+  display: none;
+}
+
+.mapboxgl-ctrl-bottom-right {
+  display: none;
 }
 
 div.map.mapboxgl-map {
-  height: 300px;
+  height: 400px;
 }
 
 /* ----------------------------------------------NavButton-------------------------------------------------- */
@@ -206,29 +230,49 @@ div.map.mapboxgl-map {
   color: var(--colorText);
 }
 
-.App{
-  background-color: #46178F;
-  color: #FFFFFF;
-  
+.App {
+  background-color: #46178f;
+  color: #ffffff;
 }
 
-
-.title1{
-  color: #FFFFFF ;
-  font-family: "Faster One";
-  font-size: xx-large;
-
-  
+/* ----------------------------------------------Questions-------------------------------------------------- */
+.answerButtonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.App{
-  font-family:"Racing Sans One" ;
+.petitB {
+  all: unset;
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 60%;
+  height: 100%;
+  margin-bottom: 3%;
 }
 
-.subtitle{
-  border-top: solid;
-  border-bottom: solid;
+.grandB {
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 335px;
+  height: 50px;
 }
 
-
-
+.clickedButton {
+  background-color: var(--colorButtonsDark);
+}
