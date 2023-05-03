@@ -1,6 +1,8 @@
 const express = require("express");
+require("dotenv").config();
 
 const router = express.Router();
+const axios = require("axios");
 
 const itemControllers = require("./controllers/itemControllers");
 
@@ -10,4 +12,20 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+router.get("/api/data", async (req, res) => {
+  try {
+    const response = await axios.get(
+      `https://api.rawg.io/api/games?key=${process.env.API_TOKEN}&page_size=100`,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+    // dataApi = {"test" : "test"};
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 module.exports = router;

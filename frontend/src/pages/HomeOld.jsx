@@ -6,7 +6,7 @@ import NavButton from "../components/NavButton";
 
 export default function Home() {
   return (
-    <div className="pageStyle">
+    <div>
       <Logo />
       <ButtonGithub devName="Adèle" devLink="" />
       <ButtonGithub

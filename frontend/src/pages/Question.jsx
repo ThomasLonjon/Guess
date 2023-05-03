@@ -7,6 +7,7 @@ import Title from "../components/Title";
 import Text from "../components/Text";
 import ButtonQuestion from "../components/ButtonQuestion";
 import apiList from "../data/api";
+import Drinks from "../components/Drinks";
 
 function Question() {
   //  ---------------------------------- Generate a random set of countries  ----------------------------------
@@ -78,19 +79,29 @@ function Question() {
     const data = localStorage.getItem("questionList");
     console.warn("Local storage ------------>data", JSON.parse(data));
     const selectedThemes = JSON.parse(data);
+    console.info("selectedThemes", selectedThemes);
 
     // eslint-disable-next-line array-callback-return, consistent-return
     const questionArray = selectedThemes.map((element) => {
+      console.info("questionArray.element.ApiName", element.numberQuest);
       if (element.apiName === "capital") {
         return apiList.searchDataCapital(element.numberQuest);
       }
+      if (element.apiName === "cocktail") {
+        return apiList.searchDataCocktail(element.numberQuest);
+      }
     });
 
-    console.info("questionArray", questionArray);
-
-    Promise.all(questionArray).then((dataListQuest) =>
-      setQuestionList(shuffleArray(dataListQuest[0]))
-    );
+    // console.info("questionArray", questionArray);
+    Promise.all(questionArray).then((dataListQuest) => {
+      const listDataAPI = [];
+      for (let i = 0; i < dataListQuest.length; i += 1) {
+        for (let j = 0; j < dataListQuest[i].length; j += 1) {
+          listDataAPI.push(dataListQuest[i][j]);
+        }
+      }
+      setQuestionList(shuffleArray(listDataAPI));
+    });
   }, []);
 
   useEffect(() => {
@@ -103,8 +114,10 @@ function Question() {
     }
   }, [counter]);
 
+  // ------------------------------------------- RETURN ---------------------------------------------------
+
   return (
-    <div className="pageStyle">
+    <div>
       <Title
         content="Question"
         questionCurent={
@@ -112,8 +125,10 @@ function Question() {
         }
         questionMax={questionList.length}
       />
-      <Text content={currentPage} />
-      <Text content={getCurrentQuestion()[0]?.quest} />
+      <div className="questionText">
+        <Text content={getCurrentQuestion()[0]?.quest} />
+      </div>
+
       <Timer time={counter} setCounter={setCounter} />
       <div>
         {/* {console.info("Test Mélange questionList", questionList)} */}
@@ -128,6 +143,13 @@ function Question() {
                 </div>
               );
             }
+            if (question.apiName === "cocktail") {
+              return (
+                <div>
+                  <Drinks question={question} />
+                </div>
+              );
+            }
           })
         }
         {
@@ -139,6 +161,10 @@ function Question() {
             if (getCurrentQuestion()[0].apiName === "capital") {
               key = question?.cca3;
               buttonTitle = question?.capital[0];
+            }
+            if (getCurrentQuestion()[0].apiName === "cocktail") {
+              key = question?.idDrink;
+              buttonTitle = question?.strDrink;
             }
             if (guessed && position === getCurrentQuestion()[0].righAnswer) {
               return (

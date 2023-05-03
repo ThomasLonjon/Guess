@@ -31,12 +31,23 @@ export default function Results() {
     setresults(resultData);
   }, []);
 
+  // --------------------------------------- RETURN -------------------------------------------------
+
   return (
-    <div className="pageStyle">
-      <div>Results</div>
-      <p>
-        Resultat : {resultsObj.answer}/{results.length}
-      </p>
+    <div>
+      <div className="title" style={{ fontSize: 90 }}>
+        Results
+      </div>
+      <div className="grandB">
+        <p>
+          You have scored : <br />
+        </p>
+      </div>
+
+      <div className="grandB">
+        {resultsObj.answer}/{results.length}
+      </div>
+
       <p>Temps Total : {resultsObj.totalTime}</p>
       <p>Temps restant : {resultsObj.totalTimeRemaining}</p>
       {console.info(resultsObj)}
