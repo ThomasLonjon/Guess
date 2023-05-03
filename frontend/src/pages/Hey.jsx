@@ -3,7 +3,7 @@ import NavButton from "../components/NavButton";
 
 export default function Hey() {
   return (
-    <div className="pageStyle">
+    <div>
       <div>Hey</div>
       <NavButton pageName="/ChooseRules" />
     </div>

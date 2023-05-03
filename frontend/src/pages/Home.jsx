@@ -4,7 +4,7 @@ import SubTitle from "../components/SubTitle";
 
 export default function Home() {
   return (
-    <header className="pageStyle">
+    <header>
       <div className="title" style={{ fontSize: 100 }}>
         Guess <br /> What ?
       </div>
@@ -12,7 +12,11 @@ export default function Home() {
       <SubTitle content="The Great Quizz" />
 
       <Logo />
-      <NavButton pageName="/CreateAccount" content="Sign In !" />
+      <NavButton
+        className="signInButton"
+        pageName="/CreateAccount"
+        content="Sign In !"
+      />
     </header>
   );
 }

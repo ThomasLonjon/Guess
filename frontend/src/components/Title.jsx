@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Title({ content, questionCurent, questionMax }) {
   if (questionCurent && questionMax)
     return (
-      <p className="title">
+      <p className="title" style={{ paddingBottom: "7%" }}>
         {content} - {questionCurent}/{questionMax}
       </p>
     );
