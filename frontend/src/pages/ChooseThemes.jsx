@@ -66,11 +66,11 @@ function ChooseThemes() {
           }
         />
         <Button
-          text="Movies"
+          text="Cocktail"
           buttonType="small"
-          onClick={() => handleClickTheme("movies")}
+          onClick={() => handleClickTheme("cocktail")}
           buttonState={
-            selectedThemes.find((name) => name.apiName === "movies") !==
+            selectedThemes.find((name) => name.apiName === "cocktail") !==
             undefined
           }
         />
