@@ -1,5 +1,4 @@
 /* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
-
 body::after {
   content: "";
   position: fixed;
@@ -66,7 +65,7 @@ body::after {
 /* ---------------------------------------------------Original code-------------------------------------------------- */
 
 body {
-  margin: 0;
+  margin: 0%;
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -227,6 +226,21 @@ div.map.mapboxgl-map {
   padding-bottom: 0.5%;
   box-shadow: var(--shadow);
   margin-bottom: 3%;
+  color: var(--colorText);
+}
+
+.navButton1{
+  height: 15%;
+  width: 50%;
+  align-items: center;
+  background-color: var(--colorButtons);
+  border-radius: 35px;
+  font-size: 100%;
+  margin-top: 10%;
+  padding-top: 0.9%;
+  padding-bottom: 0.5%;
+  box-shadow: var(--shadow);
+  margin-bottom: 8%;
   color: var(--colorText);
 }
 
