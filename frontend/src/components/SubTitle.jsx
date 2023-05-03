@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Text(props) {
+function SubTitle(props) {
   const { content } = props;
-  return <div className="text">{content}</div>;
+
+  return <div className="subtitle">{content}</div>;
 }
 
-Text.propTypes = {
+SubTitle.propTypes = {
   content: PropTypes.string.isRequired,
 };
 
-export default Text;
+export default SubTitle;

@@ -9,7 +9,7 @@ function Title({ content, questionCurent, questionMax }) {
       </p>
     );
 
-  return <div className="title">{content}</div>;
+  return <div className="title1">{content}</div>;
 }
 
 Title.propTypes = {
