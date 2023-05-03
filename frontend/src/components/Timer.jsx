@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 function Timer(props) {
   console.info(">", props);
@@ -18,5 +19,9 @@ function Timer(props) {
     </div>
   );
 }
+
+Timer.propTypes = {
+  time: PropTypes.string.isRequired,
+};
 
 export default Timer;

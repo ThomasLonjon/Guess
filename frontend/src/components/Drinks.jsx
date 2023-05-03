@@ -49,7 +49,7 @@ function Drinks() {
     console.info(responseObject);
   }, [responseObject]);
 
-  const handleOptionClick = (baguette) => {
+  const handleOptionClick = () => {
     // console.info({ answers, rightIndex: answers.indexOf(rightAnswer) });
   };
 
