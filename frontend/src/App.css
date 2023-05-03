@@ -1,6 +1,6 @@
 /* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
 
-/* body::after {
+body::after {
   content: "";
   position: fixed;
   top: 0;
@@ -29,12 +29,13 @@
   to {
     background-image: url("../src/assets/img/Noise1.jpg");
   }
-} */
+}
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
 /* ---------------------------------------------------variables-------------------------------------------------- */
@@ -60,7 +61,7 @@
   --colorText: #ffffff;
   --fontTitle: "Faster One";
   --fontSubtitle: "Racing Sans One";
-  --shadow: 0px 4px 4px #000000;
+  --shadow: 0px 6px 6px #000000;
 }
 
 /* ---------------------------------------------------Original code-------------------------------------------------- */
@@ -75,15 +76,11 @@ body {
 
 .App {
   text-align: center;
-}
-
-.pageStyle {
   background-color: var(--colorBackGround);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  min-width: 100vw;
+  font-family: "Racing Sans One";
+  color: white;
 }
 
 /* ----------------------------------------------Logo-------------------------------------------------- */
@@ -92,11 +89,43 @@ body {
   width: 100%;
 }
 .logoBackground {
-  width: 300px;
-  height: 300px;
-  border-radius: 150px;
+  width: 350px;
+  height: 350px;
+  border-radius: 175px;
   box-shadow: var(--shadow);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  margin-bottom: 15%;
 }
+
+/* ----------------------------------------------Texts-------------------------------------------------- */
+
+.title {
+  color: #ffffff;
+  font-family: "Faster One";
+  font-size: 70px;
+  letter-spacing: -0.2em;
+  line-height: 70.8%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.questionText {
+  font-size: 30px;
+}
+
+.subtitle {
+  padding: 3%;
+  font-size: 35px;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  width: 80%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ----------------------------------------------GitHub Button-------------------------------------------------- */
 
 .buttonGithub {
@@ -213,20 +242,32 @@ a {
 
 /* ----------------------------------------------Map-------------------------------------------------- */
 
+.map-container {
+  position: relative;
+  width: 80%;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+}
+
 .map-container-overlay {
   border-radius: 30px;
   overflow: hidden;
   box-shadow: var(--shadow);
+  margin-bottom: 10%;
 }
 
-.map-container {
-  position: relative;
-  width: 50%;
-  height: 200px;
+.mapboxgl-ctrl-bottom-left {
+  display: none;
+}
+
+.mapboxgl-ctrl-bottom-right {
+  display: none;
 }
 
 div.map.mapboxgl-map {
-  height: 300px;
+  height: 350px;
 }
 
 /* ----------------------------------------------NavButton-------------------------------------------------- */
@@ -246,9 +287,73 @@ div.map.mapboxgl-map {
   color: var(--colorText);
 }
 
-.gameName {
-  font-size: 50px;
+/* ----------------------------------------------Questions-------------------------------------------------- */
+.answerButtonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.textTimer {
+  color: rgb(255, 72, 0);
+  margin-bottom: 2%;
+}
+.petitB {
+  all: unset;
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  line-height: 38px;
+  text-align: center;
   color: white;
-  font-weight: bold;
-  margin: 20px;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 60%;
+  height: 100%;
+  margin-bottom: 3%;
+}
+
+.middleButton {
+  all: unset;
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 50%;
+  height: 50px;
+  margin-bottom: 10%;
+}
+
+.grandB {
+  all: unset;
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 335px;
+  height: 50px;
+}
+
+.clickedButton {
+  background-color: var(--colorButtonsDark);
+}
+
+.themeButtonsContainer {
+  margin-top: 10vh;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
 }

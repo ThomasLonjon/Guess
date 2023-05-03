@@ -17,6 +17,7 @@ function App() {
         <Route path="/CreateAccount" element={<CreateAccount />} />
         <Route path="/Hey" element={<Hey />} />
         <Route path="/ChooseRules" element={<ChooseRules />} />
+        {/* <Route path="/ChooseThemes" element={<ChooseThemes />} /> */}
         <Route path="/ChooseThemes" element={<ChooseThemes />} />
         <Route path="/Question" element={<Question />} />
         <Route path="/Results" element={<Results />} />

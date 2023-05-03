@@ -1,18 +1,26 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import React from "react";
 
-function NavButton({ pageName }) {
+function NavButton({ pageName, onClick, content }) {
   return (
-    <div className="navButton">
-      <Link to={pageName}>
-        <div>Navbutton </div>
-      </Link>
-    </div>
+    <Link to={pageName}>
+      <button
+        className="grandB"
+        type="button"
+        onClick={onClick}
+        style={{ width: "50%" }}
+      >
+        {content}
+      </button>
+    </Link>
   );
 }
-export default NavButton;
 
 NavButton.propTypes = {
   pageName: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  content: PropTypes.func.isRequired,
 };
+
+export default NavButton;

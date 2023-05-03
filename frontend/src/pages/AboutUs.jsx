@@ -4,7 +4,7 @@ import GameAPI from "../components/GameAPI";
 
 export default function AboutUs() {
   return (
-    <div className="pageStyle">
+    <div>
       <div>About us</div>
       <NavButton pageName="/" />
       <GameAPI />

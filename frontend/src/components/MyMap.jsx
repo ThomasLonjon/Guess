@@ -1,68 +1,110 @@
-import { useRef, useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoidGhvbWFzbG9uam9uIiwiYSI6ImNsZ2pmNHpqZjE0dGszcG15eGY1ZTlmajYifQ.D7NRzDUKM4NOLR3Gnc2PVA";
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-function MyMap() {
+// ---------------------------------------- FUNCTION----------------------------------------
+
+function MyMap({ longitude, latitude, countryCode }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(2.346402507560419);
-  const [lat, setLat] = useState(48.85486527430587);
-  const [zoomMap, setZoomMap] = useState(11);
+
+  const start = {
+    center: [longitude, latitude],
+    zoom: 11,
+    antialias: true,
+  };
+  const end = {
+    center: [longitude, latitude],
+    zoom: 1,
+    antialias: true,
+  };
 
   useEffect(() => {
-    if (map.current) return; // initialize map only once
+    console.info("Mymap");
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/thomaslonjon/clgi954hh005d01qqabchcqkk",
-      center: [lng, lat],
-      zoom: zoomMap,
-      antialias: true,
+      interactive: false,
+      ...start,
     });
-  }, []);
 
-  useEffect(() => {
-    if (!map.current) return; // wait for map to initialize
-    map.current.on("move", () => {
-      setLng(map.current.getCenter().lng.toFixed(4));
-      setLat(map.current.getCenter().lat.toFixed(4));
-      setZoomMap(map.current.getZoom().toFixed(2));
-    });
-  }, []);
+    map.current.scrollZoom.disable();
 
-  useEffect(() => {
     map.current.on("load", () => {
-      map.current.addSource("dem", {
-        type: "raster-dem",
-        url: "mapbox://mapbox.mapbox-terrain-dem-v1",
+      // Adding the mapbox boundery source
+      map.current.addSource("countries-borders", {
+        type: "vector",
+        url: "mapbox://mapbox.country-boundaries-v1",
       });
-      map.current.addLayer(
-        {
-          id: "hillshading",
-          source: "dem",
-          type: "hillshade",
+
+      // Adding boundary layer
+
+      map.current.addLayer({
+        id: "boundaries",
+        type: "line",
+        source: "countries-borders",
+        "source-layer": "country_boundaries",
+        layout: {},
+        paint: {
+          "line-color": "#ff0000",
+          "line-width": 1.8,
+          "line-opacity": 0.5,
         },
-        // Insert below land-structure-polygon layer,
-        // where hillshading sits in the Mapbox Streets style.
-        "land-structure-polygon"
-      );
+        maxzoom: 7,
+      });
+
+      // Filtering the boundery layer, so there is only the selected border
+      map.current.setFilter("boundaries", [
+        "in",
+        "iso_3166_1_alpha_3",
+        countryCode,
+      ]);
+
+      // Adding a marker on the map
+      map.current.addSource("marker", {
+        type: "geojson",
+        data: {
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [longitude, latitude],
+          },
+        },
+      });
+
+      map.current.addLayer({
+        id: "marker",
+        type: "circle",
+        source: "marker",
+        layout: {},
+        paint: {
+          "circle-radius": 4,
+          "circle-color": "#B42222",
+          "circle-stroke-color": "white",
+          "circle-stroke-width": 1,
+        },
+        maxzoom: 7,
+      });
     });
-  }, []);
-  // Ajout du périmètre des villes
-  // Définir les paramètres de la ville et du pays
-  const ville = "Paris";
-  const pays = "France";
 
-  // Construire la chaîne de requête Overpass API
-  const overpassQuery = `[out:json];area[name="${pays}"][admin_level=2]->.a;relation[name="${ville}"][admin_level=8](area.a);out body;`;
+    // ---------------------------------------- zoom out with delay----------------------------------------
 
-  // Appeler Overpass API à partir de votre code JavaScript
-  fetch(
-    `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(
-      overpassQuery
-    )}`
-  );
+    let isAtStart = true;
+    const target = isAtStart ? end : start;
+    isAtStart = !isAtStart;
+
+    setTimeout(() => {
+      map.current.flyTo({
+        ...target, // Fly to the selected target
+        duration: 50000, // Animate over 60 seconds
+        essential: true, // This animation is considered essential with respect to prefers-reduced-motion
+      });
+    }, 4000);
+  }, [longitude, latitude, countryCode]);
+
+  // ---------------------------------------- RETURN----------------------------------------
 
   return (
     <div className="map-container">
@@ -76,3 +118,9 @@ function MyMap() {
 }
 
 export default MyMap;
+
+MyMap.propTypes = {
+  longitude: PropTypes.number.isRequired,
+  latitude: PropTypes.number.isRequired,
+  countryCode: PropTypes.string.isRequired,
+};

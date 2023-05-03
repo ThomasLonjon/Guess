@@ -1,11 +1,22 @@
 import React from "react";
 import NavButton from "../components/NavButton";
 
-export default function ChooseRules() {
+function ChooseRules() {
+  // -------------------------------- QUESTION CAPITALS ----------------------------------
+
+  const handleClick = () => {
+    // eslint-disable-next-line spaced-comment
+    //En cours ...
+    // force update esLint
+  };
+  //  ---------------------------------------- RETURN ----------------------------------------
   return (
-    <div className="pageStyle">
+    <div>
       <div>ChooseRules</div>
-      <NavButton pageName="/ChooseThemes" />
+
+      <NavButton pageName="/ChooseThemes" onClick={() => handleClick()} />
     </div>
   );
 }
+
+export default ChooseRules;
