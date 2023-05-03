@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function Text(props) {
   const { content } = props;
-  return <div>{content}</div>;
+  return <div className="text">{content}</div>;
 }
 
 Text.propTypes = {

@@ -7,6 +7,7 @@ function ChooseRules() {
   const handleClick = () => {
     // eslint-disable-next-line spaced-comment
     //En cours ...
+    // force update esLint
   };
   //  ---------------------------------------- RETURN ----------------------------------------
   return (
