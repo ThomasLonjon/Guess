@@ -46,7 +46,7 @@ body::after {
 }
 
 @font-face {
-  font-family: "RacingS Sans One";
+  font-family: "Racing Sans One";
   src: url("../src/assets/fonts/RacingSansOne-Regular.ttf") format("truetype");
 }
 
@@ -66,10 +66,12 @@ body::after {
 
 body {
   margin: 0%;
-  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+  font-family: var(--fontSubtitle);
+
+  /* , "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
 .App {
@@ -85,12 +87,15 @@ body {
 
 .logo {
   width: 100%;
+  margin-left: 0%;
+  
 }
 .logoBackground {
   width: 300px;
   height: 300px;
   border-radius: 150px;
   box-shadow: var(--shadow);
+  margin-left: 15%;
 }
 
 /* ----------------------------------------------Texts-------------------------------------------------- */
@@ -113,20 +118,24 @@ body {
 
 .buttonGithub {
   height: 15%;
-  width: 28%;
+  width: 70%;
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr;
-
+  grid-template-rows: 9fr;
   background-color: var(--colorButtons);
   border-radius: 35px;
   font-size: 100%;
-  padding-top: 0.5%;
+  padding-top: 0.5;
   padding-bottom: 0.5%;
   box-shadow: var(--shadow);
   margin-bottom: 3%;
   color: var(--colorText);
+}
+
+.buttonsgithub{
+  align-items: center;
+  margin-left: 15%;
 }
 
 .pictoGithub {
@@ -227,22 +236,9 @@ div.map.mapboxgl-map {
   box-shadow: var(--shadow);
   margin-bottom: 3%;
   color: var(--colorText);
+  
 }
 
-.navButton1{
-  height: 15%;
-  width: 50%;
-  align-items: center;
-  background-color: var(--colorButtons);
-  border-radius: 35px;
-  font-size: 100%;
-  margin-top: 10%;
-  padding-top: 0.9%;
-  padding-bottom: 0.5%;
-  box-shadow: var(--shadow);
-  margin-bottom: 8%;
-  color: var(--colorText);
-}
 
 .App {
   background-color: #46178f;
@@ -261,7 +257,7 @@ div.map.mapboxgl-map {
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 20px;
+  font-size: 40px;
   line-height: 38px;
   text-align: center;
   color: white;
@@ -270,6 +266,7 @@ div.map.mapboxgl-map {
   width: 60%;
   height: 100%;
   margin-bottom: 3%;
+ 
 }
 
 .middleButton {
@@ -295,14 +292,15 @@ div.map.mapboxgl-map {
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
-  font-size: 40px;
+  font-size: 19px;
   line-height: 38px;
   text-align: center;
   color: white;
   box-shadow: 0px 4px 4px #000000;
-  border-radius: 20px;
+  border-radius: 15px;
   width: 335px;
-  height: 50px;
+  height: 90px;
+  align-items: center;
 }
 
 .clickedButton {
@@ -318,5 +316,9 @@ div.map.mapboxgl-map {
 
 .about{
   font-family: "Faster One";
-  font-size: xx-large;
+  font-size: 400%;
+  word-spacing: -.1ch;
+  
 }
+
+
