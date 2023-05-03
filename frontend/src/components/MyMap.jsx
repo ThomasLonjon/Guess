@@ -26,6 +26,7 @@ function MyMap({ longitude, latitude, countryCode }) {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/thomaslonjon/clgi954hh005d01qqabchcqkk",
+      interactive: false,
       ...start,
     });
 
@@ -97,10 +98,10 @@ function MyMap({ longitude, latitude, countryCode }) {
     setTimeout(() => {
       map.current.flyTo({
         ...target, // Fly to the selected target
-        duration: 40000, // Animate over 40 seconds
+        duration: 50000, // Animate over 60 seconds
         essential: true, // This animation is considered essential with respect to prefers-reduced-motion
       });
-    }, 5000);
+    }, 4000);
   }, [longitude, latitude, countryCode]);
 
   // ---------------------------------------- RETURN----------------------------------------
