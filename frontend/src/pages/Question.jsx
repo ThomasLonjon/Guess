@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import NavButton from "../components/NavButton";
 import Timer from "../components/Timer";
 import QuestionCapital from "../components/QuestionCapital";
@@ -14,6 +15,10 @@ function Question() {
   const [currentPage, setCurrentPage] = useState(1);
   const [guessed, setGuessed] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(false);
+  const [tabResult, setTabResult] = useState([]);
+
+  // UseNavigate pour switch de page
+  const navigate = useNavigate();
 
   // Système Pagination (Affichage de 1 question par 1)
   const getCurrentQuestion = () => {
@@ -34,23 +39,40 @@ function Question() {
       setGuessed(false);
       setCurrentPage(currentPage + 1);
       setCounter(30);
-    }, "1000");
+    }, "2000");
   };
 
   const handleClickResponse = async (position) => {
+    const newResult = {
+      id: currentPage - 1,
+      quest: getCurrentQuestion()[0]?.quest,
+      answer: getCurrentQuestion()[0].righAnswer === position,
+      time: counter,
+    };
+    await setTabResult(tabResult.concat(newResult));
     await colorBottom(position);
     await nextQuestion();
   };
 
+  useEffect(() => {
+    if (questionList.length === currentPage) {
+      console.info("tabResult", tabResult);
+      localStorage.setItem("Result", JSON.stringify(tabResult));
+      setTimeout(() => {
+        navigate("/Results");
+      }, "3000");
+    }
+  }, [tabResult]);
+
   // Function mélange tableau
-  function shuffleArray(array) {
+  const shuffleArray = (array) => {
     const shuffledArray = [];
     while (array.length) {
       const randomIndex = Math.floor(Math.random() * array.length);
       shuffledArray.push(array.splice(randomIndex, 1)[0]);
     }
     return shuffledArray;
-  }
+  };
 
   useEffect(() => {
     const data = localStorage.getItem("questionList");
@@ -85,13 +107,16 @@ function Question() {
     <div className="pageStyle">
       <Title
         content="Question"
-        questionCurent={currentPage}
+        questionCurent={
+          currentPage >= questionList.length ? questionList.length : currentPage
+        }
         questionMax={questionList.length}
       />
+      <Text content={currentPage} />
       <Text content={getCurrentQuestion()[0]?.quest} />
       <Timer time={counter} setCounter={setCounter} />
       <div>
-        {console.info("Test Mélange questionList", questionList)}
+        {/* {console.info("Test Mélange questionList", questionList)} */}
         {
           // eslint-disable-next-line array-callback-return, consistent-return, no-unused-vars
           getCurrentQuestion().map((question, index) => {
