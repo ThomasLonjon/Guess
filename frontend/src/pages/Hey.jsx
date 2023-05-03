@@ -25,11 +25,11 @@ export default function Hey() {
   ];
   return (
     <div>
-      <div className="title" style={{ fontSize: 90, marginBottom: "7%" }}>
+      <div className="title" style={{ fontSize: 90, marginBottom: "5%" }}>
         Hey!
       </div>
       <p className="textBig">Welcome PrincessAmidala</p>
-      <div className="avatarContainerBig">
+      <div className="avatarContainer">
         <Avatar
           className="avatarBackgroundBig"
           avatarArray={avatarArray}
