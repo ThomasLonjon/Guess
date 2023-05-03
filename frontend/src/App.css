@@ -315,3 +315,8 @@ div.map.mapboxgl-map {
   display: flex;
   flex-direction: column;
 }
+
+.about{
+  font-family: "Faster One";
+  font-size: xx-large;
+}

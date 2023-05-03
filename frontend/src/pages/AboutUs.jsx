@@ -5,8 +5,8 @@ import Logo from "../components/Logo";
 export default function AboutUs() {
   return (
     <div className="pageStyle">
-      <div>About us</div>
-      <Logo />
+      <div className="about">About us</div>
+      <Logo name="logo" />
       <NavButton pageName="/" />
     </div>
   );
