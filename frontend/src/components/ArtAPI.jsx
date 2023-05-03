@@ -3,7 +3,9 @@ import axios from "axios";
 
 function ArtAPI() {
   const [artwork, setArtwork] = useState(null);
-  const [options, setOptions] = useState([]);
+  const [titles, setTitles] = useState([]);
+
+  // useCallback
 
   useEffect(() => {
     const fetchArtwork = async () => {
@@ -12,44 +14,49 @@ function ArtAPI() {
       );
       const objectId =
         data.objectIDs[Math.floor(Math.random() * data.objectIDs.length)];
+      console.info(objectId);
       const { data: artworkData } = await axios.get(
         `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`
       );
+      if (!artworkData || !artworkData.primaryImageSmall) {
+        fetchArtwork();
+        return;
+      }
       setArtwork(artworkData);
-      setOptions([
+      setTitles([
         artworkData.title,
         ...(
           await Promise.all(
             Array.from({ length: 3 }, async () => {
-              const { data: optionData } = await axios.get(
+              const { data: titlesData } = await axios.get(
                 `https://collectionapi.metmuseum.org/public/collection/v1/objects/${
                   data.objectIDs[
                     Math.floor(Math.random() * data.objectIDs.length)
                   ]
                 }`
               );
-              return optionData.title;
+              return titlesData.title;
             })
           )
         ).filter((option) => option !== artworkData.title),
       ]);
     };
     fetchArtwork();
+    console.info(titles);
+    // const rightIndex = otherTitles.indexOf(artworkData.title);
+    // console.info("rightIndex", rightIndex);
   }, []);
 
   if (!artwork) return <p>Loading...</p>;
 
-  const { primaryImage } = artwork;
+  const { primaryImageSmall } = artwork;
+  console.info(artwork);
 
   return (
     <div>
-      <img src={primaryImage} alt="" />
-      <h2>
-        Which of the following artworks has the title corresponding to the image
-        above?
-      </h2>
+      <img src={primaryImageSmall} alt="" />
       <ul>
-        {options.map((option) => (
+        {titles.map((option) => (
           <li key={option.title}>{option}</li>
         ))}
       </ul>

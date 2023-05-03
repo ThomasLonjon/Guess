@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 
 const router = express.Router();
 const axios = require("axios");
@@ -14,7 +15,7 @@ router.delete("/items/:id", itemControllers.destroy);
 router.get("/api/data", async (req, res) => {
   try {
     const response = await axios.get(
-      "https://api.rawg.io/api/games?key=aea0adb151ba4341b9ef51baf604a0f8&page_size=100",
+      `https://api.rawg.io/api/games?key=${process.env.API_TOKEN}&page_size=100`,
       {
         headers: {
           // Authorization: "Bearer aea0adb151ba4341b9ef51baf604a0f8",
