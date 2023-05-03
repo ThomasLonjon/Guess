@@ -18,7 +18,6 @@ router.get("/api/data", async (req, res) => {
       `https://api.rawg.io/api/games?key=${process.env.API_TOKEN}&page_size=100`,
       {
         headers: {
-          // Authorization: "Bearer aea0adb151ba4341b9ef51baf604a0f8",
           "Access-Control-Allow-Origin": "*",
         },
       }
