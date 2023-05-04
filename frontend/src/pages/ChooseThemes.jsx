@@ -25,19 +25,19 @@ function ChooseThemes() {
   //  ---------------------------------- Generate Array of questions  ----------------------------------
   const handleClickStart = () => {
     if (selectedThemes.length !== 0) {
-      const nbrQuestion = 10;
-
+      const nbrQuestion = 25;
       const countTheme = Math.floor(nbrQuestion / selectedThemes.length);
       let count = 0;
 
-      for (let i = 0; i < selectedThemes.length; i += 1) {
-        if (selectedThemes.length - 1 === i) {
+      for (let i = selectedThemes.length - 1; i >= 0; i -= 1) {
+        if (i === 0) {
           selectedThemes[i].numberQuest = nbrQuestion - count;
         } else {
-          count += countTheme;
           selectedThemes[i].numberQuest = countTheme;
+          count += countTheme;
         }
       }
+
       localStorage.setItem("questionList", JSON.stringify(selectedThemes));
       console.info("avant navigate");
       navigate("/Question");
