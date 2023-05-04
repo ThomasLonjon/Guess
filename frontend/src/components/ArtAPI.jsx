@@ -12,7 +12,6 @@ function ArtAPI() {
       );
       const objectId =
         data.objectIDs[Math.floor(Math.random() * data.objectIDs.length)];
-      console.info(objectId);
       const { data: artworkData } = await axios.get(
         `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`
       );
@@ -40,20 +39,22 @@ function ArtAPI() {
       ]);
     };
     fetchArtwork();
-    console.info(titles);
   }, []);
-
   if (!artwork) return <p>Loading...</p>;
+  titles.sort(() => Math.random() - 0.5);
+  const Indexed = {};
+  Indexed.RightArray = titles;
+  Indexed.RightImage = artwork.primaryImageSmall;
+  Indexed.RightIndex = titles.indexOf(artwork.title);
+  console.info("indexed", Indexed);
 
   const { primaryImageSmall } = artwork;
-  console.info(artwork);
-
   return (
     <div>
       <img src={primaryImageSmall} alt="" />
       <ul>
-        {titles.map((option) => (
-          <li key={option.title}>{option}</li>
+        {titles.map((optio) => (
+          <li key={optio.title}>{optio}</li>
         ))}
       </ul>
     </div>

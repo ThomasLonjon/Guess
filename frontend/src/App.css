@@ -106,17 +106,6 @@ body {
 }
 
 /* ----------------------------------------------Avatar-------------------------------------------------- */
-.avatarContainer {
-  width: 80vw;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10%;
-  margin-top: 5%;
-}
 
 .avatarContainerBig {
   width: 80vw;
@@ -136,6 +125,18 @@ body {
   height: 300px;
   border-radius: 150px;
   box-shadow: var(--shadow);
+}
+
+.avatarContainer {
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+  margin-top: 5%;
 }
 
 .avatarBackground {
@@ -211,6 +212,7 @@ body {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  text-shadow: 2px 4px 3px black;
 }
 
 .text {
@@ -295,6 +297,15 @@ a {
   padding-bottom: 1%;
 }
 
+.sliderBox {
+  width: 40%;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ----------------------------------------------Buttons-------------------------------------------------- */
+
 .petitB {
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
@@ -336,11 +347,6 @@ a {
   width: 450px;
 }
 
-.sliderBox {
-  width: 28%;
-  padding-bottom: 20px;
-}
-
 /* ----------------------------------------------Map-------------------------------------------------- */
 
 .map-container {
@@ -369,6 +375,60 @@ a {
 
 div.map.mapboxgl-map {
   height: 350px;
+}
+
+/* ---------------------------------------------Drinks-------------------------------------------------- */
+
+.drinkContainer {
+  position: relative;
+  width: 80%;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.drink {
+  height: 100%;
+}
+
+/* ---------------------------------------------Games-------------------------------------------------- */
+
+.gameContainer {
+  position: relative;
+  width: 80%;
+  height: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  margin-bottom: 15%;
+
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------------------------------------------Music-------------------------------------------------- */
+
+.musicContainer {
+  margin-top: 30%;
+  margin-bottom: 30%;
+}
+
+.music {
+  object-fit: cover;
 }
 
 /* ----------------------------------------------Questions-------------------------------------------------- */
@@ -482,10 +542,9 @@ div.map.mapboxgl-map {
   text-align: center;
   color: white;
   box-shadow: 0px 4px 4px #000000;
-  border-radius: 15px;
-  width: 335px;
-  height: 90px;
-  align-items: center;
+  border-radius: 20px;
+  width: 50%;
+  height: 50px;
 }
 
 .clickedButton {
@@ -633,4 +692,62 @@ img{
 }
 
  
+}
+
+/* ----------------------------------------------Desktop-------------------------------------------------- */
+
+@media screen and (min-width: 900px) {
+  .logoBackground {
+    margin: 2% auto 4% auto;
+  }
+
+  .title {
+    padding-top: 5%;
+    padding-bottom: 3%;
+  }
+
+  .subtitle {
+    padding: 0;
+    width: 20%;
+  }
+
+  .signInButton {
+    width: 20%;
+  }
+
+  .QuoteForm {
+    margin: 1% auto 5% auto;
+  }
+
+  .avatarContainer {
+    width: 30vw;
+    margin-top: 1%;
+    margin-bottom: 3%;
+  }
+
+  .textBig {
+    width: 20%;
+    margin: auto;
+  }
+
+  .avatarBackgroundBig {
+    margin: 5%;
+  }
+
+  .themeButtonsContainer{
+    margin-top:3%;
+  }
+
+  .middleButton{
+    margin-bottom:3%;
+    width:25%
+  }
+
+  .grandB{
+    width:15%;
+  }
+
+  .avatarContainerBig{
+    margin: 0 auto 0 auto;
+  }
 }
