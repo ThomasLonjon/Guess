@@ -22,7 +22,6 @@ router.get("/api/game/data", async (req, res) => {
         },
       }
     );
-    // dataApi = {"test" : "test"};
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -39,7 +38,6 @@ router.get("/api/music/data", async (req, res) => {
         },
       }
     );
-    // dataApi = {"test" : "test"};
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: error.message });
