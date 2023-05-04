@@ -31,7 +31,7 @@ function GameAPI() {
         setImage(randomGame.background_image);
         setTitles(gameTitles);
         gameTitles.sort(() => Math.random() - 0.5);
-        const Indexed = { rightArray: "rightIndex", rightImage: 14 };
+        const Indexed = {};
         Indexed.rightArray = gameTitles;
         Indexed.rightIndex = gameTitles.indexOf(randomGame.name);
         Indexed.rightImage = randomGame.background_image;
