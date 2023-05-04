@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import NavButton from "../components/NavButton";
+import Logo from "../components/Logo";
 // import NavButton from "../components/NavButton";
 
 export default function Results() {
@@ -35,23 +37,33 @@ export default function Results() {
 
   return (
     <div>
-      <div className="title" style={{ fontSize: 90 }}>
+      <div className="title" style={{ fontSize: 90, marginBottom: "1%" }}>
         Results
       </div>
-      <div className="grandB">
-        <p>
-          You have scored : <br />
+      <div className="questionButton">
+        <p className="questionText">
+          You scored {resultsObj.answer}/{results.length} !!
         </p>
       </div>
 
-      <div className="grandB">
-        {resultsObj.answer}/{results.length}
+      <div className="questionButtonSmall" style={{ width: "60%" }}>
+        <p>Your time : {resultsObj.totalTime}</p>
       </div>
+      <Logo />
+      <NavButton
+        className="newQuizz"
+        pageName="/"
+        content="Start New Quizz ! "
+      />
 
-      <p>Temps Total : {resultsObj.totalTime}</p>
-      <p>Temps restant : {resultsObj.totalTimeRemaining}</p>
-      {console.info(resultsObj)}
-      {results.map((result) => {
+      <NavButton
+        className="smallResultButton"
+        pageName="/AboutUs"
+        content="Get to now us ! "
+      />
+
+      {/* <p> Times remaining : {resultsObj.totalTimeRemaining} </p> */}
+      {/* {results.map((result) => {
         return (
           <p>
             {" "}
@@ -59,7 +71,7 @@ export default function Results() {
             question {result.time}s
           </p>
         );
-      })}
+      })} */}
     </div>
   );
 }

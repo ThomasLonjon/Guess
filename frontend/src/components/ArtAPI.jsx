@@ -5,8 +5,6 @@ function ArtAPI() {
   const [artwork, setArtwork] = useState(null);
   const [titles, setTitles] = useState([]);
 
-  // useCallback
-
   useEffect(() => {
     const fetchArtwork = async () => {
       const { data } = await axios.get(
@@ -48,8 +46,6 @@ function ArtAPI() {
     };
     fetchArtwork();
     console.info(titles);
-    // const rightIndex = otherTitles.indexOf(artworkData.title);
-    // console.info("rightIndex", rightIndex);
   }, []);
 
   if (!artwork) return <p>Loading...</p>;
