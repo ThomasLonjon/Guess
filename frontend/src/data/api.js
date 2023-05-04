@@ -38,7 +38,7 @@ export default {
               apiName: "capital",
               quest: QuestList.capital,
               answers: countryArray,
-              righAnswer: rightIndex,
+              rightAnswer: rightIndex,
             });
             i += 1;
           }
@@ -77,7 +77,7 @@ export default {
               apiName: "cocktail",
               quest: QuestList.cocktail,
               answers: cocktailArray,
-              righAnswer: rightIndex,
+              rightAnswer: rightIndex,
             });
             i += 1;
           }
@@ -114,7 +114,7 @@ export default {
             apiName: "game",
             quest: QuestList.game,
             answers: gameTitles,
-            righAnswer: gameTitles.indexOf(randomGame.name),
+            rightAnswer: gameTitles.indexOf(randomGame.name),
             rightImage: randomGame.background_image,
           });
           i += 1;
@@ -168,7 +168,7 @@ export default {
               apiName: "music",
               quest: QuestList.music,
               answers: musicArray,
-              righAnswer: rightIndex,
+              rightAnswer: rightIndex,
             });
             i += 1;
           }

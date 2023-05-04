@@ -49,7 +49,7 @@ function Question() {
     const newResult = {
       id: currentPage - 1,
       quest: getCurrentQuestion()[0]?.quest,
-      answer: getCurrentQuestion()[0]?.righAnswer === position,
+      answer: getCurrentQuestion()[0]?.rightAnswer === position,
       time: counter,
     };
     await setTabResult(tabResult.concat(newResult));
@@ -194,7 +194,7 @@ function Question() {
               key = `Music n°${index}`;
               buttonTitle = question?.title;
             }
-            if (guessed && position === getCurrentQuestion()[0].righAnswer) {
+            if (guessed && position === getCurrentQuestion()[0].rightAnswer) {
               return (
                 <ButtonQuestion
                   key={key}
