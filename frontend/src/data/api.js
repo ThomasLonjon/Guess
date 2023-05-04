@@ -49,7 +49,7 @@ export default {
     console.warn("tabDataCapital.length", tabDataCapital.length);
     return tabDataCapital;
   },
-  // Function Api Game
+  // Function Api Cocktail
   searchDataCocktail: async (numberQuest) => {
     const tabDataCoktail = [];
     await fetch(
@@ -125,7 +125,6 @@ export default {
       });
     return tabDataGame;
   },
-
   // Function Api Music
   searchDataMusic: async (numberQuest) => {
     const tabDataMusic = [];
@@ -176,5 +175,53 @@ export default {
       })
       .catch((err) => console.error("err -->", err));
     return tabDataMusic;
+  },
+  // Function Api Pokemon
+  searchDataPokemon: async (numberQuest) => {
+    const urlTabDataPokemon = [];
+    for (let i = 1; i <= 151; i += 1) {
+      urlTabDataPokemon.push(`https://pokeapi.co/api/v2/pokemon/${i}`);
+    }
+    // eslint-disable-next-line prettier/prettier
+    const responses = await Promise.all(urlTabDataPokemon.map((url) => fetch(url)));
+    // console.info("responses", responses);
+    const data = await Promise.all(
+      responses.map((response) => response.json())
+    );
+
+    const tabDataPokemon = [];
+    // eslint-disable-next-line array-callback-return
+    data.map((pokemon) => {
+      tabDataPokemon.push({
+        name: pokemon.name,
+        url: pokemon.sprites.other["official-artwork"].front_default,
+      });
+    });
+    const tabDataPokemonResult = [];
+    let i = 0;
+    while (i < numberQuest) {
+      const randomPokemonIndex = () =>
+        Math.floor(Math.random() * tabDataPokemon.length);
+      const pokemonSet = new Set();
+      while (pokemonSet.size < 4) {
+        pokemonSet.add(tabDataPokemon[randomPokemonIndex()]);
+      }
+      const pokemonArray = Array.from(pokemonSet);
+      const rightIndex = Math.floor(Math.random() * 3);
+      const duplicate = tabDataPokemonResult.some(
+        (element) => element.name === pokemonArray[rightIndex]?.name
+      );
+      
+      if (!duplicate) {
+        tabDataPokemonResult.push({
+          apiName: "pokemon",
+          quest: QuestList.pokemon,
+          answers: pokemonArray,
+          rightAnswer: rightIndex,
+        });
+      }
+      i += 1;
+    }
+    return tabDataPokemonResult;
   },
 };

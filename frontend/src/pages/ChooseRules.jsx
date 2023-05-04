@@ -13,7 +13,6 @@ function ChooseRules() {
   return (
     <div>
       <div>ChooseRules</div>
-
       <NavButton pageName="/ChooseThemes" onClick={() => handleClick()} />
     </div>
   );

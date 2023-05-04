@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import NavButton from "../components/NavButton";
 import Timer from "../components/Timer";
 import QuestionCapital from "../components/QuestionCapital";
 import Title from "../components/Title";
@@ -10,6 +9,7 @@ import apiList from "../data/api";
 import Drinks from "../components/Drinks";
 import GameAPI from "../components/GameAPI";
 import Music from "../components/Music";
+import Pokemon from "../components/Pokemon";
 
 function Question() {
   //  ---------------------------------- Generate a random set of countries  ----------------------------------
@@ -97,6 +97,9 @@ function Question() {
       if (element.apiName === "music") {
         return apiList.searchDataMusic(element.numberQuest);
       }
+      if (element.apiName === "pokemon") {
+        return apiList.searchDataPokemon(element.numberQuest);
+      }
     });
 
     Promise.all(questionArray).then((dataListQuest) => {
@@ -170,6 +173,13 @@ function Question() {
                 </div>
               );
             }
+            if (question.apiName === "pokemon") {
+              return (
+                <div>
+                  <Pokemon question={getCurrentQuestion()[0]} />
+                </div>
+              );
+            }
           })
         }
         {
@@ -193,6 +203,10 @@ function Question() {
             if (getCurrentQuestion()[0].apiName === "music") {
               key = `Music n°${index}`;
               buttonTitle = question?.title;
+            }
+            if (getCurrentQuestion()[0].apiName === "pokemon") {
+              key = `Pokemon n°${index}`;
+              buttonTitle = question?.name;
             }
             if (guessed && position === getCurrentQuestion()[0].rightAnswer) {
               return (
