@@ -25,7 +25,6 @@ function ChooseThemes() {
   //  ---------------------------------- Generate Array of questions  ----------------------------------
   const handleClickStart = () => {
     if (selectedThemes.length !== 0) {
-      console.info("toto");
       const nbrQuestion = 10;
 
       const countTheme = Math.floor(nbrQuestion / selectedThemes.length);
@@ -80,6 +79,15 @@ function ChooseThemes() {
           onClick={() => handleClickTheme("game")}
           buttonState={
             selectedThemes.find((name) => name.apiName === "game") !== undefined
+          }
+        />
+        <Button
+          text="Music"
+          buttonType="small"
+          onClick={() => handleClickTheme("music")}
+          buttonState={
+            selectedThemes.find((name) => name.apiName === "music") !==
+            undefined
           }
         />
       </div>

@@ -9,6 +9,7 @@ import ButtonQuestion from "../components/ButtonQuestion";
 import apiList from "../data/api";
 import Drinks from "../components/Drinks";
 import GameAPI from "../components/GameAPI";
+import Music from "../components/Music";
 
 function Question() {
   //  ---------------------------------- Generate a random set of countries  ----------------------------------
@@ -48,7 +49,7 @@ function Question() {
     const newResult = {
       id: currentPage - 1,
       quest: getCurrentQuestion()[0]?.quest,
-      answer: getCurrentQuestion()[0].righAnswer === position,
+      answer: getCurrentQuestion()[0]?.righAnswer === position,
       time: counter,
     };
     await setTabResult(tabResult.concat(newResult));
@@ -92,6 +93,9 @@ function Question() {
       }
       if (element.apiName === "game") {
         return apiList.searchDataGame(element.numberQuest);
+      }
+      if (element.apiName === "music") {
+        return apiList.searchDataMusic(element.numberQuest);
       }
     });
 
@@ -159,6 +163,13 @@ function Question() {
                 </div>
               );
             }
+            if (question.apiName === "music") {
+              return (
+                <div>
+                  <Music question={getCurrentQuestion()[0]} />
+                </div>
+              );
+            }
           })
         }
         {
@@ -178,6 +189,10 @@ function Question() {
             if (getCurrentQuestion()[0].apiName === "game") {
               key = `Game n°${index}`;
               buttonTitle = question;
+            }
+            if (getCurrentQuestion()[0].apiName === "music") {
+              key = `Music n°${index}`;
+              buttonTitle = question?.title;
             }
             if (guessed && position === getCurrentQuestion()[0].righAnswer) {
               return (

@@ -4,5 +4,6 @@ const questList = {
   painting: "Which Painting is this ?",
   movie: "Which Movie is this ?",
   cocktail: "Which Cocktail is this ?",
+  music: "Which Music is this ?",
 };
 export default questList;

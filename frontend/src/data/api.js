@@ -90,7 +90,7 @@ export default {
   searchDataGame: async (numberQuest) => {
     const tabDataGame = [];
     await axios
-      .get("http://localhost:5000/api/data")
+      .get("http://localhost:5000/api/game/data")
       .then((response) => {
         let i = 0;
         while (i < numberQuest) {
@@ -124,5 +124,57 @@ export default {
         console.warn(error);
       });
     return tabDataGame;
+  },
+
+  // Function Api Music
+  searchDataMusic: async (numberQuest) => {
+    const tabDataMusic = [];
+    await fetch("http://localhost:5000/api/music/data", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      mode: "cors",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const trackLinks = data.tracks.data.map((track) => {
+          const objectMusic = {
+            preview: track.preview,
+            title: track.title,
+          };
+          return objectMusic;
+        });
+
+        let i = 0;
+        while (i < numberQuest) {
+          const randomMusicIndex = () =>
+            Math.floor(Math.random() * trackLinks.length);
+          const musicSet = new Set();
+          while (musicSet.size < 4) {
+            musicSet.add(trackLinks[randomMusicIndex()]);
+          }
+          const musicArray = Array.from(musicSet);
+
+          const rightIndex = Math.floor(Math.random() * 3);
+
+          const duplicate = tabDataMusic.some(
+            (element) => element.title === musicArray[rightIndex]?.title
+          );
+
+          if (!duplicate) {
+            tabDataMusic.push({
+              apiName: "music",
+              quest: QuestList.music,
+              answers: musicArray,
+              righAnswer: rightIndex,
+            });
+            i += 1;
+          }
+        }
+      })
+      .catch((err) => console.error("err -->", err));
+    return tabDataMusic;
   },
 };
