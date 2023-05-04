@@ -48,7 +48,7 @@ body::after {
 }
 
 @font-face {
-  font-family: "RacingS Sans One";
+  font-family: "Racing Sans One";
   src: url("../src/assets/fonts/RacingSansOne-Regular.ttf") format("truetype");
 }
 
@@ -206,6 +206,7 @@ body {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  text-shadow: 2px 4px 3px black;
 }
 
 .text {
@@ -466,7 +467,7 @@ div.map.mapboxgl-map {
   color: white;
   box-shadow: 0px 4px 4px #000000;
   border-radius: 20px;
-  width: 335px;
+  width: 50%;
   height: 50px;
 }
 
@@ -527,4 +528,58 @@ div.map.mapboxgl-map {
   width: 40%;
   height: 100%;
   margin-top: 3%;
+}
+
+/* ----------------------------------------------Desktop-------------------------------------------------- */
+
+@media screen and (min-width: 900px) {
+  .logoBackground {
+    margin: 2% auto 4% auto;
+  }
+
+  .title {
+    padding-top: 5%;
+    padding-bottom: 3%;
+  }
+
+  .subtitle {
+    padding: 0;
+    width: 20%;
+  }
+
+  .signInButton {
+    width: 20%;
+  }
+
+  .QuoteForm {
+    margin: 1% auto 5% auto;
+  }
+
+  .avatarContainer {
+    width: 30vw;
+    margin-top: 1%;
+    margin-bottom: 3%;
+  }
+
+  .textBig {
+    width: 20%;
+    margin: auto;
+  }
+
+  .avatarBackgroundBig {
+    margin: 5%;
+  }
+
+  .themeButtonsContainer{
+    margin-top:3%;
+  }
+
+  .middleButton{
+    margin-bottom:3%;
+    width:25%
+  }
+
+  .grandB{
+    width:15%;
+  }
 }

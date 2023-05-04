@@ -25,7 +25,7 @@ export default function Hey() {
   ];
   return (
     <div>
-      <div className="title" style={{ fontSize: 90, marginBottom: "5%" }}>
+      <div className="title" style={{ fontSize: 90 }}>
         Hey!
       </div>
       <p className="textBig">Welcome PrincessAmidala</p>
