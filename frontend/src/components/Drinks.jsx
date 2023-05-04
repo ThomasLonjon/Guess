@@ -6,7 +6,7 @@ function Drinks({ question }) {
   const [index, setIndex] = useState({});
   useEffect(() => {
     setRightAnwser(question.answers);
-    setIndex(question.righAnswer);
+    setIndex(question.rightAnswer);
   }, [question]);
 
   return (
@@ -20,12 +20,12 @@ Drinks.propTypes = {
     quest: PropTypes.string.isRequired,
     answers: PropTypes.arrayOf(
       PropTypes.shape({
-        idDrink: PropTypes.number.isRequired,
+        idDrink: PropTypes.string.isRequired,
         strDrink: PropTypes.string.isRequired,
         strDrinkThumb: PropTypes.string.isRequired,
       })
     ).isRequired,
-    righAnswer: PropTypes.number.isRequired,
+    rightAnswer: PropTypes.number.isRequired,
   }).isRequired,
 };
 

@@ -5,7 +5,6 @@ import "../App.css";
 function Button(props) {
   const { buttonType, text, onClick, buttonState } = props;
   console.warn(props);
-  //   const onClickHandler = () => {};
 
   return buttonType === "small" ? (
     <div>
