@@ -1,5 +1,6 @@
 /* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
 
+
 body::after {
   content: "";
   position: fixed;
@@ -68,11 +69,13 @@ body::after {
 /* ---------------------------------------------------Original code-------------------------------------------------- */
 
 body {
-  margin: 0;
-  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+  margin: 0%;
+  font-family: var(--fontSubtitle);
+
+  /* , "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
 .App {
@@ -88,6 +91,8 @@ body {
 
 .logo {
   width: 100%;
+  margin-left: 0%;
+  
 }
 .logoBackground {
   width: 350px;
@@ -224,20 +229,24 @@ body {
 
 .buttonGithub {
   height: 15%;
-  width: 28%;
+  width: 70%;
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr;
-
+  grid-template-rows: 9fr;
   background-color: var(--colorButtons);
   border-radius: 35px;
   font-size: 100%;
-  padding-top: 0.5%;
+  padding-top: 0.5;
   padding-bottom: 0.5%;
   box-shadow: var(--shadow);
   margin-bottom: 3%;
   color: var(--colorText);
+}
+
+.buttonsgithub{
+  align-items: center;
+  margin-left: 18%;
 }
 
 .pictoGithub {
@@ -449,6 +458,13 @@ div.map.mapboxgl-map {
   box-shadow: var(--shadow);
   margin-bottom: 3%;
   color: var(--colorText);
+  
+}
+
+
+.App {
+  background-color: #46178f;
+  color: #ffffff;
 }
 
 .petitB {
@@ -456,7 +472,7 @@ div.map.mapboxgl-map {
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 20px;
+  font-size: 40px;
   line-height: 38px;
   text-align: center;
   color: white;
@@ -465,6 +481,7 @@ div.map.mapboxgl-map {
   width: 60%;
   height: 100%;
   margin-bottom: 3%;
+ 
 }
 
 .middleButton {
@@ -520,7 +537,7 @@ div.map.mapboxgl-map {
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
-  font-size: 40px;
+  font-size: 19px;
   line-height: 38px;
   text-align: center;
   color: white;
@@ -539,6 +556,13 @@ div.map.mapboxgl-map {
   height: 50vh;
   display: flex;
   flex-direction: column;
+}
+
+.about{
+  font-family: "Faster One";
+  font-size: 400%;
+  word-spacing: -.1ch;
+  
 }
 
 .signInButton {
@@ -587,6 +611,87 @@ div.map.mapboxgl-map {
   width: 40%;
   height: 100%;
   margin-top: 3%;
+}
+
+@media screen and (min-width: 1200px) {
+
+  .about{
+    font-family: "Faster One";
+    font-size: 800%;
+    word-spacing: -1%;
+    
+  }
+
+
+.grandB {
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  
+}
+
+.buttonGithub {
+  height: 50px;
+  width: 20%;
+  align-items: center;
+  display:grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 9fr;
+  background-color: var(--colorButtons);
+  border-radius: 35px;
+  font-size: 100%;
+  padding-top: 0.5;
+  padding-bottom: 0.5%;
+  box-shadow: var(--shadow);
+  color: var(--colorText);
+}
+
+.buttonsgithub{
+  align-items: center;
+  display: flex;
+  margin-left: 0%;
+  justify-content: space-around;
+}
+
+.logoBackground {
+  width: 500px;
+  height: 500px;
+  border-radius: 250px;
+  box-shadow: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  box-shadow: var(--shadow);
+} 
+
+.logo {
+  width: 100%;
+}
+
+.buttonstudents{
+  margin-top: -10%;
+}
+
+.pictoGithub {
+  width: 50%;
+  grid-area: 1 / 1 / 2 / 2;
+  margin-left: 15%;
+}
+
+
+img{
+  border-radius: 5%;
+  display: flex;
+  width: 40%;
+}
+
+ 
 }
 
 /* ----------------------------------------------Desktop-------------------------------------------------- */
