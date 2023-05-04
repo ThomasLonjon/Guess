@@ -101,17 +101,6 @@ body {
 }
 
 /* ----------------------------------------------Avatar-------------------------------------------------- */
-.avatarContainer {
-  width: 80vw;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10%;
-  margin-top: 5%;
-}
 
 .avatarContainerBig {
   width: 80vw;
@@ -131,6 +120,18 @@ body {
   height: 300px;
   border-radius: 150px;
   box-shadow: var(--shadow);
+}
+
+.avatarContainer {
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+  margin-top: 5%;
 }
 
 .avatarBackground {
@@ -286,6 +287,15 @@ a {
   padding-bottom: 1%;
 }
 
+.sliderBox {
+  width: 40%;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ----------------------------------------------Buttons-------------------------------------------------- */
+
 .petitB {
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
@@ -327,11 +337,6 @@ a {
   width: 450px;
 }
 
-.sliderBox {
-  width: 28%;
-  padding-bottom: 20px;
-}
-
 /* ----------------------------------------------Map-------------------------------------------------- */
 
 .map-container {
@@ -360,6 +365,60 @@ a {
 
 div.map.mapboxgl-map {
   height: 350px;
+}
+
+/* ---------------------------------------------Drinks-------------------------------------------------- */
+
+.drinkContainer {
+  position: relative;
+  width: 80%;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.drink {
+  height: 100%;
+}
+
+/* ---------------------------------------------Games-------------------------------------------------- */
+
+.gameContainer {
+  position: relative;
+  width: 80%;
+  height: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  margin-bottom: 15%;
+
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------------------------------------------Music-------------------------------------------------- */
+
+.musicContainer {
+  margin-top: 30%;
+  margin-bottom: 30%;
+}
+
+.music {
+  object-fit: cover;
 }
 
 /* ----------------------------------------------Questions-------------------------------------------------- */

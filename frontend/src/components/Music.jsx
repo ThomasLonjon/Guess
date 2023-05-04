@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 function Music({ question }) {
   const [preview, setPreview] = useState(0);
+  // const audioRef = useRef(null);
   useEffect(() => {
     setPreview(question.answers[question.rightAnswer].preview);
+    // setTimeout(handlePlay(), 3000);
   }, [question]);
+
+  // const handlePlay = () => {
+  //   if (audioRef.current) {
+  //     audioRef.current.play();
+  //   }
+  // };
 
   return (
     // eslint-disable-next-line jsx-a11y/media-has-caption, react/no-unknown-property
-    <audio src={preview} controls autoplay />
+    <audio className="music" src={preview} controls />
+    // <audio className="music" src={preview} controls ref={audioRef} />
     // <iframe
     //   title="Deezer player"
     //   scrolling="no"
