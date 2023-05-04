@@ -641,4 +641,8 @@ div.map.mapboxgl-map {
   .grandB{
     width:15%;
   }
+
+  .avatarContainerBig{
+    margin: 0 auto 0 auto;
+  }
 }
