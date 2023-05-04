@@ -9,7 +9,7 @@ function QuestionCapital({ question }) {
   useEffect(() => {
     if (question) {
       setRandomCountries(question.answers);
-      setRightAnswerIndex(question.righAnswer);
+      setRightAnswerIndex(question.rightAnswer);
     }
   }, [question]);
 
@@ -46,7 +46,7 @@ QuestionCapital.propTypes = {
         population: PropTypes.number.isRequired,
       })
     ).isRequired,
-    righAnswer: PropTypes.number.isRequired,
+    rightAnswer: PropTypes.number.isRequired,
   }).isRequired,
 };
 export default QuestionCapital;

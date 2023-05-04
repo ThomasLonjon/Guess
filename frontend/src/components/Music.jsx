@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Music({ question }) {
   const [preview, setPreview] = useState(0);
   useEffect(() => {
-    setPreview(question.answers[question.righAnswer].preview);
+    setPreview(question.answers[question.rightAnswer].preview);
   }, [question]);
 
   return (
@@ -32,7 +32,7 @@ Music.propTypes = {
         title: PropTypes.string.isRequired,
       })
     ).isRequired,
-    righAnswer: PropTypes.number.isRequired,
+    rightAnswer: PropTypes.number.isRequired,
   }).isRequired,
 };
 
