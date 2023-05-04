@@ -45,11 +45,9 @@ function CreateAccount() {
   return (
     <div>
       <div className="title" style={{ fontSize: 90, marginBottom: "1%" }}>
-        Create
-        <br />
-        Account
+        Create Account
       </div>
-      <p className="text"> Enter Your Pseudo</p>
+      <p className="text"> Enter Pseudo</p>
       <form className="QuoteForm" onSubmit={handleSubmit}>
         <label htmlFor="userName"> </label>
         <input

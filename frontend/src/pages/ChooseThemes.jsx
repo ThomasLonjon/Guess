@@ -61,7 +61,7 @@ function ChooseThemes() {
   return (
     <div>
       <div className="title">
-        Choose <br /> Your <br /> Themes
+        Choose <br /> Your Themes!
       </div>
       <div className="themeButtonsContainer">
         <Button
@@ -103,7 +103,6 @@ function ChooseThemes() {
       <button
         className="grandB"
         type="button"
-        style={{ width: "50%" }}
         onClick={() => handleClickStart()}
       >
         Start !
