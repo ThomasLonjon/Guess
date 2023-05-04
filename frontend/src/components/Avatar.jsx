@@ -5,6 +5,7 @@ function Avatar({ setAvatarIndex, avatarArray, index, className }) {
   const handleOnClick = () => setAvatarIndex(index);
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div className={className} onClick={handleOnClick}>
       <img className="avatar" src={avatarArray[index]} alt="avatar" />
     </div>

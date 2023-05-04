@@ -25,20 +25,19 @@ function ChooseThemes() {
   //  ---------------------------------- Generate Array of questions  ----------------------------------
   const handleClickStart = () => {
     if (selectedThemes.length !== 0) {
-      console.info("toto");
-      const nbrQuestion = 2;
-
+      const nbrQuestion = 25;
       const countTheme = Math.floor(nbrQuestion / selectedThemes.length);
       let count = 0;
 
-      for (let i = 0; i < selectedThemes.length; i += 1) {
-        if (selectedThemes.length - 1 === i) {
+      for (let i = selectedThemes.length - 1; i >= 0; i -= 1) {
+        if (i === 0) {
           selectedThemes[i].numberQuest = nbrQuestion - count;
         } else {
-          count += countTheme;
           selectedThemes[i].numberQuest = countTheme;
+          count += countTheme;
         }
       }
+
       localStorage.setItem("questionList", JSON.stringify(selectedThemes));
       console.info("avant navigate");
       navigate("/Question");
@@ -66,20 +65,28 @@ function ChooseThemes() {
           }
         />
         <Button
-          text="Movies"
+          text="Cocktail"
           buttonType="small"
-          onClick={() => handleClickTheme("movies")}
+          onClick={() => handleClickTheme("cocktail")}
           buttonState={
-            selectedThemes.find((name) => name.apiName === "movies") !==
+            selectedThemes.find((name) => name.apiName === "cocktail") !==
             undefined
           }
         />
         <Button
           text="Games"
           buttonType="small"
-          onClick={() => handleClickTheme("games")}
+          onClick={() => handleClickTheme("game")}
           buttonState={
-            selectedThemes.find((name) => name.apiName === "games") !==
+            selectedThemes.find((name) => name.apiName === "game") !== undefined
+          }
+        />
+        <Button
+          text="Music"
+          buttonType="small"
+          onClick={() => handleClickTheme("music")}
+          buttonState={
+            selectedThemes.find((name) => name.apiName === "music") !==
             undefined
           }
         />

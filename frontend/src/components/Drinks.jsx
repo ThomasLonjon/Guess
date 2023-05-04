@@ -1,72 +1,32 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
-function Drinks() {
-  const [cocktails, setCocktails] = useState([]);
+function Drinks({ question }) {
   const [rightAnswer, setRightAnwser] = useState({});
-  const [answers, setAnswers] = useState([]);
-  const [responseObject, setResponseObject] = useState({});
+  const [index, setIndex] = useState({});
   useEffect(() => {
-    fetch(
-      "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink"
-    )
-      .then((response) => response.json())
-      .then((data) => setCocktails(data.drinks))
-      .catch((error) => console.info(error));
-  }, []);
-
-  // useEffect(() => {
-  //   // On prend une element aléatoire de cocktails pour avoir un objet cocktail qui sera la réponse
-  //   if (cocktails.length)
-  //     setRightAnwser(cocktails[Math.floor(Math.random() * cocktails.length)]);
-  // }, [cocktails.length]);
-
-  useEffect(() => {
-    if (cocktails) {
-      console.info("render");
-      const randomIndex = Math.floor(Math.random() * cocktails.length);
-
-      if (answers.length < 4) {
-        setAnswers((prevState) =>
-          [...prevState, cocktails[randomIndex]].filter(Boolean)
-        );
-      }
-      if (answers.length === 4) {
-        const randomIndex1 = Math.floor(Math.random() * answers.length);
-
-        setRightAnwser(answers[randomIndex1]);
-      }
-    }
-  }, [answers.length, cocktails.length]);
-
-  useEffect(() => {
-    setResponseObject({
-      answers,
-      rightIndex: answers.indexOf(rightAnswer),
-    });
-  }, [answers, rightAnswer]);
-
-  useEffect(() => {
-    console.info(responseObject);
-  }, [responseObject]);
-
-  const handleOptionClick = () => {
-    // console.info({ answers, rightIndex: answers.indexOf(rightAnswer) });
-  };
+    setRightAnwser(question.answers);
+    setIndex(question.rightAnswer);
+  }, [question]);
 
   return (
-    <div>
-      <img src={rightAnswer?.strDrinkThumb} alt={rightAnswer?.strDrink} />
-      {answers.map((option) => (
-        <button
-          type="button"
-          key={option.strDrink}
-          onClick={() => handleOptionClick(option.strDrink)}
-        >
-          {option.strDrink}
-        </button>
-      ))}
-      {/* {answerMessage && <p>{answerMessage}</p>} */}
-    </div>
+    <img src={rightAnswer[index]?.strDrinkThumb} alt={rightAnswer?.strDrink} />
   );
 }
+
+Drinks.propTypes = {
+  question: PropTypes.shape({
+    apiName: PropTypes.string.isRequired,
+    quest: PropTypes.string.isRequired,
+    answers: PropTypes.arrayOf(
+      PropTypes.shape({
+        idDrink: PropTypes.string.isRequired,
+        strDrink: PropTypes.string.isRequired,
+        strDrinkThumb: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    rightAnswer: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
 export default Drinks;
