@@ -90,7 +90,7 @@ export default {
   searchDataGame: async (numberQuest) => {
     const tabDataGame = [];
     await axios
-      .get("http://localhost:5000/api/game/data")
+      .get("http://localhost:5001/api/game/data")
       .then((response) => {
         let i = 0;
         while (i < numberQuest) {
@@ -129,7 +129,7 @@ export default {
   // Function Api Music
   searchDataMusic: async (numberQuest) => {
     const tabDataMusic = [];
-    await fetch("http://localhost:5000/api/music/data", {
+    await fetch("http://localhost:5001/api/music/data", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
