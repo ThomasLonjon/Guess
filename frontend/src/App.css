@@ -1,4 +1,6 @@
 /* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
+
+
 body::after {
   content: "";
   position: fixed;
@@ -6,7 +8,7 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.2;
+  opacity: 0.25;
   pointer-events: none;
   background-repeat: repeat;
   animation-name: noise;
@@ -57,6 +59,7 @@ body::after {
   --colorBackGround: #46178f;
   --colorButtons: #7841b5;
   --colorButtonsDark: #2c0a72;
+  --colorButtonBright: #f57914;
   --colorText: #ffffff;
   --fontTitle: "Faster One";
   --fontSubtitle: "Racing Sans One";
@@ -102,6 +105,86 @@ body {
   margin-bottom: 15%;
 }
 
+/* ----------------------------------------------Avatar-------------------------------------------------- */
+.avatarContainer {
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+  margin-top: 5%;
+}
+
+.avatarContainerBig {
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20%;
+  margin-top: 15%;
+}
+
+.avatarBackgroundBig {
+  background-color: var(--colorButtons);
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  box-shadow: var(--shadow);
+}
+
+.avatarBackground {
+  background-color: var(--colorButtons);
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  box-shadow: var(--shadow);
+  margin: 3%;
+}
+
+.chosenAvatarBackground {
+  background-color: var(--colorButtonsDark);
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  box-shadow: var(--shadow);
+  margin: 3%;
+}
+.avatar {
+  width: 100%;
+}
+
+/* ----------------------------------------------Form-------------------------------------------------- */
+
+.QuoteForm {
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+
+.QuoteForm input {
+  color: #ffffff;
+  font-family: "RacingS Sans One";
+  padding: 8px;
+  padding-left: 15px;
+  border-radius: 15px;
+  border: 1px solid var(--colorButtons);
+  font-size: 16px;
+  width: 60%;
+  max-width: 400px;
+  box-sizing: border-box;
+  background-color: var(--colorButtons);
+  box-shadow: var(--shadow);
+}
+
+.QuoteForm input:focus {
+  outline: none;
+}
+
 /* ----------------------------------------------Texts-------------------------------------------------- */
 
 .title {
@@ -112,6 +195,7 @@ body {
   line-height: 70.8%;
   padding-top: 10%;
   padding-bottom: 10%;
+  text-shadow: var(--shadow);
 }
 
 .questionText {
@@ -127,6 +211,16 @@ body {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.text {
+  font-size: 25px;
+  text-shadow: var(--shadow);
+}
+
+.textBig {
+  font-size: 40px;
+  text-shadow: var(--shadow);
 }
 
 /* ----------------------------------------------GitHub Button-------------------------------------------------- */
@@ -150,7 +244,7 @@ body {
 
 .buttonsgithub{
   align-items: center;
-  margin-left: 15%;
+  margin-left: 18%;
 }
 
 .pictoGithub {
@@ -277,7 +371,19 @@ div.map.mapboxgl-map {
   height: 350px;
 }
 
-/* ----------------------------------------------NavButton-------------------------------------------------- */
+/* ----------------------------------------------Questions-------------------------------------------------- */
+.answerButtonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.textTimer {
+  color: rgb(255, 72, 0);
+  margin-bottom: 2%;
+}
+
+/* ----------------------------------------------Buttons-------------------------------------------------- */
 
 .navButton {
   height: 15%;
@@ -301,17 +407,6 @@ div.map.mapboxgl-map {
   color: #ffffff;
 }
 
-/* ----------------------------------------------Questions-------------------------------------------------- */
-.answerButtonsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.textTimer {
-  color: rgb(255, 72, 0);
-  margin-bottom: 2%;
-}
 .petitB {
   all: unset;
   background-color: var(--colorButtons);
@@ -344,6 +439,36 @@ div.map.mapboxgl-map {
   width: 50%;
   height: 50px;
   margin-bottom: 10%;
+}
+
+.questionButton {
+  background-color: var(--colorButtonsDark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 80%;
+  height: 50px;
+  margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.questionButtonSmall {
+  background-color: var(--colorButtons);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 80%;
+  height: 30px;
+  margin-bottom: 10%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .grandB {
@@ -381,4 +506,131 @@ div.map.mapboxgl-map {
   
 }
 
+.signInButton {
+  all: unset;
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 50%;
+  height: 50px;
+}
 
+.newQuizz {
+  all: unset;
+  background-color: var(--colorButtonsDark);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 335px;
+  height: 60px;
+}
+
+.smallResultButton {
+  all: unset;
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 40%;
+  height: 100%;
+  margin-top: 3%;
+}
+
+@media screen and (min-width: 1200px) {
+
+  .about{
+    font-family: "Faster One";
+    font-size: 800%;
+    word-spacing: -1%;
+    
+  }
+
+
+.grandB {
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  
+}
+
+.buttonGithub {
+  height: 50px;
+  width: 20%;
+  align-items: center;
+  display:grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 9fr;
+  background-color: var(--colorButtons);
+  border-radius: 35px;
+  font-size: 100%;
+  padding-top: 0.5;
+  padding-bottom: 0.5%;
+  box-shadow: var(--shadow);
+  color: var(--colorText);
+}
+
+.buttonsgithub{
+  align-items: center;
+  display: flex;
+  margin-left: 0%;
+  justify-content: space-around;
+}
+
+.logoBackground {
+  width: 500px;
+  height: 500px;
+  border-radius: 250px;
+  box-shadow: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  box-shadow: var(--shadow);
+} 
+
+.logo {
+  width: 100%;
+}
+
+.buttonstudents{
+  margin-top: -10%;
+}
+
+.pictoGithub {
+  width: 50%;
+  grid-area: 1 / 1 / 2 / 2;
+  margin-left: 15%;
+}
+
+
+img{
+  border-radius: 5%;
+  display: flex;
+  width: 40%;
+}
+
+ 
+}

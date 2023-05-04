@@ -6,24 +6,12 @@ import Button from "../components/Button";
 export default function AboutUs() {
   return (
     <section className="pageStyle">
-      <br />
-      <br />
-      <div className="about">About Us</div>
-
-      <br />
-
+      <div className="about">AboutUs</div>
       <Logo />
-
-      {/* <div className="logo"></div> */}
-      <br />
-      <br />
-
       <div className="buttonstudents">
         <Button text="We are the group of students of Wild Code School" />
       </div>
       <br />
-      <br />
-
       <div className="buttonsgithub">
         <ButtonGithub devName="Adèle" devLink="./" />
         <ButtonGithub devName="J-M" devLink="./" />

@@ -1,24 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../App.css";
 
-function Avatar(props) {
-  const { avatarType } = props;
-  const { imageSrc } = props;
-  return avatarType === "small" ? (
-    <div>
-      <img className="petitAvatar" src={imageSrc} alt="avatar 1" />
-    </div>
-  ) : (
-    <div>
-      <img className="grandAvatar" src={imageSrc} alt="avatar 1" />
+function Avatar({ setAvatarIndex, avatarArray, index, className }) {
+  const handleOnClick = () => setAvatarIndex(index);
+
+  return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+    <div className={className} onClick={handleOnClick}>
+      <img className="avatar" src={avatarArray[index]} alt="avatar" />
     </div>
   );
 }
 
 Avatar.propTypes = {
-  avatarType: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  className: PropTypes.string.isRequired,
+  avatarArray: PropTypes.arrayOf().isRequired,
+  setAvatarIndex: PropTypes.func.isRequired,
 };
 
 export default Avatar;
