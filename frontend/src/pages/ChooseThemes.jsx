@@ -23,9 +23,18 @@ function ChooseThemes() {
   };
 
   //  ---------------------------------- Generate Array of questions  ----------------------------------
+
+  const [rules, setRules] = useState({});
+
+  useEffect(() => {
+    const dataRules = localStorage.getItem("rules");
+    const profileImport = JSON.parse(dataRules);
+    setRules(profileImport);
+  }, []);
+
   const handleClickStart = () => {
     if (selectedThemes.length !== 0) {
-      const nbrQuestion = 25;
+      const nbrQuestion = rules.numberOfQuestions;
       const countTheme = Math.floor(nbrQuestion / selectedThemes.length);
       let count = 0;
 

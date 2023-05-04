@@ -15,7 +15,7 @@ function Avatar({ setAvatarIndex, avatarArray, index, className }) {
 Avatar.propTypes = {
   index: PropTypes.number.isRequired,
   className: PropTypes.string.isRequired,
-  avatarArray: PropTypes.arrayOf().isRequired,
+  avatarArray: PropTypes.arrayOf(PropTypes.string).isRequired,
   setAvatarIndex: PropTypes.func.isRequired,
 };
 

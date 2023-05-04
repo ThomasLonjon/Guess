@@ -12,6 +12,9 @@ import GameAPI from "../components/GameAPI";
 import Music from "../components/Music";
 
 function Question() {
+  // Get the local storage
+  const [rules, setRules] = useState({});
+
   //  ---------------------------------- Generate a random set of countries  ----------------------------------
   const [questionList, setQuestionList] = useState([]);
   const [counter, setCounter] = useState(30);
@@ -19,6 +22,13 @@ function Question() {
   const [guessed, setGuessed] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(false);
   const [tabResult, setTabResult] = useState([]);
+
+  useEffect(() => {
+    const dataRules = localStorage.getItem("rules");
+    const rulesImport = JSON.parse(dataRules);
+    setCounter(rulesImport.timePerQuestion);
+    setRules(rulesImport.timePerQuestion);
+  }, []);
 
   // UseNavigate pour switch de page
   const navigate = useNavigate();
@@ -41,7 +51,7 @@ function Question() {
     setTimeout(() => {
       setGuessed(false);
       setCurrentPage(currentPage + 1);
-      setCounter(30);
+      setCounter(rules);
     }, "2000");
   };
 
@@ -60,6 +70,7 @@ function Question() {
   useEffect(() => {
     if (questionList.length === currentPage) {
       console.info("tabResult", tabResult);
+      localStorage.removeItem("Result");
       localStorage.setItem("Result", JSON.stringify(tabResult));
       setTimeout(() => {
         navigate("/Results");
@@ -151,21 +162,21 @@ function Question() {
             }
             if (question.apiName === "cocktail") {
               return (
-                <div>
+                <div className="drinkContainer">
                   <Drinks question={question} />
                 </div>
               );
             }
             if (question.apiName === "game") {
               return (
-                <div>
+                <div className="gameContainer">
                   <GameAPI question={getCurrentQuestion()[0].rightImage} />
                 </div>
               );
             }
             if (question.apiName === "music") {
               return (
-                <div>
+                <div className="musicContainer">
                   <Music question={getCurrentQuestion()[0]} />
                 </div>
               );

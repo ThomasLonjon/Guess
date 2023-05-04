@@ -10,7 +10,11 @@ function Drinks({ question }) {
   }, [question]);
 
   return (
-    <img src={rightAnswer[index]?.strDrinkThumb} alt={rightAnswer?.strDrink} />
+    <img
+      className="drink"
+      src={rightAnswer[index]?.strDrinkThumb}
+      alt={rightAnswer?.strDrink}
+    />
   );
 }
 
