@@ -14,7 +14,7 @@ function Timer({ time, setCounter }) {
   );
 }
 Timer.propTypes = {
-  time: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
   setCounter: PropTypes.func.isRequired,
 };
 
