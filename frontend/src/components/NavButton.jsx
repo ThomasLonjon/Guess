@@ -4,16 +4,6 @@ import PropTypes from "prop-types";
 
 function NavButton({ pageName, onClick, content }) {
   return (
-<<<<<<< HEAD
-    <div className="navButton">
-      <Link to={pageName}>
-        <button type="button" onClick={onClick}>
-          Adèle
-        </button>
-        <div>Navbutton </div>
-      </Link>
-    </div>
-=======
     <Link to={pageName}>
       <button
         className="grandB"
@@ -24,7 +14,6 @@ function NavButton({ pageName, onClick, content }) {
         {content}
       </button>
     </Link>
->>>>>>> bafaaf38847351036bd1e6f20c169c876a9b1614
   );
 }
 
