@@ -38,6 +38,11 @@ function ArtAPI() {
           )
         ).filter((option) => option !== artworkData.title),
       ]);
+      const Indexed = {};
+      Indexed.rightArray = titles;
+      Indexed.rightIndex = titles.indexOf(artworkData.title);
+      Indexed.rightImage = artworkData.primaryImageSmall;
+      console.info(Indexed);
     };
     fetchArtwork();
     console.info(titles);
