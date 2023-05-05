@@ -79,7 +79,7 @@ function Results() {
         </p>
       </div>
 
-      <div className="questionButtonSmall" style={{ width: "60%" }}>
+      <div className="questionButtonSmall">
         <p>Your time : {resultsObj.completionTime}</p>
       </div>
       <div className="avatarContainerBig">
@@ -94,11 +94,11 @@ function Results() {
         pageName="/"
         content="Start New Quizz ! "
       />
-
+      <br />
       <NavButton
         className="smallResultButton"
         pageName="/AboutUs"
-        content="Get to now us ! "
+        content="Get to know us ! "
       />
 
       {/* <p> Times remaining : {resultsObj.totalTimeRemaining} </p> */}

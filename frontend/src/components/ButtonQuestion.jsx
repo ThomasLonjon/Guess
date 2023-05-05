@@ -4,7 +4,7 @@ function ButtonQuestion({ buttonTitle, buttonColor, onClick }) {
   return (
     <button
       type="button"
-      className="petitB"
+      className="petitBAnswers"
       style={{ backgroundColor: buttonColor }}
       onClick={onClick}
     >
