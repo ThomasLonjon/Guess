@@ -10,6 +10,7 @@ import Drinks from "../components/Drinks";
 import GameAPI from "../components/GameAPI";
 import Music from "../components/Music";
 import Pokemon from "../components/Pokemon";
+import Exercise from "../components/Exercise";
 
 function Question() {
   //  ---------------------------------- Generate a random set of countries  ----------------------------------
@@ -100,8 +101,16 @@ function Question() {
       if (element.apiName === "pokemon") {
         return apiList.searchDataPokemon(element.numberQuest);
       }
+      if (element.apiName === "exercise") {
+        console.info("exercice sknsknsd");
+        return apiList.searchDataExercice(element.numberQuest);
+      }
     });
 
+    // console.log(
+    //   "apiList.searchDataExercice(element.numberQuest)",
+    //   apiList.searchDataExercice(2)
+    // );
     Promise.all(questionArray).then((dataListQuest) => {
       console.info("dataListQuest", dataListQuest);
       const listDataAPI = [];
@@ -180,6 +189,13 @@ function Question() {
                 </div>
               );
             }
+            if (question.apiName === "exercise") {
+              return (
+                <div>
+                  <Exercise question={getCurrentQuestion()[0]} />
+                </div>
+              );
+            }
           })
         }
         {
@@ -206,6 +222,10 @@ function Question() {
             }
             if (getCurrentQuestion()[0].apiName === "pokemon") {
               key = `Pokemon n°${index}`;
+              buttonTitle = question?.name;
+            }
+            if (getCurrentQuestion()[0].apiName === "exercise") {
+              key = `Exercise n°${index}`;
               buttonTitle = question?.name;
             }
             if (guessed && position === getCurrentQuestion()[0].rightAnswer) {

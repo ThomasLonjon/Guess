@@ -58,20 +58,26 @@ export default {
       .then((res) => res.json())
       .then((data) => {
         let i = 0;
+
         while (i < numberQuest) {
           const randomIndex = () =>
             Math.floor(Math.random() * data.drinks.length);
+
           const cocktailSet = new Set();
+
           while (cocktailSet.size < 4) {
             cocktailSet.add(data.drinks[randomIndex()]);
           }
+
           const cocktailArray = Array.from(cocktailSet);
+
           const rightIndex = Math.floor(Math.random() * 3);
 
           const duplicateCocktail = tabDataCoktail.some(
             (element) =>
               element.strDrink === cocktailArray[rightIndex]?.strDrink
           );
+
           if (!duplicateCocktail) {
             tabDataCoktail.push({
               apiName: "cocktail",
@@ -93,6 +99,7 @@ export default {
       .get("http://localhost:5001/api/game/data")
       .then((response) => {
         let i = 0;
+
         while (i < numberQuest) {
           const games = response.data.results;
           const randomGameIndex = Math.floor(Math.random() * games.length);
@@ -190,6 +197,7 @@ export default {
     );
 
     const tabDataPokemon = [];
+
     // eslint-disable-next-line array-callback-return
     data.map((pokemon) => {
       tabDataPokemon.push({
@@ -197,21 +205,27 @@ export default {
         url: pokemon.sprites.other["official-artwork"].front_default,
       });
     });
+
     const tabDataPokemonResult = [];
     let i = 0;
+
     while (i < numberQuest) {
       const randomPokemonIndex = () =>
         Math.floor(Math.random() * tabDataPokemon.length);
+
       const pokemonSet = new Set();
+
       while (pokemonSet.size < 4) {
         pokemonSet.add(tabDataPokemon[randomPokemonIndex()]);
       }
+
       const pokemonArray = Array.from(pokemonSet);
       const rightIndex = Math.floor(Math.random() * 3);
+
       const duplicate = tabDataPokemonResult.some(
         (element) => element.name === pokemonArray[rightIndex]?.name
       );
-      
+
       if (!duplicate) {
         tabDataPokemonResult.push({
           apiName: "pokemon",
@@ -223,5 +237,110 @@ export default {
       i += 1;
     }
     return tabDataPokemonResult;
+  },
+  // // Function Api Nasa
+  // searchDataNasa: async (numberQuest) => {
+  //   const tabDataNasa = [];
+  //   const baseUrl = "https://api.nasa.gov/";
+  //   const apiKey = "Vf9sdT6xCdjGyfgFnrWmuL3scey5OLaPmNFFCMeQ";
+  //   const options = {
+  //     method: "GET",
+  //     headers: {
+  //       "X-RapidAPI-Key": "f56cd3dacfmshc0cee94ae843f0dp1c74d7jsn4cacd4d198c3",
+  //       "X-RapidAPI-Host": "musclewiki.p.rapidapi.com",
+  //     },
+  //   };
+  //   await fetch(
+  //     // `https://api.nasa.gov/planetary/solar_system?api_key=oVEIrcSgMarwp1KwwwAwi6lL1uo2UQzffJwsOVoP`
+  //     // `${baseUrl}planetary/apod?api_key=${apiKey}`
+  //     // "https://images-api.nasa.gov/search?q=moon&media_type=image"
+  //     "https://musclewiki.p.rapidapi.com/exercises",
+  //     options
+  //     // "https://api.le-systeme-solaire.net/rest/bodies/?filter[]=isPlanet,eq,true"
+  //     // "https://api.le-systeme-solaire.net/rest/bodies/Mars"
+  //   )
+  //     .then((response) => response.json())
+  //     .then((response) => {
+  //       console.info("response", response);
+  //       // let i = 0;
+  //       // while (i < numberQuest) {
+  //       //   const randomIndex = () =>
+  //       //     Math.floor(Math.random() * data.drinks.length);
+  //       //   const cocktailSet = new Set();
+  //       //   while (cocktailSet.size < 4) {
+  //       //     cocktailSet.add(data.drinks[randomIndex()]);
+  //       //   }
+  //       //   const cocktailArray = Array.from(cocktailSet);
+  //       //   const rightIndex = Math.floor(Math.random() * 3);
+
+  //       //   const duplicateCocktail = tabDataNasa.some(
+  //       //     (element) =>
+  //       //       element.strDrink === cocktailArray[rightIndex]?.strDrink
+  //       //   );
+  //       //   if (!duplicateCocktail) {
+  //       //     tabDataNasa.push({
+  //       //       apiName: "cocktail",
+  //       //       quest: QuestList.cocktail,
+  //       //       answers: cocktailArray,
+  //       //       rightAnswer: rightIndex,
+  //       //     });
+  //       //     i += 1;
+  //       //   }
+  //       // }
+  //     })
+  //     .catch((err) => console.error("err -->", err));
+  //   return tabDataNasa;
+  // },
+  // Function Api Nasa
+  searchDataExercice: async (numberQuest) => {
+    const tabDataExerciceResult = [];
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": import.meta.env.VITE_EXERCICE_ACCESS_TOKEN,
+        "X-RapidAPI-Host": "musclewiki.p.rapidapi.com",
+      },
+    };
+    await fetch("https://musclewiki.p.rapidapi.com/exercises", options)
+      .then((response) => response.json())
+      .then((response) => {
+        const data = response.filter((exercise) => exercise.target.Primary);
+        const tabListExercice = [];
+        // eslint-disable-next-line array-callback-return
+        data.map((exercise) => {
+          tabListExercice.push({
+            name: exercise.exercise_name,
+            url: exercise.videoURL[0],
+          });
+        });
+
+        let i = 0;
+        while (i < numberQuest) {
+          const randomExerciceIndex = () =>
+            Math.floor(Math.random() * tabListExercice.length);
+          const exerciceSet = new Set();
+          while (exerciceSet.size < 4) {
+            exerciceSet.add(tabListExercice[randomExerciceIndex()]);
+          }
+
+          const exerciceArray = Array.from(exerciceSet);
+          const rightIndex = Math.floor(Math.random() * 3);
+          const duplicate = tabDataExerciceResult.some(
+            (element) => element.name === exerciceArray[rightIndex]?.name
+          );
+          if (!duplicate) {
+            tabDataExerciceResult.push({
+              apiName: "exercise",
+              quest: QuestList.exercice,
+              answers: exerciceArray,
+              rightAnswer: rightIndex,
+              key: tabDataExerciceResult.length,
+            });
+            i += 1;
+          }
+        }
+      })
+      .catch((err) => console.error("err -->", err));
+    return tabDataExerciceResult;
   },
 };

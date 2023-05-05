@@ -17,9 +17,8 @@ Pokemon.propTypes = {
     quest: PropTypes.string.isRequired,
     answers: PropTypes.arrayOf(
       PropTypes.shape({
-        idDrink: PropTypes.string.isRequired,
-        strDrink: PropTypes.string.isRequired,
-        strDrinkThumb: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
       })
     ).isRequired,
     rightAnswer: PropTypes.number.isRequired,

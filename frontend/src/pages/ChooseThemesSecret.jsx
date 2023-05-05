@@ -64,6 +64,15 @@ function ChooseThemesSecret() {
             undefined
           }
         />
+        <Button
+          text="Exercise"
+          buttonType="small"
+          onClick={() => handleClickTheme("exercise")}
+          buttonState={
+            selectedThemes.find((name) => name.apiName === "exercise") !==
+            undefined
+          }
+        />
       </div>
       <button
         className="grandB"
