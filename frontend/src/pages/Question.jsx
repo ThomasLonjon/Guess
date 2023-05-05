@@ -148,7 +148,7 @@ function Question() {
       </div>
 
       <Timer time={counter} setCounter={setCounter} />
-      <div>
+      <div className="bigContainer">
         {
           // eslint-disable-next-line array-callback-return, consistent-return, no-unused-vars
           getCurrentQuestion().map((question, index) => {
@@ -183,60 +183,62 @@ function Question() {
             }
           })
         }
-        {
-          // eslint-disable-next-line array-callback-return, consistent-return, no-unused-vars
-          getCurrentQuestion()[0]?.answers.map((question, index) => {
-            let key;
-            let buttonTitle;
-            const position = index;
-            if (getCurrentQuestion()[0].apiName === "capital") {
-              key = question?.cca3;
-              buttonTitle = question?.capital[0];
-            }
-            if (getCurrentQuestion()[0].apiName === "cocktail") {
-              key = question?.idDrink;
-              buttonTitle = question?.strDrink;
-            }
-            if (getCurrentQuestion()[0].apiName === "game") {
-              key = `Game n°${index}`;
-              buttonTitle = question;
-            }
-            if (getCurrentQuestion()[0].apiName === "music") {
-              key = `Music n°${index}`;
-              buttonTitle = question?.title;
-            }
-            if (guessed && position === getCurrentQuestion()[0].rightAnswer) {
-              return (
-                <ButtonQuestion
-                  key={key}
-                  buttonTitle={buttonTitle}
-                  buttonColor="green"
-                  onClick={() => handleClickResponse(position)}
-                />
-              );
-            }
-            if (guessed) {
-              if (selectedIndex === index) {
+        <div className="questionContainer">
+          {
+            // eslint-disable-next-line array-callback-return, consistent-return, no-unused-vars
+            getCurrentQuestion()[0]?.answers.map((question, index) => {
+              let key;
+              let buttonTitle;
+              const position = index;
+              if (getCurrentQuestion()[0].apiName === "capital") {
+                key = question?.cca3;
+                buttonTitle = question?.capital[0];
+              }
+              if (getCurrentQuestion()[0].apiName === "cocktail") {
+                key = question?.idDrink;
+                buttonTitle = question?.strDrink;
+              }
+              if (getCurrentQuestion()[0].apiName === "game") {
+                key = `Game n°${index}`;
+                buttonTitle = question;
+              }
+              if (getCurrentQuestion()[0].apiName === "music") {
+                key = `Music n°${index}`;
+                buttonTitle = question?.title;
+              }
+              if (guessed && position === getCurrentQuestion()[0].rightAnswer) {
                 return (
                   <ButtonQuestion
                     key={key}
                     buttonTitle={buttonTitle}
-                    buttonColor="var(--colorButtonsDark)"
+                    buttonColor="green"
                     onClick={() => handleClickResponse(position)}
                   />
                 );
               }
-            }
-            return (
-              <ButtonQuestion
-                key={key}
-                buttonTitle={buttonTitle}
-                buttonColor="var(--colorButtons)"
-                onClick={() => handleClickResponse(position)}
-              />
-            );
-          })
-        }
+              if (guessed) {
+                if (selectedIndex === index) {
+                  return (
+                    <ButtonQuestion
+                      key={key}
+                      buttonTitle={buttonTitle}
+                      buttonColor="var(--colorButtonsDark)"
+                      onClick={() => handleClickResponse(position)}
+                    />
+                  );
+                }
+              }
+              return (
+                <ButtonQuestion
+                  key={key}
+                  buttonTitle={buttonTitle}
+                  buttonColor="var(--colorButtons)"
+                  onClick={() => handleClickResponse(position)}
+                />
+              );
+            })
+          }
+        </div>
       </div>
     </div>
   );

@@ -21,7 +21,10 @@ function ChooseRules() {
   //  ---------------------------------------- RETURN ----------------------------------------
   return (
     <div>
-      <div className="title">Choose Rules</div>
+      <div className="title">Choose Your Rules</div>
+      <div className="buttonChooseRules">
+        <p>Number of questions</p>
+      </div>
       <Slider
         maxRange={30}
         defaultRange={8}
@@ -29,6 +32,9 @@ function ChooseRules() {
         rangeValue={rangeValueNumber}
         setRangeValue={setRangeValueNumber}
       />
+      <div className="buttonChooseRules">
+        <p>Time per question</p>
+      </div>
       <Slider
         maxRange={30}
         defaultRange={30}
@@ -37,12 +43,11 @@ function ChooseRules() {
         setRangeValue={setRangeValueTime}
       />
       <button
-        className="grandB"
+        className="chooseRulesStart"
         type="button"
-        style={{ width: "50%" }}
         onClick={() => handleClick()}
       >
-        Start !
+        Next !
       </button>
     </div>
   );

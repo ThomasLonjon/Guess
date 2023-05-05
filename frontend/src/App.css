@@ -1,6 +1,5 @@
 /* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
 
-
 body::after {
   content: "";
   position: fixed;
@@ -92,7 +91,6 @@ body {
 .logo {
   width: 100%;
   margin-left: 0%;
-  
 }
 .logoBackground {
   width: 350px;
@@ -105,6 +103,16 @@ body {
   margin-bottom: 15%;
 }
 
+.logoBackgroundAboutUs {
+  width: 350px;
+  height: 350px;
+  border-radius: 175px;
+  box-shadow: var(--shadow);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  margin-bottom: 15%;
+}
 /* ----------------------------------------------Avatar-------------------------------------------------- */
 
 .avatarContainerBig {
@@ -169,7 +177,7 @@ body {
 
 .QuoteForm input {
   color: #ffffff;
-  font-family: "RacingS Sans One";
+  font-family: "Racing Sans One";
   padding: 8px;
   padding-left: 15px;
   border-radius: 15px;
@@ -229,7 +237,7 @@ body {
 
 .buttonGithub {
   height: 15%;
-  width: 70%;
+  width: 100%;
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -244,15 +252,18 @@ body {
   color: var(--colorText);
 }
 
-.buttonsgithub{
+.buttonsgithub {
   align-items: center;
-  margin-left: 18%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .pictoGithub {
   width: 100%;
   grid-area: 1 / 1 / 2 / 2;
   margin-left: 15%;
+  margin-top: 2px;
 }
 
 .devName {
@@ -458,9 +469,7 @@ div.map.mapboxgl-map {
   box-shadow: var(--shadow);
   margin-bottom: 3%;
   color: var(--colorText);
-  
 }
-
 
 .App {
   background-color: #46178f;
@@ -472,7 +481,7 @@ div.map.mapboxgl-map {
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 40px;
+  font-size: 20px;
   line-height: 38px;
   text-align: center;
   color: white;
@@ -481,7 +490,22 @@ div.map.mapboxgl-map {
   width: 60%;
   height: 100%;
   margin-bottom: 3%;
- 
+}
+
+.petitBAnswers {
+  all: unset;
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 60%;
+  height: 100%;
+  margin-bottom: 3%;
 }
 
 .middleButton {
@@ -531,13 +555,30 @@ div.map.mapboxgl-map {
   margin-right: auto;
 }
 
+.buttonstudents {
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 60%;
+  height: 100%;
+  margin-bottom: 3%;
+  margin-top: -10%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .grandB {
   all: unset;
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
-  font-size: 19px;
+  font-size: 30px;
   line-height: 38px;
   text-align: center;
   color: white;
@@ -558,11 +599,10 @@ div.map.mapboxgl-map {
   flex-direction: column;
 }
 
-.about{
+.about {
   font-family: "Faster One";
   font-size: 400%;
-  word-spacing: -.1ch;
-  
+  word-spacing: -0.1ch;
 }
 
 .signInButton {
@@ -613,92 +653,62 @@ div.map.mapboxgl-map {
   margin-top: 3%;
 }
 
-@media screen and (min-width: 1200px) {
-
-  .about{
-    font-family: "Faster One";
-    font-size: 800%;
-    word-spacing: -1%;
-    
-  }
-
-
-.grandB {
+.buttonChooseRules {
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-weight: 400;
-  font-size: 19px;
+  font-size: 20px;
   line-height: 38px;
   text-align: center;
   color: white;
   box-shadow: 0px 4px 4px #000000;
-  
-}
-
-.buttonGithub {
-  height: 50px;
-  width: 20%;
-  align-items: center;
-  display:grid;
-  grid-template-columns: 1fr 4fr;
-  grid-template-rows: 9fr;
-  background-color: var(--colorButtons);
-  border-radius: 35px;
-  font-size: 100%;
-  padding-top: 0.5;
-  padding-bottom: 0.5%;
-  box-shadow: var(--shadow);
-  color: var(--colorText);
-}
-
-.buttonsgithub{
-  align-items: center;
-  display: flex;
-  margin-left: 0%;
-  justify-content: space-around;
-}
-
-.logoBackground {
-  width: 500px;
-  height: 500px;
-  border-radius: 250px;
-  box-shadow: none;
-  margin-left: auto;
+  border-radius: 20px;
+  width: 60%;
+  height: 100%;
   margin-right: auto;
-  margin-top: 1%;
-  box-shadow: var(--shadow);
-} 
-
-.logo {
-  width: 100%;
+  margin-left: auto;
+  margin-top: 15%;
+  margin-bottom: 5%;
 }
-
-.buttonstudents{
-  margin-top: -10%;
-}
-
-.pictoGithub {
-  width: 50%;
-  grid-area: 1 / 1 / 2 / 2;
-  margin-left: 15%;
-}
-
-
-img{
-  border-radius: 5%;
-  display: flex;
+.chooseRulesStart {
+  all: unset;
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
   width: 40%;
+  height: 100%;
+  margin-top: 10%;
 }
-
- 
+.newQuizz2 {
+  all: unset;
+  background-color: var(--colorButtonsDark);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 60%;
+  height: 5%;
+  margin-top: 3%;
 }
-
-/* ----------------------------------------------Desktop-------------------------------------------------- */
-
 @media screen and (min-width: 900px) {
   .logoBackground {
     margin: 2% auto 4% auto;
+  }
+  .logoBackgroundAboutUs {
+    width: 25vw;
+    height: 25vw;
+    margin: 2% auto 13% auto;
   }
 
   .title {
@@ -734,20 +744,157 @@ img{
     margin: 5%;
   }
 
-  .themeButtonsContainer{
-    margin-top:3%;
+  .themeButtonsContainer {
+    margin-top: 3%;
   }
 
-  .middleButton{
-    margin-bottom:3%;
-    width:25%
+  .middleButton {
+    margin-bottom: 3%;
+    width: 25%;
   }
 
-  .grandB{
-    width:15%;
+  .grandB {
+    width: 15%;
   }
 
-  .avatarContainerBig{
+  .avatarContainerBig {
     margin: 0 auto 0 auto;
+  }
+
+  .buttonChooseRules {
+    margin-top: 5%;
+    margin-bottom: 3%;
+    width: 20%;
+  }
+
+  .sliderBox {
+    width: 12%;
+  }
+  .chooseRulesStart {
+    margin-top: 5%;
+    width: 10%;
+  }
+
+  .map-container {
+    width: 50vw;
+    height: 350px;
+    margin-right: 40px;
+  }
+
+  .petitB {
+    width: 70%;
+    height: 10%;
+  }
+
+  .questionGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .questionButton {
+    margin-bottom: 2%;
+    width: 20%;
+  }
+  .questionButtonSmall {
+    width: 20%;
+    margin-bottom: 0;
+  }
+
+  .smallResultButton {
+    width: 20%;
+  }
+
+  .buttonsgithub {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+  }
+
+  .buttonGithub {
+    height: 30px;
+    width: 40%;
+    margin-right: 10px;
+  }
+
+  .pictoGithub {
+    height: 30px;
+    width: 30px;
+  }
+
+  .buttonstudents {
+    line-height: 30px;
+    width: 25%;
+  }
+
+  .newQuizz2 {
+    width: 20%;
+  }
+
+  .questionContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #cdb0ee4d;
+    width: 80%;
+    height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bigContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 auto 0 auto;
+  }
+
+  .drinkContainer {
+    flex: 1;
+    width: 50vw;
+    margin-right: 5%;
+  }
+
+  .gameContainer {
+    flex: 1;
+    width: 50vw;
+    height: 300px;
+    margin-right: 5%;
+    position: relative;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .petitBAnswers {
+    width: 70%;
+    height: auto;
+    margin: 2% 0 2% 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .game {
+    width: 100%;
+    height: auto;
+  }
+
+  .musicContainer {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 40vw;
   }
 }
