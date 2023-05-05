@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavButton from "../components/NavButton";
+import { useNavigate } from "react-router-dom";
 import Avatar from "../components/Avatar";
 
 import avatar1 from "../assets/img/Avatars-01.png";
@@ -13,6 +13,7 @@ import avatar8 from "../assets/img/Avatars-08.png";
 import avatar9 from "../assets/img/Avatars-09.png";
 
 function CreateAccount() {
+  const navigate = useNavigate();
   const avatarArray = [
     avatar1,
     avatar2,
@@ -28,17 +29,25 @@ function CreateAccount() {
   const [avatarIndex, setAvatarIndex] = useState(null);
   const handleSubmit = (event) => event.preventDefault();
   const handleChange = (event) => {
-    setUserName(event.target.value);
+    if (event.target.value.length <= 15) {
+      setUserName(event.target.value);
+    }
+  };
+
+  const handleClick = () => {
+    if (userName && avatarIndex) {
+      const profile = { name: userName, index: avatarIndex };
+      localStorage.setItem("profile", JSON.stringify(profile));
+      navigate("/Hey");
+    }
   };
 
   return (
     <div>
       <div className="title" style={{ fontSize: 90, marginBottom: "1%" }}>
-        Create
-        <br />
-        Account
+        Create Account
       </div>
-      <p className="text"> Enter Your Pseudo</p>
+      <p className="text"> Enter Pseudo</p>
       <form className="QuoteForm" onSubmit={handleSubmit}>
         <label htmlFor="userName"> </label>
         <input
@@ -56,6 +65,7 @@ function CreateAccount() {
           if (index === avatarIndex) {
             return (
               <Avatar
+                key={avatarArray[index]}
                 className="chosenAvatarBackground"
                 avatarArray={avatarArray}
                 index={index}
@@ -65,6 +75,7 @@ function CreateAccount() {
           }
           return (
             <Avatar
+              key={avatarArray[index]}
               className="avatarBackground"
               avatarArray={avatarArray}
               index={index}
@@ -73,7 +84,14 @@ function CreateAccount() {
           );
         })}
       </div>
-      <NavButton className="signInButton" pageName="/Hey" content="Start ! " />
+      <button
+        className="grandB"
+        type="button"
+        style={{ width: "50%" }}
+        onClick={() => handleClick()}
+      >
+        Start !
+      </button>
     </div>
   );
 }

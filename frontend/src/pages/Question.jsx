@@ -14,6 +14,9 @@ import Exercise from "../components/Exercise";
 import Planet from "../components/Planet";
 
 function Question() {
+  // Get the local storage
+  const [rules, setRules] = useState({});
+
   //  ---------------------------------- Generate a random set of countries  ----------------------------------
   const [questionList, setQuestionList] = useState([]);
   const [counter, setCounter] = useState(30);
@@ -21,6 +24,13 @@ function Question() {
   const [guessed, setGuessed] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(false);
   const [tabResult, setTabResult] = useState([]);
+
+  useEffect(() => {
+    const dataRules = localStorage.getItem("rules");
+    const rulesImport = JSON.parse(dataRules);
+    setCounter(rulesImport.timePerQuestion);
+    setRules(rulesImport.timePerQuestion);
+  }, []);
 
   // UseNavigate pour switch de page
   const navigate = useNavigate();
@@ -43,7 +53,7 @@ function Question() {
     setTimeout(() => {
       setGuessed(false);
       setCurrentPage(currentPage + 1);
-      setCounter(30);
+      setCounter(rules);
     }, "2000");
   };
 
@@ -62,6 +72,7 @@ function Question() {
   useEffect(() => {
     if (questionList.length === currentPage) {
       console.info("tabResult", tabResult);
+      localStorage.removeItem("Result");
       localStorage.setItem("Result", JSON.stringify(tabResult));
       setTimeout(() => {
         navigate("/Results");
@@ -148,7 +159,7 @@ function Question() {
       </div>
 
       <Timer time={counter} setCounter={setCounter} />
-      <div>
+      <div className="bigContainer">
         {
           // eslint-disable-next-line array-callback-return, consistent-return, no-unused-vars
           getCurrentQuestion().map((question, index) => {
@@ -162,114 +173,116 @@ function Question() {
             }
             if (question.apiName === "cocktail") {
               return (
-                <div>
+                <div className="drinkContainer">
                   <Drinks question={question} />
                 </div>
               );
             }
             if (question.apiName === "game") {
               return (
-                <div>
+                <div className="gameContainer">
                   <GameAPI question={getCurrentQuestion()[0].rightImage} />
                 </div>
               );
             }
             if (question.apiName === "music") {
               return (
-                <div>
+                <div className="musicContainer">
                   <Music question={getCurrentQuestion()[0]} />
                 </div>
               );
             }
             if (question.apiName === "pokemon") {
               return (
-                <div>
+                <div className="musicContainer">
                   <Pokemon question={getCurrentQuestion()[0]} />
                 </div>
               );
             }
             if (question.apiName === "exercise") {
               return (
-                <div>
+                <div className="exerciseContainer">
                   <Exercise question={getCurrentQuestion()[0]} />
                 </div>
               );
             }
             if (question.apiName === "planet") {
               return (
-                <div>
+                <div className="planetContainer">
                   <Planet question={getCurrentQuestion()[0]} />
                 </div>
               );
             }
           })
         }
-        {
-          // eslint-disable-next-line array-callback-return, consistent-return, no-unused-vars
-          getCurrentQuestion()[0]?.answers.map((question, index) => {
-            let key;
-            let buttonTitle;
-            const position = index;
-            if (getCurrentQuestion()[0].apiName === "capital") {
-              key = question?.cca3;
-              buttonTitle = question?.capital[0];
-            }
-            if (getCurrentQuestion()[0].apiName === "cocktail") {
-              key = question?.idDrink;
-              buttonTitle = question?.strDrink;
-            }
-            if (getCurrentQuestion()[0].apiName === "game") {
-              key = question;
-              buttonTitle = question;
-            }
-            if (getCurrentQuestion()[0].apiName === "music") {
-              key = question?.title;
-              buttonTitle = question?.title;
-            }
-            if (getCurrentQuestion()[0].apiName === "pokemon") {
-              key = question?.name;
-              buttonTitle = question?.name;
-            }
-            if (getCurrentQuestion()[0].apiName === "exercise") {
-              key = question?.name;
-              buttonTitle = question?.name;
-            }
-            if (getCurrentQuestion()[0].apiName === "planet") {
-              key = question?.name;
-              buttonTitle = question?.name;
-            }
-            if (guessed && position === getCurrentQuestion()[0].rightAnswer) {
-              return (
-                <ButtonQuestion
-                  key={key}
-                  buttonTitle={buttonTitle}
-                  buttonColor="green"
-                  onClick={() => handleClickResponse(position)}
-                />
-              );
-            }
-            if (guessed) {
-              if (selectedIndex === index) {
+        <div className="questionContainer">
+          {
+            // eslint-disable-next-line array-callback-return, consistent-return, no-unused-vars
+            getCurrentQuestion()[0]?.answers.map((question, index) => {
+              let key;
+              let buttonTitle;
+              const position = index;
+              if (getCurrentQuestion()[0].apiName === "capital") {
+                key = question?.cca3;
+                buttonTitle = question?.capital[0];
+              }
+              if (getCurrentQuestion()[0].apiName === "cocktail") {
+                key = question?.idDrink;
+                buttonTitle = question?.strDrink;
+              }
+              if (getCurrentQuestion()[0].apiName === "game") {
+                key = question;
+                buttonTitle = question;
+              }
+              if (getCurrentQuestion()[0].apiName === "music") {
+                key = question?.title;
+                buttonTitle = question?.title;
+              }
+              if (getCurrentQuestion()[0].apiName === "pokemon") {
+                key = question?.name;
+                buttonTitle = question?.name;
+              }
+              if (getCurrentQuestion()[0].apiName === "exercise") {
+                key = question?.name;
+                buttonTitle = question?.name;
+              }
+              if (getCurrentQuestion()[0].apiName === "planet") {
+                key = question?.name;
+                buttonTitle = question?.name;
+              }
+              if (guessed && position === getCurrentQuestion()[0].rightAnswer) {
                 return (
                   <ButtonQuestion
                     key={key}
                     buttonTitle={buttonTitle}
-                    buttonColor="var(--colorButtonsDark)"
+                    buttonColor="green"
                     onClick={() => handleClickResponse(position)}
                   />
                 );
               }
-            }
-            return (
-              <ButtonQuestion
-                key={key}
-                buttonTitle={buttonTitle}
-                buttonColor="var(--colorButtons)"
-                onClick={() => handleClickResponse(position)}
-              />
-            );
-          })
-        }
+              if (guessed) {
+                if (selectedIndex === index) {
+                  return (
+                    <ButtonQuestion
+                      key={key}
+                      buttonTitle={buttonTitle}
+                      buttonColor="var(--colorButtonsDark)"
+                      onClick={() => handleClickResponse(position)}
+                    />
+                  );
+                }
+              }
+              return (
+                <ButtonQuestion
+                  key={key}
+                  buttonTitle={buttonTitle}
+                  buttonColor="var(--colorButtons)"
+                  onClick={() => handleClickResponse(position)}
+                />
+              );
+            })
+          }
+        </div>
       </div>
     </div>
   );

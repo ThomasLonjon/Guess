@@ -261,7 +261,7 @@ export default {
           if (!duplicateCocktail) {
             tabDataNasa.push({
               apiName: "planet",
-              quest: QuestList.cocktail,
+              quest: QuestList.planet,
               answers: nasaArray,
               rightAnswer: rightIndex,
             });

@@ -48,7 +48,7 @@ body::after {
 }
 
 @font-face {
-  font-family: "RacingS Sans One";
+  font-family: "Racing Sans One";
   src: url("../src/assets/fonts/RacingSansOne-Regular.ttf") format("truetype");
 }
 
@@ -68,11 +68,13 @@ body::after {
 /* ---------------------------------------------------Original code-------------------------------------------------- */
 
 body {
-  margin: 0;
-  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+  margin: 0%;
+  font-family: var(--fontSubtitle);
+
+  /* , "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
 .App {
@@ -88,6 +90,7 @@ body {
 
 .logo {
   width: 100%;
+  margin-left: 0%;
 }
 .logoBackground {
   width: 350px;
@@ -100,18 +103,17 @@ body {
   margin-bottom: 15%;
 }
 
-/* ----------------------------------------------Avatar-------------------------------------------------- */
-.avatarContainer {
-  width: 80vw;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
+.logoBackgroundAboutUs {
+  width: 350px;
+  height: 350px;
+  border-radius: 175px;
+  box-shadow: var(--shadow);
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10%;
-  margin-top: 5%;
+  margin-top: 10%;
+  margin-bottom: 15%;
 }
+/* ----------------------------------------------Avatar-------------------------------------------------- */
 
 .avatarContainerBig {
   width: 80vw;
@@ -131,6 +133,18 @@ body {
   height: 300px;
   border-radius: 150px;
   box-shadow: var(--shadow);
+}
+
+.avatarContainer {
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+  margin-top: 5%;
 }
 
 .avatarBackground {
@@ -163,7 +177,7 @@ body {
 
 .QuoteForm input {
   color: #ffffff;
-  font-family: "RacingS Sans One";
+  font-family: "Racing Sans One";
   padding: 8px;
   padding-left: 15px;
   border-radius: 15px;
@@ -206,6 +220,7 @@ body {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  text-shadow: 2px 4px 3px black;
 }
 
 .text {
@@ -222,26 +237,33 @@ body {
 
 .buttonGithub {
   height: 15%;
-  width: 28%;
+  width: 100%;
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr;
-
+  grid-template-rows: 9fr;
   background-color: var(--colorButtons);
   border-radius: 35px;
   font-size: 100%;
-  padding-top: 0.5%;
+  padding-top: 0.5;
   padding-bottom: 0.5%;
   box-shadow: var(--shadow);
   margin-bottom: 3%;
   color: var(--colorText);
 }
 
+.buttonsgithub {
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 .pictoGithub {
   width: 100%;
   grid-area: 1 / 1 / 2 / 2;
   margin-left: 15%;
+  margin-top: 2px;
 }
 
 .devName {
@@ -286,6 +308,15 @@ a {
   padding-bottom: 1%;
 }
 
+.sliderBox {
+  width: 40%;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ----------------------------------------------Buttons-------------------------------------------------- */
+
 .petitB {
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
@@ -327,11 +358,6 @@ a {
   width: 450px;
 }
 
-.sliderBox {
-  width: 28%;
-  padding-bottom: 20px;
-}
-
 /* ----------------------------------------------Map-------------------------------------------------- */
 
 .map-container {
@@ -360,6 +386,60 @@ a {
 
 div.map.mapboxgl-map {
   height: 350px;
+}
+
+/* ---------------------------------------------Drinks-------------------------------------------------- */
+
+.drinkContainer {
+  position: relative;
+  width: 80%;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.drink {
+  height: 100%;
+}
+
+/* ---------------------------------------------Games-------------------------------------------------- */
+
+.gameContainer {
+  position: relative;
+  width: 80%;
+  height: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  margin-bottom: 15%;
+
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------------------------------------------Music-------------------------------------------------- */
+
+.musicContainer {
+  margin-top: 30%;
+  margin-bottom: 30%;
+}
+
+.music {
+  object-fit: cover;
 }
 
 /* ----------------------------------------------Questions-------------------------------------------------- */
@@ -391,7 +471,28 @@ div.map.mapboxgl-map {
   color: var(--colorText);
 }
 
+.App {
+  background-color: #46178f;
+  color: #ffffff;
+}
+
 .petitB {
+  all: unset;
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 60%;
+  height: 100%;
+  margin-bottom: 3%;
+}
+
+.petitBAnswers {
   all: unset;
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
@@ -454,19 +555,36 @@ div.map.mapboxgl-map {
   margin-right: auto;
 }
 
+.buttonstudents {
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 60%;
+  height: 100%;
+  margin-bottom: 3%;
+  margin-top: -10%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .grandB {
   all: unset;
   background-color: var(--colorButtons);
   font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 38px;
   text-align: center;
   color: white;
   box-shadow: 0px 4px 4px #000000;
   border-radius: 20px;
-  width: 335px;
+  width: 50%;
   height: 50px;
 }
 
@@ -479,6 +597,12 @@ div.map.mapboxgl-map {
   height: 50vh;
   display: flex;
   flex-direction: column;
+}
+
+.about {
+  font-family: "Faster One";
+  font-size: 400%;
+  word-spacing: -0.1ch;
 }
 
 .signInButton {
@@ -527,4 +651,261 @@ div.map.mapboxgl-map {
   width: 40%;
   height: 100%;
   margin-top: 3%;
+}
+
+.buttonChooseRules {
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 60%;
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 15%;
+  margin-bottom: 5%;
+}
+.chooseRulesStart {
+  all: unset;
+  background-color: var(--colorButtons);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 40%;
+  height: 100%;
+  margin-top: 10%;
+}
+.newQuizz2 {
+  all: unset;
+  background-color: var(--colorButtonsDark);
+  font-family: var(--fontSubtitle), "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: 20px;
+  width: 60%;
+  height: 5%;
+  margin-top: 3%;
+}
+@media screen and (min-width: 900px) {
+  .logoBackground {
+    margin: 2% auto 4% auto;
+  }
+  .logoBackgroundAboutUs {
+    width: 25vw;
+    height: 25vw;
+    margin: 2% auto 13% auto;
+  }
+
+  .title {
+    padding-top: 5%;
+    padding-bottom: 3%;
+  }
+
+  .subtitle {
+    padding: 0;
+    width: 20%;
+  }
+
+  .signInButton {
+    width: 20%;
+  }
+
+  .QuoteForm {
+    margin: 1% auto 5% auto;
+  }
+
+  .avatarContainer {
+    width: 30vw;
+    margin-top: 1%;
+    margin-bottom: 3%;
+  }
+
+  .textBig {
+    width: 20%;
+    margin: auto;
+  }
+
+  .avatarBackgroundBig {
+    margin: 5%;
+  }
+
+  .themeButtonsContainer {
+    margin-top: 3%;
+  }
+
+  .middleButton {
+    margin-bottom: 3%;
+    width: 25%;
+  }
+
+  .grandB {
+    width: 15%;
+  }
+
+  .avatarContainerBig {
+    margin: 0 auto 0 auto;
+  }
+
+  .buttonChooseRules {
+    margin-top: 5%;
+    margin-bottom: 3%;
+    width: 20%;
+  }
+
+  .sliderBox {
+    width: 12%;
+  }
+  .chooseRulesStart {
+    margin-top: 5%;
+    width: 10%;
+  }
+
+  .map-container {
+    width: 50vw;
+    height: 350px;
+    margin-right: 40px;
+  }
+
+  .petitB {
+    width: 70%;
+    height: 10%;
+  }
+
+  .questionGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .questionButton {
+    margin-bottom: 2%;
+    width: 20%;
+  }
+  .questionButtonSmall {
+    width: 20%;
+    margin-bottom: 0;
+  }
+
+  .smallResultButton {
+    width: 20%;
+  }
+
+  .buttonsgithub {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+  }
+
+  .buttonGithub {
+    height: 30px;
+    width: 40%;
+    margin-right: 10px;
+  }
+
+  .pictoGithub {
+    height: 30px;
+    width: 30px;
+  }
+
+  .buttonstudents {
+    line-height: 30px;
+    width: 25%;
+  }
+
+  .newQuizz2 {
+    width: 20%;
+  }
+
+  .questionContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #cdb0ee4d;
+    width: 80%;
+    height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bigContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0 auto 0 auto;
+  }
+
+  .drinkContainer {
+    flex: 1;
+    width: 50vw;
+    margin-right: 5%;
+  }
+
+  .gameContainer {
+    flex: 1;
+    width: 50vw;
+    height: 300px;
+    margin-right: 5%;
+    position: relative;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .petitBAnswers {
+    width: 70%;
+    height: auto;
+    margin: 2% 0 2% 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .game {
+    width: 100%;
+    height: auto;
+  }
+
+  .musicContainer {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 40vw;
+  }
+
+  .exerciseContainer {
+    /* height: 0%; */
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 1vw;
+  }
+
+  .exercise {
+    width: 100%;
+  }
 }

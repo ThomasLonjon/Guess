@@ -11,7 +11,7 @@ function Exercise({ question }) {
     console.info("question", question);
   }, [question]);
   return (
-    <div>
+    <div className="exercise">
       <video controls key={key}>
         <source src={video} type="video/mp4" />
         Your browser does not support the video tag.

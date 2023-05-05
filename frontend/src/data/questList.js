@@ -7,5 +7,6 @@ const questList = {
   music: "Which Music is this ?",
   pokemon: "Which Pokémon is this ?",
   exercice: "Which Exercise is this ?",
+  planet: "Which Planet is this ?",
 };
 export default questList;

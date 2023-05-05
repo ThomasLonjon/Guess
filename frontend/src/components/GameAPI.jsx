@@ -10,7 +10,7 @@ function GameAPI({ question }) {
 
   return (
     <div>
-      <img src={image} alt="Random game" />
+      <img className="game" src={image} alt="Random game" />
     </div>
   );
 }

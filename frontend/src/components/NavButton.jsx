@@ -15,7 +15,7 @@ function NavButton({ className, pageName, onClick, content }) {
 NavButton.propTypes = {
   pageName: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  content: PropTypes.func.isRequired,
+  content: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavButton from "../components/NavButton";
 import Avatar from "../components/Avatar";
 import avatar1 from "../assets/img/Avatars-01.png";
@@ -23,17 +23,28 @@ export default function Hey() {
     avatar8,
     avatar9,
   ];
+
+  const [profile, setProfile] = useState({});
+
+  useEffect(() => {
+    const data = localStorage.getItem("profile");
+    const profileImport = JSON.parse(data);
+    setProfile(profileImport);
+  }, []);
+
   return (
     <div>
-      <div className="title" style={{ fontSize: 90, marginBottom: "5%" }}>
+      <div className="title" style={{ fontSize: 90 }}>
         Hey!
       </div>
-      <p className="textBig">Welcome PrincessAmidala</p>
-      <div className="avatarContainer">
+      <p className="textBig">
+        Welcome <br /> {profile.name}
+      </p>
+      <div className="avatarContainerBig">
         <Avatar
           className="avatarBackgroundBig"
           avatarArray={avatarArray}
-          index="5"
+          index={profile.index}
         />
       </div>
 
