@@ -12,7 +12,7 @@ function Exercise({ question }) {
   }, [question]);
   return (
     <div className="exercise">
-      <video controls key={key}>
+      <video controls autoPlay key={key}>
         <source src={video} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

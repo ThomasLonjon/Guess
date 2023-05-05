@@ -9,7 +9,13 @@ function Planet({ question }) {
     setIndex(question.rightAnswer);
   }, [question]);
 
-  return <img src={rightAnswer[index]?.url} alt={rightAnswer?.url} />;
+  return (
+    <img
+      className="planet"
+      src={rightAnswer[index]?.url}
+      alt={rightAnswer?.url}
+    />
+  );
 }
 
 Planet.propTypes = {

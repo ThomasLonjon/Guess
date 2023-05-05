@@ -431,6 +431,17 @@ div.map.mapboxgl-map {
   object-fit: cover;
 }
 
+.planetContainer {
+  width: 40%;
+  margin-right: 10%;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.planet {
+  object-fit: cover;
+}
+
 /* ---------------------------------------------Music-------------------------------------------------- */
 
 .musicContainer {
@@ -853,6 +864,7 @@ div.map.mapboxgl-map {
     flex-direction: row;
     justify-content: space-around;
     margin: 0 auto 0 auto;
+    max-width: 100vw;
   }
 
   .drinkContainer {
@@ -899,13 +911,18 @@ div.map.mapboxgl-map {
   }
 
   .exerciseContainer {
-    /* height: 0%; */
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 1vw;
+    margin-top: 3%;
+    width: 40%;
+    margin-right: 10%;
+    border-radius: 50px;
+    overflow: hidden;
   }
 
   .exercise {
+    height: 100%;
+  }
+
+  video {
     width: 100%;
   }
 }

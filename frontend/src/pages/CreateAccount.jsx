@@ -56,6 +56,7 @@ function CreateAccount() {
           type="text"
           value={userName}
           onChange={handleChange}
+          autoComplete="off"
         />
       </form>
 

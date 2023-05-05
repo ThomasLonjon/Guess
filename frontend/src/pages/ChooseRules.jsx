@@ -40,7 +40,7 @@ function ChooseRules() {
         <p>Time per question</p>
       </div>
       <Slider
-        maxRange={30}
+        maxRange={60}
         defaultRange={30}
         unit="s"
         rangeValue={rangeValueTime}

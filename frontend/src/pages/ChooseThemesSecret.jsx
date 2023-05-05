@@ -25,7 +25,7 @@ function ChooseThemesSecret() {
   //  ---------------------------------- Generate Array of questions  ----------------------------------
   const handleClickStart = () => {
     if (selectedThemes.length !== 0) {
-      const nbrQuestion = 25;
+      const nbrQuestion = 6;
       const countTheme = Math.floor(nbrQuestion / selectedThemes.length);
       let count = 0;
 
