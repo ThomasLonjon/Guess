@@ -5,6 +5,7 @@ const router = express.Router();
 const axios = require("axios");
 
 const itemControllers = require("./controllers/itemControllers");
+const nasa = require("./nasa.json");
 
 router.get("/items", itemControllers.browse);
 router.get("/items/:id", itemControllers.read);
@@ -42,5 +43,9 @@ router.get("/api/music/data", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+});
+
+router.get("/api/nasa/data", async (req, res) => {
+  res.json(nasa);
 });
 module.exports = router;

@@ -897,4 +897,15 @@ div.map.mapboxgl-map {
     margin-bottom: auto;
     width: 40vw;
   }
+
+  .exerciseContainer {
+    /* height: 0%; */
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 1vw;
+  }
+
+  .exercise {
+    width: 100%;
+  }
 }

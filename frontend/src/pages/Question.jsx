@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import NavButton from "../components/NavButton";
 import Timer from "../components/Timer";
 import QuestionCapital from "../components/QuestionCapital";
 import Title from "../components/Title";
@@ -10,6 +9,9 @@ import apiList from "../data/api";
 import Drinks from "../components/Drinks";
 import GameAPI from "../components/GameAPI";
 import Music from "../components/Music";
+import Pokemon from "../components/Pokemon";
+import Exercise from "../components/Exercise";
+import Planet from "../components/Planet";
 
 function Question() {
   // Get the local storage
@@ -108,6 +110,15 @@ function Question() {
       if (element.apiName === "music") {
         return apiList.searchDataMusic(element.numberQuest);
       }
+      if (element.apiName === "pokemon") {
+        return apiList.searchDataPokemon(element.numberQuest);
+      }
+      if (element.apiName === "exercise") {
+        return apiList.searchDataExercice(element.numberQuest);
+      }
+      if (element.apiName === "planet") {
+        return apiList.searchDataNasa(element.numberQuest);
+      }
     });
 
     Promise.all(questionArray).then((dataListQuest) => {
@@ -181,6 +192,27 @@ function Question() {
                 </div>
               );
             }
+            if (question.apiName === "pokemon") {
+              return (
+                <div className="musicContainer">
+                  <Pokemon question={getCurrentQuestion()[0]} />
+                </div>
+              );
+            }
+            if (question.apiName === "exercise") {
+              return (
+                <div className="exerciseContainer">
+                  <Exercise question={getCurrentQuestion()[0]} />
+                </div>
+              );
+            }
+            if (question.apiName === "planet") {
+              return (
+                <div className="planetContainer">
+                  <Planet question={getCurrentQuestion()[0]} />
+                </div>
+              );
+            }
           })
         }
         <div className="questionContainer">
@@ -199,12 +231,24 @@ function Question() {
                 buttonTitle = question?.strDrink;
               }
               if (getCurrentQuestion()[0].apiName === "game") {
-                key = `Game n°${index}`;
+                key = question;
                 buttonTitle = question;
               }
               if (getCurrentQuestion()[0].apiName === "music") {
-                key = `Music n°${index}`;
+                key = question?.title;
                 buttonTitle = question?.title;
+              }
+              if (getCurrentQuestion()[0].apiName === "pokemon") {
+                key = question?.name;
+                buttonTitle = question?.name;
+              }
+              if (getCurrentQuestion()[0].apiName === "exercise") {
+                key = question?.name;
+                buttonTitle = question?.name;
+              }
+              if (getCurrentQuestion()[0].apiName === "planet") {
+                key = question?.name;
+                buttonTitle = question?.name;
               }
               if (guessed && position === getCurrentQuestion()[0].rightAnswer) {
                 return (

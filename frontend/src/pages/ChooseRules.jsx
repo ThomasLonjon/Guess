@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "../components/Slider";
 
@@ -17,6 +17,10 @@ function ChooseRules() {
     localStorage.setItem("rules", JSON.stringify(rules));
     navigate("/ChooseThemes");
   };
+
+  useEffect(() => {
+    localStorage.removeItem("rules");
+  }, []);
 
   //  ---------------------------------------- RETURN ----------------------------------------
   return (

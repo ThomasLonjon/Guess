@@ -49,7 +49,7 @@ export default {
     console.warn("tabDataCapital.length", tabDataCapital.length);
     return tabDataCapital;
   },
-  // Function Api Game
+  // Function Api Cocktail
   searchDataCocktail: async (numberQuest) => {
     const tabDataCoktail = [];
     await fetch(
@@ -58,20 +58,26 @@ export default {
       .then((res) => res.json())
       .then((data) => {
         let i = 0;
+
         while (i < numberQuest) {
           const randomIndex = () =>
             Math.floor(Math.random() * data.drinks.length);
+
           const cocktailSet = new Set();
+
           while (cocktailSet.size < 4) {
             cocktailSet.add(data.drinks[randomIndex()]);
           }
+
           const cocktailArray = Array.from(cocktailSet);
+
           const rightIndex = Math.floor(Math.random() * 3);
 
           const duplicateCocktail = tabDataCoktail.some(
             (element) =>
               element.strDrink === cocktailArray[rightIndex]?.strDrink
           );
+
           if (!duplicateCocktail) {
             tabDataCoktail.push({
               apiName: "cocktail",
@@ -93,6 +99,7 @@ export default {
       .get("http://localhost:5001/api/game/data")
       .then((response) => {
         let i = 0;
+
         while (i < numberQuest) {
           const games = response.data.results;
           const randomGameIndex = Math.floor(Math.random() * games.length);
@@ -125,7 +132,6 @@ export default {
       });
     return tabDataGame;
   },
-
   // Function Api Music
   searchDataMusic: async (numberQuest) => {
     const tabDataMusic = [];
@@ -176,5 +182,146 @@ export default {
       })
       .catch((err) => console.error("err -->", err));
     return tabDataMusic;
+  },
+  // Function Api Pokemon
+  searchDataPokemon: async (numberQuest) => {
+    const urlTabDataPokemon = [];
+    for (let i = 1; i <= 151; i += 1) {
+      urlTabDataPokemon.push(`https://pokeapi.co/api/v2/pokemon/${i}`);
+    }
+    // eslint-disable-next-line prettier/prettier
+    const responses = await Promise.all(urlTabDataPokemon.map((url) => fetch(url)));
+    // console.info("responses", responses);
+    const data = await Promise.all(
+      responses.map((response) => response.json())
+    );
+
+    const tabDataPokemon = [];
+
+    // eslint-disable-next-line array-callback-return
+    data.map((pokemon) => {
+      tabDataPokemon.push({
+        name: pokemon.name,
+        url: pokemon.sprites.other["official-artwork"].front_default,
+      });
+    });
+
+    const tabDataPokemonResult = [];
+    let i = 0;
+
+    while (i < numberQuest) {
+      const randomPokemonIndex = () =>
+        Math.floor(Math.random() * tabDataPokemon.length);
+
+      const pokemonSet = new Set();
+
+      while (pokemonSet.size < 4) {
+        pokemonSet.add(tabDataPokemon[randomPokemonIndex()]);
+      }
+
+      const pokemonArray = Array.from(pokemonSet);
+      const rightIndex = Math.floor(Math.random() * 3);
+
+      const duplicate = tabDataPokemonResult.some(
+        (element) => element.name === pokemonArray[rightIndex]?.name
+      );
+
+      if (!duplicate) {
+        tabDataPokemonResult.push({
+          apiName: "pokemon",
+          quest: QuestList.pokemon,
+          answers: pokemonArray,
+          rightAnswer: rightIndex,
+        });
+      }
+      i += 1;
+    }
+    return tabDataPokemonResult;
+  },
+  // // Function Api Nasa
+  searchDataNasa: async (numberQuest) => {
+    const tabDataNasa = [];
+    await fetch("http://localhost:5001/api/nasa/data")
+      .then((response) => response.json())
+      .then((data) => {
+        let i = 0;
+        while (i < numberQuest) {
+          const randomIndex = () =>
+            Math.floor(Math.random() * data.planets.length);
+          const nasaSet = new Set();
+          while (nasaSet.size < 4) {
+            nasaSet.add(data.planets[randomIndex()]);
+          }
+          const nasaArray = Array.from(nasaSet);
+          const rightIndex = Math.floor(Math.random() * 3);
+
+          const duplicateCocktail = tabDataNasa.some(
+            (element) => element.name === nasaArray[rightIndex]?.name
+          );
+          if (!duplicateCocktail) {
+            tabDataNasa.push({
+              apiName: "planet",
+              quest: QuestList.planet,
+              answers: nasaArray,
+              rightAnswer: rightIndex,
+            });
+            i += 1;
+          }
+        }
+      })
+      .catch((err) => console.error("err -->", err));
+    return tabDataNasa;
+  },
+  // Function Api Exercice
+  searchDataExercice: async (numberQuest) => {
+    const tabDataExerciceResult = [];
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": import.meta.env.VITE_EXERCICE_ACCESS_TOKEN,
+        "X-RapidAPI-Host": "musclewiki.p.rapidapi.com",
+      },
+    };
+    await fetch("https://musclewiki.p.rapidapi.com/exercises", options)
+      .then((response) => response.json())
+      .then((response) => {
+        const data = response.filter((exercise) => exercise.target.Primary);
+        const tabListExercice = [];
+        // eslint-disable-next-line array-callback-return
+        data.map((exercise) => {
+          tabListExercice.push({
+            name: exercise.exercise_name,
+            url: exercise.videoURL[0],
+          });
+        });
+
+        let i = 0;
+        while (i < numberQuest) {
+          const randomExerciceIndex = () =>
+            Math.floor(Math.random() * tabListExercice.length);
+          const exerciceSet = new Set();
+          while (exerciceSet.size < 4) {
+            exerciceSet.add(tabListExercice[randomExerciceIndex()]);
+          }
+
+          const exerciceArray = Array.from(exerciceSet);
+          const rightIndex = Math.floor(Math.random() * 3);
+          const duplicate = tabDataExerciceResult.some(
+            (element) => element.name === exerciceArray[rightIndex]?.name
+          );
+          if (!duplicate) {
+            tabDataExerciceResult.push({
+              apiName: "exercise",
+              quest: QuestList.exercice,
+              answers: exerciceArray,
+              rightAnswer: rightIndex,
+              key: tabDataExerciceResult.length,
+            });
+            i += 1;
+          }
+        }
+      })
+      .catch((err) => console.error("err -->", err));
+    return tabDataExerciceResult;
   },
 };

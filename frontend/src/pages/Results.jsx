@@ -100,6 +100,12 @@ function Results() {
         pageName="/AboutUs"
         content="Get to know us ! "
       />
+      <br />
+      <NavButton
+        className="smallResultButton"
+        pageName="/ChooseThemesSecret"
+        content="Start Secret Quizz"
+      />
 
       {/* <p> Times remaining : {resultsObj.totalTimeRemaining} </p> */}
       {/* {results.map((result) => {
