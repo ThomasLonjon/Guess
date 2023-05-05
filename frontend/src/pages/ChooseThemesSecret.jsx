@@ -73,6 +73,15 @@ function ChooseThemesSecret() {
             undefined
           }
         />
+        <Button
+          text="Planet"
+          buttonType="small"
+          onClick={() => handleClickTheme("planet")}
+          buttonState={
+            selectedThemes.find((name) => name.apiName === "planet") !==
+            undefined
+          }
+        />
       </div>
       <button
         className="grandB"

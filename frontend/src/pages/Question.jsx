@@ -11,6 +11,7 @@ import GameAPI from "../components/GameAPI";
 import Music from "../components/Music";
 import Pokemon from "../components/Pokemon";
 import Exercise from "../components/Exercise";
+import Planet from "../components/Planet";
 
 function Question() {
   //  ---------------------------------- Generate a random set of countries  ----------------------------------
@@ -102,15 +103,13 @@ function Question() {
         return apiList.searchDataPokemon(element.numberQuest);
       }
       if (element.apiName === "exercise") {
-        console.info("exercice sknsknsd");
         return apiList.searchDataExercice(element.numberQuest);
+      }
+      if (element.apiName === "planet") {
+        return apiList.searchDataNasa(element.numberQuest);
       }
     });
 
-    // console.log(
-    //   "apiList.searchDataExercice(element.numberQuest)",
-    //   apiList.searchDataExercice(2)
-    // );
     Promise.all(questionArray).then((dataListQuest) => {
       console.info("dataListQuest", dataListQuest);
       const listDataAPI = [];
@@ -196,6 +195,13 @@ function Question() {
                 </div>
               );
             }
+            if (question.apiName === "planet") {
+              return (
+                <div>
+                  <Planet question={getCurrentQuestion()[0]} />
+                </div>
+              );
+            }
           })
         }
         {
@@ -213,19 +219,23 @@ function Question() {
               buttonTitle = question?.strDrink;
             }
             if (getCurrentQuestion()[0].apiName === "game") {
-              key = `Game n°${index}`;
+              key = question;
               buttonTitle = question;
             }
             if (getCurrentQuestion()[0].apiName === "music") {
-              key = `Music n°${index}`;
+              key = question?.title;
               buttonTitle = question?.title;
             }
             if (getCurrentQuestion()[0].apiName === "pokemon") {
-              key = `Pokemon n°${index}`;
+              key = question?.name;
               buttonTitle = question?.name;
             }
             if (getCurrentQuestion()[0].apiName === "exercise") {
-              key = `Exercise n°${index}`;
+              key = question?.name;
+              buttonTitle = question?.name;
+            }
+            if (getCurrentQuestion()[0].apiName === "planet") {
+              key = question?.name;
               buttonTitle = question?.name;
             }
             if (guessed && position === getCurrentQuestion()[0].rightAnswer) {

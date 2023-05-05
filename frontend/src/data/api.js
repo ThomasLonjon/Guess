@@ -239,59 +239,40 @@ export default {
     return tabDataPokemonResult;
   },
   // // Function Api Nasa
-  // searchDataNasa: async (numberQuest) => {
-  //   const tabDataNasa = [];
-  //   const baseUrl = "https://api.nasa.gov/";
-  //   const apiKey = "Vf9sdT6xCdjGyfgFnrWmuL3scey5OLaPmNFFCMeQ";
-  //   const options = {
-  //     method: "GET",
-  //     headers: {
-  //       "X-RapidAPI-Key": "f56cd3dacfmshc0cee94ae843f0dp1c74d7jsn4cacd4d198c3",
-  //       "X-RapidAPI-Host": "musclewiki.p.rapidapi.com",
-  //     },
-  //   };
-  //   await fetch(
-  //     // `https://api.nasa.gov/planetary/solar_system?api_key=oVEIrcSgMarwp1KwwwAwi6lL1uo2UQzffJwsOVoP`
-  //     // `${baseUrl}planetary/apod?api_key=${apiKey}`
-  //     // "https://images-api.nasa.gov/search?q=moon&media_type=image"
-  //     "https://musclewiki.p.rapidapi.com/exercises",
-  //     options
-  //     // "https://api.le-systeme-solaire.net/rest/bodies/?filter[]=isPlanet,eq,true"
-  //     // "https://api.le-systeme-solaire.net/rest/bodies/Mars"
-  //   )
-  //     .then((response) => response.json())
-  //     .then((response) => {
-  //       console.info("response", response);
-  //       // let i = 0;
-  //       // while (i < numberQuest) {
-  //       //   const randomIndex = () =>
-  //       //     Math.floor(Math.random() * data.drinks.length);
-  //       //   const cocktailSet = new Set();
-  //       //   while (cocktailSet.size < 4) {
-  //       //     cocktailSet.add(data.drinks[randomIndex()]);
-  //       //   }
-  //       //   const cocktailArray = Array.from(cocktailSet);
-  //       //   const rightIndex = Math.floor(Math.random() * 3);
+  searchDataNasa: async (numberQuest) => {
+    const tabDataNasa = [];
+    await fetch("http://localhost:5001/api/nasa/data")
+      .then((response) => response.json())
+      .then((data) => {
+        let i = 0;
+        while (i < numberQuest) {
+          const randomIndex = () =>
+            Math.floor(Math.random() * data.planets.length);
+          const nasaSet = new Set();
+          while (nasaSet.size < 4) {
+            nasaSet.add(data.planets[randomIndex()]);
+          }
+          const nasaArray = Array.from(nasaSet);
+          const rightIndex = Math.floor(Math.random() * 3);
 
-  //       //   const duplicateCocktail = tabDataNasa.some(
-  //       //     (element) =>
-  //       //       element.strDrink === cocktailArray[rightIndex]?.strDrink
-  //       //   );
-  //       //   if (!duplicateCocktail) {
-  //       //     tabDataNasa.push({
-  //       //       apiName: "cocktail",
-  //       //       quest: QuestList.cocktail,
-  //       //       answers: cocktailArray,
-  //       //       rightAnswer: rightIndex,
-  //       //     });
-  //       //     i += 1;
-  //       //   }
-  //       // }
-  //     })
-  //     .catch((err) => console.error("err -->", err));
-  //   return tabDataNasa;
-  // },
-  // Function Api Nasa
+          const duplicateCocktail = tabDataNasa.some(
+            (element) => element.name === nasaArray[rightIndex]?.name
+          );
+          if (!duplicateCocktail) {
+            tabDataNasa.push({
+              apiName: "planet",
+              quest: QuestList.cocktail,
+              answers: nasaArray,
+              rightAnswer: rightIndex,
+            });
+            i += 1;
+          }
+        }
+      })
+      .catch((err) => console.error("err -->", err));
+    return tabDataNasa;
+  },
+  // Function Api Exercice
   searchDataExercice: async (numberQuest) => {
     const tabDataExerciceResult = [];
     const options = {
