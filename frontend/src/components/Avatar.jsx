@@ -1,8 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Avatar({ setAvatarIndex, avatarArray, index, className }) {
-  const handleOnClick = () => setAvatarIndex(index);
+function Avatar({
+  setAvatarIndex,
+  avatarArray,
+  index,
+  className,
+  setAvatarIsClicked,
+}) {
+  const handleOnClick = () => {
+    setAvatarIndex(index);
+    setAvatarIsClicked(true);
+  };
 
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
@@ -17,6 +26,7 @@ Avatar.propTypes = {
   className: PropTypes.string.isRequired,
   avatarArray: PropTypes.arrayOf(PropTypes.string).isRequired,
   setAvatarIndex: PropTypes.func.isRequired,
+  setAvatarIsClicked: PropTypes.func.isRequired,
 };
 
 export default Avatar;

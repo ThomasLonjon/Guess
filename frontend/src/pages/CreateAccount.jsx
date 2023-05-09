@@ -27,6 +27,7 @@ function CreateAccount() {
   ];
   const [userName, setUserName] = useState(null);
   const [avatarIndex, setAvatarIndex] = useState(null);
+  const [avatarIsClicked, setAvatarIsClicked] = useState(false);
   const handleSubmit = (event) => event.preventDefault();
   const handleChange = (event) => {
     if (event.target.value.length <= 15) {
@@ -35,7 +36,7 @@ function CreateAccount() {
   };
 
   const handleClick = () => {
-    if (userName && avatarIndex) {
+    if (userName && avatarIsClicked) {
       const profile = { name: userName, index: avatarIndex };
       localStorage.setItem("profile", JSON.stringify(profile));
       navigate("/Hey");
@@ -81,6 +82,7 @@ function CreateAccount() {
               avatarArray={avatarArray}
               index={index}
               setAvatarIndex={setAvatarIndex}
+              setAvatarIsClicked={setAvatarIsClicked}
             />
           );
         })}
