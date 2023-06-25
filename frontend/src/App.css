@@ -1,6 +1,6 @@
 /* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
 
-body::after {
+/* body::after {
   content: "";
   position: fixed;
   top: 0;
@@ -14,9 +14,9 @@ body::after {
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
   animation-timing-function: steps(3);
-}
+} */
 
-@keyframes noise {
+/* @keyframes noise {
   from {
     background-image: url("../src/assets/img/Noise1.jpg");
   }
@@ -29,7 +29,7 @@ body::after {
   to {
     background-image: url("../src/assets/img/Noise1.jpg");
   }
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -55,9 +55,9 @@ body::after {
 /* definitions variables d'ensemble */
 
 :root {
-  --colorBackGround: #46178f;
-  --colorButtons: #7841b5;
-  --colorButtonsDark: #2c0a72;
+  --colorBackGround: #8c5cd4;
+  --colorButtons: #a571e0;
+  --colorButtonsDark: #572ea8;
   --colorButtonBright: #f57914;
   --colorText: #ffffff;
   --fontTitle: "Faster One";
@@ -482,10 +482,10 @@ div.map.mapboxgl-map {
   color: var(--colorText);
 }
 
-.App {
+/* .App {
   background-color: #46178f;
   color: #ffffff;
-}
+} */
 
 .petitB {
   all: unset;
